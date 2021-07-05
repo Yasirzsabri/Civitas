@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "60ce6660cad9552d906b966a"
+  },
+  "firstName": "Useless",
+  "lastName": "Bunny",
+  "address1": "my back garden",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "3UB BBB",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60ce6660cad9552d906b966b"
+      },
+      "name": "cell ",
+      "phoneNumber": "123"
+    }
+  ],
+  "emailAddress": "bunny@telus.net",
+  "communityDetail": [
+    {
+      "_id": {
+        "$oid": "60de3cc7554cdb377853b5c5"
+      },
+      "community": {
+        "$oid": "60d91f40e7ca6434287d6907"
+      },
+      "renewalDate": {
+        "$date": "2021-07-12T06:00:00Z"
+      },
+      "memberSince": {
+        "$date": "2021-07-14T06:00:00Z"
+      },
+      "membershipPaidDate": {
+        "$date": "2021-07-13T06:00:00Z"
+      }
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-19T21:49:19.798Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-07-01T22:16:36.052Z"
+  },
+  "__v": 0
+}]
