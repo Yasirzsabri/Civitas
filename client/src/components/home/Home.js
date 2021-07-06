@@ -6,6 +6,7 @@ import {HiClipboardList} from 'react-icons/hi';
 import {FaUserFriends} from 'react-icons/fa';
 import {RiUserStarFill} from 'react-icons/ri';
 import './Home.css'
+import Login from '../login/Login';
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
@@ -122,7 +123,12 @@ const Home = () => {
                     <div className="card logo">
                         <div className="logo-image"></div>  
                     </div>
-                    <div className="card card3">
+                    <div className="loginPage">
+                        <div>
+                            <Login />
+                        </div>
+                    </div> 
+                    {/* <div className="card card3">
                         <div className="card-inner">
                             <div className="labeling">
                                 <p className="icons"><HiClipboardList/></p>
@@ -172,7 +178,7 @@ const Home = () => {
                         <div>
                             <MailBox />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

@@ -17,42 +17,42 @@ const Navbar = () => {
             icon: <AiIcons.AiFillHome />,
             class_name:'nav-text'
         },
-        {
-            title:'Customers',
-            path:'/customers',
-            icon: <ImIcons.ImUserTie />,
-            class_name:'nav-text'
-        },
-        {
-            title:'Suppliers',
-            path:'/suppliers',
-            icon: <RiIcons.RiUserFill />,
-            class_name:'nav-text'
-        },
-        {
-            title:'Products',
-            path:'/products',
-            icon: <FaIcons.FaCartPlus />,
-            class_name:'nav-text'
-        },
-        {
-            title:'Products Category',
-            path:'/product-category',
-            icon: <AiIcons.AiOutlineShoppingCart />,
-            class_name:'nav-text'
-        },
-        {
-            title:'Orders',
-            path:'/orders',
-            icon: <RiIcons.RiFileList3Fill />,
-            class_name:'nav-text'
-        },
-        {
-            title:'Order Status',
-            path:'/order-status',
-            icon: <RiIcons.RiFileList3Line />,
-            class_name:'nav-text'
-        },
+        // {
+        //     title:'Customers',
+        //     path:'/customers',
+        //     icon: <ImIcons.ImUserTie />,
+        //     class_name:'nav-text'
+        // },
+        // {
+        //     title:'Suppliers',
+        //     path:'/suppliers',
+        //     icon: <RiIcons.RiUserFill />,
+        //     class_name:'nav-text'
+        // },
+        // {
+        //     title:'Products',
+        //     path:'/products',
+        //     icon: <FaIcons.FaCartPlus />,
+        //     class_name:'nav-text'
+        // },
+        // {
+        //     title:'Products Category',
+        //     path:'/product-category',
+        //     icon: <AiIcons.AiOutlineShoppingCart />,
+        //     class_name:'nav-text'
+        // },
+        // {
+        //     title:'Orders',
+        //     path:'/orders',
+        //     icon: <RiIcons.RiFileList3Fill />,
+        //     class_name:'nav-text'
+        // },
+        // {
+        //     title:'Order Status',
+        //     path:'/order-status',
+        //     icon: <RiIcons.RiFileList3Line />,
+        //     class_name:'nav-text'
+        // },
         {
             title:'Users',
             path:'/users',

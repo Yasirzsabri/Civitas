@@ -4,19 +4,17 @@ require('./userLevel');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    emailAddress:{
+    userId:{
         type: String,
         required: true,
         unique: true,
         // trim:true
     },
+    password: String,
     userLevel:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "userLevel" 
     },],
-    password: String,
     active: Boolean,
     dateAdded: Date,
     lastUpdateDate: Date

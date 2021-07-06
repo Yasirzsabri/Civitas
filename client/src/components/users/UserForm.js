@@ -5,12 +5,10 @@ import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
 
 const UserForm = (props) => {
-    let [firstName, setFirstName] = useState("")
-    let [lastName, setLastName] = useState("")
-    let [emailAddress, setEmailAddress] = useState("")
+    let [userId, setUserId] = useState("")
+    let [password, setPassword] = useState("")
     let [userLevel, setUserLevel] = useState([])
     let [userLevelList, setUserLevelList] = useState([])
-    let [password, setPassword] = useState("")
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
    
@@ -28,11 +26,9 @@ const UserForm = (props) => {
     async function onCreateClicked() {
         let currentDate = new Date();
         let userToCreate = {
-            firstName, 
-            lastName, 
-            emailAddress,
-            userLevel,
+            userId, 
             password,
+            userLevel,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -53,11 +49,9 @@ const UserForm = (props) => {
             if (createResponse.status === 200) {
                 props.onUserFormClick("Success");
 
-                setFirstName("");
-                setLastName("");
-                setEmailAddress("");
-                setUserLevel([])
+                setUserId("");
                 setPassword("")
+                setUserLevel([])
                 setActive("true");                          
             }
 
@@ -88,7 +82,7 @@ const UserForm = (props) => {
         let newUserLevel = [...userLevel]
         newUserLevel[i]= e.target.value
         console.log("e.target.value:", e.target.value)
-        console.log("94 newUserLevel:", newUserLevel)
+       // console.log("94 newUserLevel:", newUserLevel)
         
         setUserLevel(newUserLevel)
     }
@@ -111,7 +105,7 @@ const UserForm = (props) => {
         props.setTrigger(false);   
     }
 
-    let createUserDataInvalid = !emailAddress || (emailAddress.trim().length === 0)
+    let createUserDataInvalid = !userId || (userId.trim().length === 0)
 
     return (props.trigger)? (
         <div className="createform">
@@ -120,17 +114,13 @@ const UserForm = (props) => {
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 {props.children}
                 <div>
-                    <label htmlFor="firstName">First Name:</label>
-                    <input id="firstName" value={firstName} onChange={(event) => onInputChange(event,setFirstName)}/>
+                    <label htmlFor="userId">User Id:</label>
+                    <input id="userId" value={userId} onChange={(event) => onInputChange(event,setUserId)}/>
                 </div>
                 <div>
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input id="lastName" value={lastName} onChange={(event) => onInputChange(event,setLastName)}/>
+                    <label htmlFor="password">Password:</label>
+                    <input id="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
                 </div>
-                <div>
-                    <label htmlFor="emailAddress">Email Address:</label>
-                    <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
-                </div> 
                 <div>
                     <label htmlFor="userLevel">UserLevel:</label> 
                     <table>
@@ -164,10 +154,7 @@ const UserForm = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input id="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
-                </div>
+                
                 <div>
                     <label htmlFor="active">Active:</label>                
                     <select value={active} onChange={(event) => onInputChange(event, setActive)}>
