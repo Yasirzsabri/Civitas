@@ -14,7 +14,7 @@ const UserTable = () => {
     const [pageNumber, setPageNumber]= useState(0)
     const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
     
-    const [userId, setUserId] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [userLevel, setUserLevel] = useState([])
     const [userLevelList, setUserLevelList] = useState([])
@@ -42,11 +42,11 @@ const UserTable = () => {
     }, [addBtnPopupForm])
 
     //update a User
-    let updateUser = (id, newUserId, newPassword, newUserLevel,  newActive) =>{
+    let updateUser = (id, newUsername, newPassword, newUserLevel,  newActive) =>{
 
         let currentDate = new Date();
         let userToUpdate = {
-            userId : newUserId,
+            username : newUsername,
             password: newPassword,
             userLevel: newUserLevel,
             active: newActive,
@@ -66,18 +66,18 @@ const UserTable = () => {
         })
     }
 
-    const onEdit = (id, currentUserId, currentPassword, currentUserLevel, currentActive) =>{
+    const onEdit = (id, currentUsername, currentPassword, currentUserLevel, currentActive) =>{
         setInEditMode({status: true, rowKey: id})
         
-        setUserId(currentUserId)
+        setUsername(currentUsername)
         setPassword(currentPassword)
         setUserLevel(currentUserLevel)
         setActive(currentActive)                
         getUserLevelList()
     }
 
-    const onSave = (id, newUserId, newPassword, newUserLevel, newActive) => {
-        updateUser(id, newUserId, newPassword, newUserLevel, newActive)
+    const onSave = (id, newUsername, newPassword, newUserLevel, newActive) => {
+        updateUser(id, newUsername, newPassword, newUserLevel, newActive)
     }
     
     const onCancel =() =>{
@@ -158,13 +158,13 @@ const UserTable = () => {
 
     const displayRows = rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
         return(
-            <tr key= {row.userId}>
+            <tr key= {row.username}>
                 <td>
                     {
                         inEditMode.status && inEditMode.rowKey === row._id ?(
-                        <input value={userId} onChange={(e)=> setUserId(e.target.value)} />
+                        <input value={username} onChange={(e)=> setUsername(e.target.value)} />
                         ):(
-                        row.userId
+                        row.username
                         )
                     }
                 </td>
@@ -236,11 +236,11 @@ const UserTable = () => {
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, userId, password, userLevel, active)}>Save</button>
+                            <button onClick = {() => onSave(row._id, username, password, userLevel, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.userId, row.password, row.userLevel, row.active)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.username, row.password, row.userLevel, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     <button onClick={() => {handleDeleteClick(row._id)}}><RiIcons.RiDeleteBinFill/></button>
@@ -258,7 +258,7 @@ const UserTable = () => {
                 <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
                 <table>
                     <tbody>
-                        <tr><th>User Id</th><th>Password</th><th>User Level</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                        <tr><th>Username</th><th>Password</th><th>User Level</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                         {displayRows}
                     </tbody>
                 </table>

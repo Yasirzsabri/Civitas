@@ -159,6 +159,9 @@ $ npm install express
 $ npm install cookie-parser
 $ npm install morgan
 $ npm install debug
+$ npm install passport
+$ npm install express-session
+$ npm install passport-local
 $ cd ../client
 $ npm install moment
 $ npm install react-datepicker

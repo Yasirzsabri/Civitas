@@ -4,7 +4,7 @@ require('./userLevel');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    userId:{
+    username:{
         type: String,
         required: true,
         unique: true,

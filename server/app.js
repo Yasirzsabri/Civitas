@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
+var passport = require('passport')
+
+require('./auth/configurePassport')
 
 
 // var indexRouter = require('./routes/index');
@@ -13,6 +17,8 @@ var product = require('./routes/product');
 var customer = require('./routes/customer');
 var supplier = require('./routes/supplier');
 var user = require('./routes/user');
+var auth = require('./routes/auth');
+
 var userLevel = require('./routes/userLevel');
 var orderStatus = require('./routes/orderStatus');
 var order = require('./routes/order');
@@ -29,7 +35,11 @@ var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/productCategory',productCategory);
@@ -37,6 +47,7 @@ app.use('/product', product);
 app.use('/customer',customer)
 app.use('/supplier',supplier)
 app.use('/user',user)
+app.use('/auth',auth)
 app.use('/userLevel',userLevel)
 app.use('/orderStatus',orderStatus)
 app.use('/order', order);

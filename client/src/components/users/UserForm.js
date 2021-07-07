@@ -5,7 +5,7 @@ import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
 
 const UserForm = (props) => {
-    let [userId, setUserId] = useState("")
+    let [username, setUsername] = useState("")
     let [password, setPassword] = useState("")
     let [userLevel, setUserLevel] = useState([])
     let [userLevelList, setUserLevelList] = useState([])
@@ -26,7 +26,7 @@ const UserForm = (props) => {
     async function onCreateClicked() {
         let currentDate = new Date();
         let userToCreate = {
-            userId, 
+            username, 
             password,
             userLevel,
             active,
@@ -49,7 +49,7 @@ const UserForm = (props) => {
             if (createResponse.status === 200) {
                 props.onUserFormClick("Success");
 
-                setUserId("");
+                setUsername("");
                 setPassword("")
                 setUserLevel([])
                 setActive("true");                          
@@ -105,7 +105,7 @@ const UserForm = (props) => {
         props.setTrigger(false);   
     }
 
-    let createUserDataInvalid = !userId || (userId.trim().length === 0)
+    let createUserDataInvalid = !username || (username.trim().length === 0)
 
     return (props.trigger)? (
         <div className="createform">
@@ -114,8 +114,8 @@ const UserForm = (props) => {
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 {props.children}
                 <div>
-                    <label htmlFor="userId">User Id:</label>
-                    <input id="userId" value={userId} onChange={(event) => onInputChange(event,setUserId)}/>
+                    <label htmlFor="username">Username:</label>
+                    <input id="username" value={username} onChange={(event) => onInputChange(event,setUsername)}/>
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
