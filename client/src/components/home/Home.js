@@ -7,6 +7,7 @@ import {FaUserFriends} from 'react-icons/fa';
 import {RiUserStarFill} from 'react-icons/ri';
 import './Home.css'
 import Login from '../login/Login';
+import LogInOrOut from '../LogInOrOut'
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
@@ -125,7 +126,8 @@ const Home = () => {
                     </div>
                     <div className="loginPage">
                         <div>
-                            <Login />
+                            {/* <Login /> */}
+                            <LogInOrOut />
                         </div>
                     </div> 
                     {/* <div className="card card3">

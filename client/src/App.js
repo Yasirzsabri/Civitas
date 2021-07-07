@@ -13,12 +13,14 @@ import UserTable from './components/users/UserTable';
 import OrderStatusTable from './components/orders/OrderStatusTable';
 import CommunityTable from './components/screens/CommunityTable';
 import MemberTable from './components/screens/MemberTable';
+import AuthenticationProvider from './AuthenticationProvider'
 
 
 const App = () => {
   
   return (
     <>
+     <AuthenticationProvider>
       <Router>
         <Navbar />
         <Switch>
@@ -57,6 +59,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
+     </AuthenticationProvider>
     </>
   );
 };
