@@ -22,7 +22,8 @@ const UserForm = (props) => {
     useEffect(()=>{
         getUserLevelList()
     }, [])
-
+    //userLevel: ["609b044c3fedfb45458a5f7b"]
+    //active: "true"
     async function onCreateClicked() {
         let currentDate = new Date();
         let userToCreate = {
@@ -34,6 +35,24 @@ const UserForm = (props) => {
             lastUpdateDate : currentDate
         }
         console.log('Creating a User:', userToCreate )
+        console.log('line 37 im here ',userLevelList)
+        if (props.minimalFlag){
+            setActive(true)
+            //userLevel.push("")
+           // setUserLevel(["609b044c3fedfb45458a5f7b"])
+            let newUserLevel = [...userLevel]
+            newUserLevel.push("")
+            setUserLevel(newUserLevel)
+            let newUserLevel2 = [...userLevel]
+            newUserLevel2[1]=`609b044c3fedfb45458a5f7b`
+            setUserLevel(newUserLevel2)
+            //newUserLevel.push("609b044c3fedfb45458a5f7b")
+            //newUserLevel[0]= "609b044c3fedfb45458a5f7b"
+            console.log ('imhere ',newUserLevel2)
+
+           
+            console.log ('im not here ',userLevel)
+        }
         try {
             
             let createResponse = await fetch('/user', {
@@ -81,8 +100,8 @@ const UserForm = (props) => {
     const onUserLevelChange = (e, i)=>{
         let newUserLevel = [...userLevel]
         newUserLevel[i]= e.target.value
-        console.log("e.target.value:", e.target.value)
-       // console.log("94 newUserLevel:", newUserLevel)
+       // console.log("90 e.target.value:", e.target.value)
+       //console.log("91 newUserLevel:", newUserLevel)
         
         setUserLevel(newUserLevel)
     }
@@ -121,6 +140,9 @@ const UserForm = (props) => {
                     <label htmlFor="password">Password:</label>
                     <input id="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
                 </div>
+
+                {props.minimalFlag ? (null) : 
+                (<>
                 <div>
                     <label htmlFor="userLevel">UserLevel:</label> 
                     <table>
@@ -162,6 +184,11 @@ const UserForm = (props) => {
                         <option value="false">false</option>
                     </select>
                 </div>
+                </>
+                )
+                }  
+
+
                 <br/>            
                 <button disabled={ createUserDataInvalid } onClick={ onClickAdd } >Add User</button>
                 { createError && <div>{createError}</div> }  

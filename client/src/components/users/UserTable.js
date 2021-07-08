@@ -255,7 +255,7 @@ const UserTable = () => {
             <div className="list-table">
                 <h2>Users</h2>
                 <button className="add-u" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
-                <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
+                <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} minimalFlag ={false} onUserFormClick = {handleUserFormClick} />
                 <table>
                     <tbody>
                         <tr><th>Username</th><th>Password</th><th>User Level</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>

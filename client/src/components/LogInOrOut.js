@@ -63,7 +63,7 @@ const LogInOrOut = () => {
                                             
                                             <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
                                             {/* <button className="add-u" onClick={()=>setAddBtnPopupForm(true)}>New User</button> */}
-                                            <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
+                                            <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm}  minimalFlag ={true} onUserFormClick = {handleUserFormClick} />
                                             </div>
                                     </div>
                                     
