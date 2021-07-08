@@ -4,7 +4,7 @@
     height:100vh;
     /* background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70)); */
     
-    background-image: url("../images/similar-colors3.jpeg");
+    background-image: url("");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,15 +42,6 @@
     margin:20px 0;
 }
 
-.card {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 70px;
-    padding:25px;
-    border-radius:12px;
-}
-
 .card3{
     background: #289B4F;
     border: 1px solid white;
@@ -66,11 +57,16 @@
     justify-content: space-between;
 }
 .logo-image{
+    
+    
     background-image:url('../images/civitas.jpg');
     background-size: contain;
-    background-position:center;
+    background-position:cente ;
     background-repeat:no-repeat;
-    height: 100%;
+    background-clip: padding-box;
+    height: 50%;
+
+
 } 
 
 .card-inner .smallcard-p{

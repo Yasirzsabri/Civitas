@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { bootstrsp } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 
 
 
@@ -43,10 +45,9 @@ const Login = () => {
 
 
     return (
-    <div className = "loginPage">    
         <div className="container" >
             <div className="col-4 offset-4">
-                <div className="card">
+                <div className="card text-center">
                     <div className="card-body">
                         <h4 className="card-title text-center">Login</h4>
                         <div className="card-text">
@@ -77,6 +78,7 @@ const Login = () => {
                                     />
                                 </div>
                                   <div className="row-fluid text-center">
+                                      <br></br>
                                     <button className="btn btn-secondary" type="button" onClick={handleSubmit}>Login</button>
                                 </div>
                             </form>
@@ -86,7 +88,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-     </div>
+
     );
 }
 
