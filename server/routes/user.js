@@ -1,3 +1,4 @@
+const { request } = require('express');
 const express = require('express');
 const router = express.Router();
 const user = require('../models/user');
@@ -50,7 +51,7 @@ router.put('/:id', async (req, res) =>{
     } catch(error){
         console.log(error)
         res.sendStatus(500)
-    }
+    }cd
 })
 
 //delete a user by id

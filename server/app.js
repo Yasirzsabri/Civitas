@@ -18,6 +18,7 @@ var customer = require('./routes/customer');
 var supplier = require('./routes/supplier');
 var user = require('./routes/user');
 var auth = require('./routes/auth');
+var register = require('./routes/register');
 
 var userLevel = require('./routes/userLevel');
 var orderStatus = require('./routes/orderStatus');
@@ -48,6 +49,7 @@ app.use('/customer',customer)
 app.use('/supplier',supplier)
 app.use('/user',user)
 app.use('/auth',auth)
+app.use('/register',register)
 app.use('/userLevel',userLevel)
 app.use('/orderStatus',orderStatus)
 app.use('/order', order);

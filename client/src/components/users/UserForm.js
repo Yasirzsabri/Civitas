@@ -35,33 +35,21 @@ const UserForm = (props) => {
             lastUpdateDate : currentDate
         }
         console.log('Creating a User:', userToCreate )
-        console.log('line 37 im here ',userLevelList)
-        if (props.minimalFlag){
-            setActive(true)
-            //userLevel.push("")
-           // setUserLevel(["609b044c3fedfb45458a5f7b"])
-            let newUserLevel = [...userLevel]
-            newUserLevel.push("")
-            setUserLevel(newUserLevel)
-            let newUserLevel2 = [...userLevel]
-            newUserLevel2[1]=`609b044c3fedfb45458a5f7b`
-            setUserLevel(newUserLevel2)
-            //newUserLevel.push("609b044c3fedfb45458a5f7b")
-            //newUserLevel[0]= "609b044c3fedfb45458a5f7b"
-            console.log ('imhere ',newUserLevel2)
-
-           
-            console.log ('im not here ',userLevel)
-        }
-        try {
+       
+        try { 
+            let stupid='/user';
             
-            let createResponse = await fetch('/user', {
+            if(props.minimalFlag){
+                stupid = '/register';
+            }
+
+            let createResponse = await fetch(`${stupid}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userToCreate)
-                
+
             })
             console.log('Creating a user:', userToCreate )
 
