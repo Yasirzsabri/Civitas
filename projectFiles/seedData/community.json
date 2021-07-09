@@ -42,48 +42,4 @@
     "$date": "2021-06-28T01:04:15.698Z"
   },
   "__v": 0
-},{
-  "_id": {
-    "$oid": "60db9b80ed6e2b18ec84c3f8"
-  },
-  "name": "Hocus Pocus",
-  "address1": "in the clouds",
-  "address2": "",
-  "city": "nowhere",
-  "province": "lolypop",
-  "postalCode": "abcdef",
-  "contactNumber": [
-    {
-      "_id": {
-        "$oid": "60db9b80ed6e2b18ec84c3f9"
-      },
-      "name": "cell",
-      "phoneNumber": "123"
-    }
-  ],
-  "contactPerson": [
-    {
-      "_id": {
-        "$oid": "60db9b80ed6e2b18ec84c3fa"
-      },
-      "firstName": "me",
-      "lastName": "you know"
-    }
-  ],
-  "emailAddress": "hocus@pocus.net11",
-  "membershipFee": 60,
-  "GST": 0.05,
-  "PST": 0,
-  "HST": 0.22,
-  "membershipStartPeriod": {
-    "$date": "2021-07-28T06:00:00Z"
-  },
-  "active": true,
-  "dateAdded": {
-    "$date": "2021-06-29T22:15:27.743Z"
-  },
-  "lastUpdateDate": {
-    "$date": "2021-07-01T22:18:23.281Z"
-  },
-  "__v": 0
 }]

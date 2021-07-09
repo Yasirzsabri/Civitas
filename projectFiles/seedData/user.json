@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "6099cdc63fedfb45458a073c"
   },
-  "userId": "Yasir",
+  "username": "Yasir",
   "password": "password",
   "userLevel": [
     {
@@ -16,4 +16,23 @@
   "lastUpdateDate": {
     "$date": "2021-05-25T19:41:09.727Z"
   }
+},{
+  "_id": {
+    "$oid": "60e73016186f7d4530029dfc"
+  },
+  "userLevel": [
+    {
+      "$oid": "609b04213fedfb45458a5f58"
+    }
+  ],
+  "username": "Parker",
+  "password": "password",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-07-08T17:04:22.338Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-07-09T14:30:07.544Z"
+  },
+  "__v": 0
 }]
