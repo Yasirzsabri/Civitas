@@ -2,8 +2,6 @@ import { useState } from 'react';
 import {Link} from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as RiIcons from 'react-icons/ri';
-import * as ImIcons from 'react-icons/im';
 import * as FiIcons from 'react-icons/fi';
 
 import './Navbar.css';

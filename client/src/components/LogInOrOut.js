@@ -32,7 +32,7 @@ const LogInOrOut = () => {
                             <div className="card-text">
                              
                                  <div>
-                                     <label for="username" className="form-label">Username</label>
+                                     <label htmlFor="username" className="form-label">Username</label>
                                          <input type="username"
                                          name="username"
                                          id="username"
@@ -44,7 +44,7 @@ const LogInOrOut = () => {
                                          className="form-control" />
                                  </div>
                                      <div>
-                                         <label for="password" className="form-label">Password</label>
+                                         <label htmlFor="password" className="form-label">Password</label>
                                          <input
                                              type="password"
                                              name="password"
@@ -57,12 +57,12 @@ const LogInOrOut = () => {
                                            />
                                      </div>
                                      <br></br>
-                                    <div>
+                                    <div className ="buttons" >
                                         <div className="row-fluid text-center" >
-                                            <button className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
+                                            <button  className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
                                             
                                             <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
-                                            {/* <button className="add-u" onClick={()=>setAddBtnPopupForm(true)}>New User</button> */}
+                                            
                                             <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm}  minimalFlag ={true} onUserFormClick = {handleUserFormClick} />
                                             </div>
                                     </div>

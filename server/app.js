@@ -12,21 +12,15 @@ require('./auth/configurePassport')
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
-var productCategory = require('./routes/productCategory');
-var product = require('./routes/product');
-var customer = require('./routes/customer');
-var supplier = require('./routes/supplier');
+
+
 var user = require('./routes/user');
 var auth = require('./routes/auth');
 var register = require('./routes/register');
-
 var userLevel = require('./routes/userLevel');
-var orderStatus = require('./routes/orderStatus');
-var order = require('./routes/order');
 var home = require('./routes/home');
 var community = require('./routes/community');
 var member = require('./routes/member');
-
 var app = express();
 
 // view engine setup
@@ -43,16 +37,11 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/productCategory',productCategory);
-app.use('/product', product);
-app.use('/customer',customer)
-app.use('/supplier',supplier)
+
 app.use('/user',user)
 app.use('/auth',auth)
 app.use('/register',register)
 app.use('/userLevel',userLevel)
-app.use('/orderStatus',orderStatus)
-app.use('/order', order);
 app.use('/home',home)
 app.use('/community',community)
 app.use('/member',member)

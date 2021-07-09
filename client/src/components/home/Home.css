@@ -42,11 +42,6 @@
     margin:20px 0;
 }
 
-.card3{
-    background: #289B4F;
-    border: 1px solid white;
-}
-
 .logo {
     padding: 0;
 }
@@ -69,13 +64,6 @@
 
 } 
 
-.card-inner .smallcard-p{
-    font-weight: bold; 
-    
-}
-.card-inner .counters{
-    color: white;
-}
 
 .card-inner .icons{
     font-size: x-large;
@@ -96,77 +84,11 @@
     margin-top:50px; 
 }
 
-.big-card-left{
-    padding:25px;
-    border-radius: 5px;
-    background: linear-gradient(to right, rgb(40, 155, 79), rgb(38, 109, 132));
-    border: 1px solid white;
-    border-radius:12px;
-}
-
-.big-card-right{
-    padding:25px;
-    border-radius: 5px;
-    background:linear-gradient(to right,  rgb(38, 109, 132), rgb(40, 155, 79));
-    border: 1px solid white;
-    border-radius:12px;
-}
-
-.todo{
-    margin-top: 10px ;
-}
-
-.todo li{
-    list-style: none; 
-    font-style: italic;
-    color: rgb(27, 29, 65);
-    font-weight: bold; 
-}
-
-.todo input{
-    margin-right: 10px;
-}
-
-.todo button{
-    margin-left: 10px;
-    border:none;
-    margin-top: 5px;
-    background-color:  rgb(40, 155, 79);   
-}
-
-.todo-form h1{
-    font-size: 30px;
-    margin-bottom: 10px;
-    color:white;
-}
-
-.todo-form input{
-    width:80%;
-    padding:6px 10px;
-    margin:10px 0;
-}
-
-.todo-form button{
-    background: rgb(27, 29, 65);
-    color: #85C232;
-    font-weight: bold;
-    border: 0;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
 .mail-container {
     margin:0 auto;  
 }
 
-.mail-container h1{
-    font-size: 30px;
-    margin-bottom: 10px;
-    /* color:  #a5aaad; */
-    color: white;
-}
+
 
 .mail-container input, .mail-container textarea{
     width:100%;
