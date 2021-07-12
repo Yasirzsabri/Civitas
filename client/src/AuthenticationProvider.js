@@ -4,7 +4,7 @@ import AuthenticationContext from './AuthenticationContext'
 
 const AuthenticationProvider = ({ children }) => {
     let [username, setUsername] = useState()
-    let [level, setLevel] = useState()
+    let [userLevel, setUserLevel] = useState()
 
     const logIn = (username, password) => {
         async function logintoserver() {
@@ -19,19 +19,19 @@ const AuthenticationProvider = ({ children }) => {
             let loggedInUser = await response.json()
             console.log('The call the auth returned: ', loggedInUser)
             setUsername(loggedInUser.username)
-            setLevel(loggedInUser.level)    
+            setUserLevel(loggedInUser.userLevel)    
         }
         logintoserver()
     }
 
     const logOut = () => {
         setUsername(undefined)
-        setLevel(3)
+        setUserLevel(undefined)
     }
 
     let contextValue = {
         username, 
-        level,
+        userLevel,
         logIn,
         logOut
     }

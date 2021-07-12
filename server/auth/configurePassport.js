@@ -30,7 +30,8 @@ passport.deserializeUser(function(_id, done) {
     User.findById(_id, function(err, user) {
         done(err, {
             _id: _id,
-            username: user.username
+            username: user.username,
+            userLevel: user.userLevel
         });
     });
 });

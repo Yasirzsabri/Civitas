@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* List all members */
 router.get('/', async (req, res) => {
-  let data = await member.find({}).populate("communityDetail.community", {name:1});
+  let data = await member.find({}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
   console.info(`records retrieved from mongoose:`, data?.length)
   console.log('data returned=',data)
   res.send(data);
@@ -26,7 +26,9 @@ router.get('/:id', async function(req, res) {
 /* Create a member */
 router.post('/', async (req, res) => {
 
-  console.log("*** INSIDE router.post");
+  // console.log("*** INSIDE router.post, req.username",req.username);
+  // console.log("*** INSIDE router.post, req.session ",req.session);
+  // console.log("*** INSIDE router.post, req.cookies ",req.cookies);
 
   let memberCreate = req.body
 

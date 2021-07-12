@@ -4,9 +4,15 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as FiIcons from 'react-icons/fi';
 
+import { useContext } from "react"
+import AuthenticationContext from "../../AuthenticationContext"
+
+
 import './Navbar.css';
 
 const Navbar = () => {
+    const authContext = useContext(AuthenticationContext)
+    const isLoggedIn = authContext.username !== undefined
 
     const sidebarItems = [
         {
@@ -84,7 +90,7 @@ const Navbar = () => {
         setSidebar(!sidebar)
     }
 
-    return (
+    return (isLoggedIn) ? 
         <div>
             <div className="navbar">
                 <Link to='#' className='menu-bars'>
@@ -112,8 +118,7 @@ const Navbar = () => {
             </nav>
          
         </div>
-        
-    );
+        : null
 }
  
 export default Navbar;

@@ -22,6 +22,8 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
     let [emailAddress, setEmailAddress] = useState("")
     let [communityDetail, setCommunityDetail] = useState([]);
     let [communityList, setCommunityList] = useState([]);
+    let [username, setUsername]= useState("")
+    let [usernameList, setUsernameList]= useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
 
@@ -30,10 +32,18 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
         let response= await fetch('/community');
         let data = await response.json();
         setCommunityList(data);
-    }   
-    
+    }
+
+    //fetch user list 
+    const getUsernameList = async () => {
+        let response= await fetch('/user');
+        let data = await response.json();
+        setUsernameList(data);
+    }
+          
     useEffect( () => {
         getCommunityList();
+        getUsernameList();
     }, []);
 
 
@@ -51,6 +61,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
             contactNumber,
             emailAddress,
             communityDetail,
+            username,
             active,
             dateAddedd : currentDate,
             lastUpdateDate : currentDate
@@ -78,6 +89,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
                 setContactNumber([]);
                 setEmailAddress("");
                 setCommunityDetail([]);
+                setUsername("");
                 setActive("true");
             }
             // the server didn't like the data for some reason
@@ -262,6 +274,13 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
                     <label htmlFor="emailAddress">Email Address:</label>
                     <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
                 </div>
+                <td>
+                    <label htmlFor="username">Username:</label> 
+                    <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
+                        <option>--Select--</option>
+                        {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
+                    </select>
+                </td>    
                 <div>
                     <label htmlFor="active">Active:</label>                
                     <select value={active} onChange={(event) => onInputChange(event, setActive)}>

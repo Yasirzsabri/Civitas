@@ -30,7 +30,8 @@ const Member = () => {
     const [emailAddress, setEmailAddress] = useState("");
     const [communityDetail, setCommunityDetail] = useState([]);
     const [communityList, setCommunityList]= useState([]);
-
+    const [username, setUsername]= useState("");
+    const [usernameList, setUsernameList]= useState([]);
 
     const [active, setActive] = useState("true");
 
@@ -47,9 +48,16 @@ const Member = () => {
       let response= await fetch('/community');
       let data = await response.json();
       setCommunityList(data);
-    }    
-
-    const updateMember = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newActive) => {
+    }
+    
+    //fetch user list 
+    const getUsernameList = async () => {
+      let response= await fetch('/user');
+      let data = await response.json();
+      setUsernameList(data);
+    }
+  
+    const updateMember = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newUsername, newActive) => {
       let currentDate = new Date();
       let memberToUpdate = {
           firstName: newFirstName,
@@ -62,6 +70,7 @@ const Member = () => {
           contactNumber: newContactNumber,
           emailAddress: newEmailAddress,
           communityDetail: newCommunityDetail,
+          username: newUsername,
           active: newActive,
           lastUpdateDate : currentDate
       }
@@ -83,7 +92,7 @@ const Member = () => {
       })    
     }
 
-    const onEdit = (id, currentFirstName, currentLastName, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentEmailAddress, currentCommunityDetail, currentActive) => {
+    const onEdit = (id, currentFirstName, currentLastName, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentEmailAddress, currentCommunityDetail, currentUsername, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
@@ -99,11 +108,12 @@ const Member = () => {
       setContactNumber(currentContactNumber);
       setEmailAddress(currentEmailAddress);
       setCommunityDetail(currentCommunityDetail);
+      setUsername(currentUsername);
       setActive(currentActive);
     }      
     
-    const onSave = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail,  newActive) => {
-      updateMember(id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newActive);
+    const onSave = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newUsername, newActive) => {
+      updateMember(id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newUsername, newActive);
     }
     
     const onCancel = () => {
@@ -144,6 +154,7 @@ const Member = () => {
     useEffect(() => {
       getMember();
       getCommunityList();
+      getUsernameList();
     }, [addBtnPopupForm]);
 
     const onContactNumberChange = (e, id, index) => {
@@ -444,7 +455,18 @@ const Member = () => {
                   </tbody>          
               </table>
             </td>
-
+            <td>
+                {
+                  inEditMode.status && inEditMode.rowKey === row._id ? (
+                    <select value={username._id} onChange={(e) => setUsername(e.target.value)}>
+                      <option>--Select--</option>
+                      {usernameList.map(item => <option key={item.username} value={item._id}>{item.username}</option>)} 
+                    </select>
+                  ):(
+                    row.username.username
+                  )
+                }
+            </td>
             <td>
                 {inEditMode.status && inEditMode.rowKey === row._id ? (
                     <select value={active} onChange={(event) => setActive(event.target.value)}>
@@ -463,7 +485,7 @@ const Member = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, firstName, lastName, address1, address2, city, province, postalCode,  contactNumber, emailAddress, communityDetail, active)}>
+                    <button onClick={() => onSave(row._id, firstName, lastName, address1, address2, city, province, postalCode,  contactNumber, emailAddress, communityDetail, username, active)}>
                       Save
                     </button>
                     <button
@@ -473,7 +495,7 @@ const Member = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                    <button value={row.address1} onClick={() => onEdit(row._id, row.firstName, row.lastName, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.emailAddress, row.communityDetail, row.active)}>
+                    <button value={row.address1} onClick={() => onEdit(row._id, row.firstName, row.lastName, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.emailAddress, row.communityDetail, row.username, row.active)}>
                       <BsIcons.BsPencilSquare />
                     </button>                              
                 )       
@@ -492,7 +514,7 @@ const Member = () => {
           <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick={handleMemberFormClick} />
           <table>
               <tbody>
-                <tr><th>First Name</th><th>Last Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Email Address</th><th>Community Detail</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                <tr><th>First Name</th><th>Last Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Email Address</th><th>Community Detail</th><th>Username</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                
               </tbody>
           </table>

@@ -3,6 +3,7 @@ import AuthenticationContext from "../AuthenticationContext"
 import { useState , useEffect} from "react"
 import 'bootstrap/dist/css/bootstrap.css'
 import UserForm from './users/UserForm';
+import MemberForm from './screens/MemberForm';
 
 
 const LogInOrOut = () => {
@@ -19,10 +20,14 @@ const LogInOrOut = () => {
         // }
     }
     return (isLoggedIn) ? 
-            <div>
-                <span>Hello {authContext.username}</span>
-                <button onClick={() => authContext.logOut()}>Logout</button>
-            </div> 
+            <>
+                <div>
+                    <span>Hello {authContext.username}</span>
+                    <button onClick={() => authContext.logOut()}>Logout</button>                   
+                </div> 
+                <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
+                <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
+            </>
             : 
             <div className="container">
                  <div className="col-20 offset-15">
@@ -40,7 +45,6 @@ const LogInOrOut = () => {
                                          placeholder="username"
                                          required
                                          onChange={(e) => setUsername(e.target.value)}
-                                         type="username"
                                          className="form-control" />
                                  </div>
                                      <div>
@@ -59,12 +63,12 @@ const LogInOrOut = () => {
                                      <br></br>
                                     <div className ="buttons" >
                                         <div className="row-fluid text-center" >
-                                            <button  className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
+                                            <button className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
                                             
                                             <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
-                                            
+
                                             <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm}  minimalFlag ={true} onUserFormClick = {handleUserFormClick} />
-                                            </div>
+                                        </div>
                                     </div>
                                     
                             </div>

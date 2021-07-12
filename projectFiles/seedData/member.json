@@ -38,12 +38,57 @@
       }
     }
   ],
+  "username": {
+    "$oid": "6099cdc63fedfb45458a073c"
+  },
   "active": true,
   "dateAdded": {
     "$date": "2021-06-19T21:49:19.798Z"
   },
   "lastUpdateDate": {
     "$date": "2021-07-01T22:16:36.052Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ea0ffeb7f7990434fc0755"
+  },
+  "firstName": "Parker",
+  "lastName": "Sjogren",
+  "address1": "214 Sierra Morena Close SW",
+  "address2": "qqq",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T3H 3G3",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60ea0ffeb7f7990434fc0756"
+      },
+      "name": "cell",
+      "phoneNumber": "123"
+    }
+  ],
+  "emailAddress": "sjogrenp@telus.net",
+  "communityDetail": [
+    {
+      "_id": {
+        "$oid": "60ea0ffeb7f7990434fc0757"
+      },
+      "renewalDate": {
+        "$date": "2021-07-10T21:24:02.282Z"
+      },
+      "community": {
+        "$oid": "60d91f40e7ca6434287d6907"
+      }
+    }
+  ],
+  "username": {
+    "$oid": "60e73016186f7d4530029dfc"
+  },
+  "active": true,
+  "lastUpdateDate": {
+    "$date": "2021-07-10T21:24:14.145Z"
   },
   "__v": 0
 }]

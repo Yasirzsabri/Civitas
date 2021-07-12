@@ -31,6 +31,10 @@ const memberSchema = new Schema({
     membershipPaidDate: Date,
     memberSince: Date,
   },],
+  username:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user" 
+  },
   active: Boolean,
   dateAdded: Date,
   lastUpdateDate: Date
