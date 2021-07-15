@@ -23,10 +23,14 @@ const LogInOrOut = () => {
             <>
                 <div>
                     <span>Hello {authContext.username}</span>
-                    <button onClick={() => authContext.logOut()}>Logout</button>                   
+                        <br></br>
+                    <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>  
+                    <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
+                    <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />       
+                    
+          
                 </div> 
-                <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
-                <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
+                
             </>
             : 
             <div className="container">

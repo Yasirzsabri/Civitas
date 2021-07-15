@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "./",
   "proxy": "http://localhost:3000",
+  "start": "nodemon server.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -21,9 +22,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "square-connect": "2.20190814.0"
   },
-  "scripts": {
+    "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,5 +50,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+     "devDependencies": {
+       "nodemon": "^1.19.0"
+     }
 }
+
+  
+

@@ -3,12 +3,10 @@ import {Link} from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as FiIcons from 'react-icons/fi';
-
 import { useContext } from "react"
 import AuthenticationContext from "../../AuthenticationContext"
-
-
 import './Navbar.css';
+
 
 const Navbar = () => {
     const authContext = useContext(AuthenticationContext)
@@ -80,7 +78,13 @@ const Navbar = () => {
             path:'/members',
             icon: <FiIcons.FiUsers />,
             class_name:'nav-text'
-        }  
+        }  ,
+        {
+            title:'Pay For Membership',
+            path:'/Pay',
+            icon: <FaIcons.FaCcVisa />,
+            class_name:'nav-text'
+        },
     ]
 
     const [sidebar, setSidebar] = useState(false)

@@ -4,20 +4,20 @@ import LogInOrOut from '../LogInOrOut'
 import 'bootstrap/dist/css/bootstrap.css'
 
 
+
 const Home = () => {
-    
-
-
-
     return (
         <main>
+            
             <div className="home-container">
                  <div className="home-title">
+                 
                      <div className="home-greeting">
                         <h1>Communities Home Page</h1>
                         <p>Welcome to Civitas</p>
                      </div>
                  </div>
+                 
                 <div className="home-cards">
                     <div >
                         <div className="logo-image"></div>  
