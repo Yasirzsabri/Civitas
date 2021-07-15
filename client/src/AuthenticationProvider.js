@@ -1,9 +1,9 @@
-
 import { useState } from 'react'
 import AuthenticationContext from './AuthenticationContext'
 
 const AuthenticationProvider = ({ children }) => {
     let [username, setUsername] = useState()
+    let [id,setId] = useState()
     let [userLevel, setUserLevel] = useState()
 
     const logIn = (username, password) => {
@@ -17,20 +17,23 @@ const AuthenticationProvider = ({ children }) => {
             }
             let response = await fetch('/auth/login', loginOptions)
             let loggedInUser = await response.json()
-            console.log('The call the auth returned: ', loggedInUser)
+
             setUsername(loggedInUser.username)
-            setUserLevel(loggedInUser.userLevel)    
+            setId(loggedInUser._id)
+            setUserLevel(loggedInUser.userLevel)
         }
         logintoserver()
     }
 
     const logOut = () => {
         setUsername(undefined)
+        setId(undefined)
         setUserLevel(undefined)
     }
 
     let contextValue = {
-        username, 
+        username,
+        id,
         userLevel,
         logIn,
         logOut

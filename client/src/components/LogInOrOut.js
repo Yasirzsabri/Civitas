@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import AuthenticationContext from "../AuthenticationContext"
-import { useState , useEffect} from "react"
+// import { useState , useEffect} from "react"
+import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.css'
 import UserForm from './users/UserForm';
 import MemberForm from './screens/MemberForm';
@@ -11,9 +12,11 @@ const LogInOrOut = () => {
     let [username, setUsername] = useState("")
     let [password, setPassword] = useState("")
 
-    const isLoggedIn = authContext.username !== undefined
+    const isLoggedIn = !!authContext.username
     const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
     
+    const handleMemberFormClick = (memberFormData) => {
+    }
     const handleUserFormClick = (userFormData) => {
         // if(userFormData === 'success'){
         //     getUsers()
@@ -25,8 +28,8 @@ const LogInOrOut = () => {
                     <span>Hello {authContext.username}</span>
                     <button onClick={() => authContext.logOut()}>Logout</button>                   
                 </div> 
-                <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
-                <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
+                <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form2</button>
+                <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick = {handleMemberFormClick} homePageFlag = {true}/>
             </>
             : 
             <div className="container">

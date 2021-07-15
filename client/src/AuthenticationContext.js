@@ -1,9 +1,10 @@
 import React from 'react'
 
 const AuthenticationContext = React.createContext({
-    username: '',
-    userLevel: 3,
-    logIn: (username, userLevel) => {},
+    username: "",
+    id: "",
+    userLevel: [],
+    logIn: (username, password) => {},
     logOut: () => {}
 })
 

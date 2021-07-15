@@ -511,7 +511,7 @@ const Member = () => {
         <div className="list-table">
           <h2>Member Maintanence</h2>
           <button onClick={()=>setAddBtnPopupForm(true)}>New Member</button>
-          <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick={handleMemberFormClick} />
+          <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick={handleMemberFormClick} homePageFlag = {false} />
           <table>
               <tbody>
                 <tr><th>First Name</th><th>Last Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Email Address</th><th>Community Detail</th><th>Username</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>

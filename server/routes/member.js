@@ -23,6 +23,27 @@ router.get('/:id', async function(req, res) {
   }
 });
 
+router.get('/username/:id', async function(req, res) {
+  
+  try {
+    // let data = await member.find({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
+    let data = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
+    
+    // let data = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
+    console.info(`Found user and corresponding member record:`, data)
+
+    if (data) {
+      res.send(data);
+    }
+    else {
+      res.sendStatus(123)
+    }
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
+  }
+});
+
 /* Create a member */
 router.post('/', async (req, res) => {
 
