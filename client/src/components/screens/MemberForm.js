@@ -10,7 +10,20 @@ import * as  RiIcons from 'react-icons/ri';
 
 import './form.css';
 
-const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
+import { useContext } from "react"
+import AuthenticationContext from "../../AuthenticationContext"
+                   
+const MemberForm2 = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
+    // eslint-disable-next-line
+    const authContext = useContext(AuthenticationContext)
+
+    let [member, setMember] = useState({})
+    let [dateAdded, setdateAdded] = useState(undefined)
+    let [lastUpdateDate, setLastUpdateDate]  = useState(undefined)
+
+    let [existingMember, setExistingMember] = useState(false)
+
+    let [memberId, setMemberId] = useState("")
     let [firstName, setFirstName] = useState("")
     let [lastName, setLastName] = useState("")
     let [address1, setAddress1] = useState("")
@@ -40,72 +53,154 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
         let data = await response.json();
         setUsernameList(data);
     }
-          
+
+      //fetch member record, if there is one
+    const getMember = async (id) => {
+        console.log("59 in getMember id is: ",id)
+        console.log("60 in getMember calledFromHomePage is: ", homePageFlag)
+        
+        if(id && homePageFlag){
+            try{
+                let response= await fetch(`/member/username/${id}`); 
+
+                if(response.ok){
+                    let data = await response.json();
+    
+                    setMember(data);
+            
+                    setMemberId(data._id);
+                    setFirstName(data.firstName);
+                    setLastName(data.lastName);
+                    setAddress1(data.address1);
+                    setAddress2(data.address2);
+                    setCity(data.city);
+                    setProvince(data.province);
+                    setPostalCode(data.postalCode);
+                    setContactNumber(data.contactNumber);
+                    setEmailAddress(data.emailAddress);
+                    let newCommunityDetail = [...data.communityDetail]
+                    setCommunityDetail(newCommunityDetail);
+                    setUsername(data.username);
+                    setActive(data.active);
+                    setdateAdded(data.dateAdded);
+                    setLastUpdateDate(data.lastUpdateDate);
+                    setExistingMember(true)                
+                }           
+            }
+            catch(error) {
+               console.log("83 error ",error.message)
+            }            
+        }
+        else {
+            console.log("94 MemberForm id is undefined: ",id)
+        }
+
+    }
+  
     useEffect( () => {
-        getCommunityList();
-        getUsernameList();
-    }, []);
+        if (authContext.id){
+            getCommunityList();
+            getUsernameList();
+            getMember(authContext.id);
+        }
+    }, [authContext]);
 
 
     async function onCreateClicked(e) {
         let currentDate = new Date()
 
-        let memberToCreate = {
-            firstName, 
-            lastName, 
-            address1,
-            address2,
-            city,
-            province,
-            postalCode,
-            contactNumber,
-            emailAddress,
-            communityDetail,
-            username,
-            active,
-            dateAddedd : currentDate,
-            lastUpdateDate : currentDate
-        }
-        console.log('Creating Member with', memberToCreate )
-        try {
-            let createResponse = await fetch('/member', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(memberToCreate)
+        if (existingMember){
+            let memberToUpdate = {
+                firstName, 
+                lastName, 
+                address1,
+                address2,
+                city,
+                province,
+                postalCode,
+                contactNumber,
+                emailAddress,
+                communityDetail,
+                username,
+                active,
+                dateAdded,
+                lastUpdateDate : currentDate
+            }
+        
+            let updateResponse = fetch(`/member/${member._id}`, {
+              method: "PUT",
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(memberToUpdate)
             })
-
-            if (createResponse.status === 200) {
-                onMemberFormClick("Success");
-
-                setFirstName("");
-                setLastName("");
-                setAddress1("");
-                setAddress2("");
-                setCity("");
-                setProvince("");
-                setPostalCode("");
-                setContactNumber([]);
-                setEmailAddress("");
-                setCommunityDetail([]);
-                setUsername("");
-                setActive("true");
-            }
-            // the server didn't like the data for some reason
-            console.log('Create response is', createResponse)
-            if (createResponse.status !== 200) {
-                let errorMessage = await createResponse.text()
-                console.log('We had an error.  it was: ', errorMessage)
-                setCreateError(errorMessage)
-            }
-            else {
-                setCreateError(undefined)
-            }
+            .then(response => response.json())
+            .then(json => {
+                // fetch the updated data
+                // getMember();
+                console.log("updateResponse = ", updateResponse);
+            })    
+    
         }
-        catch (error) {
-            // the server cannot be reached
-            console.error('Fetch failed to reach the server.')
+        else {
+            let memberToCreate = {
+                firstName, 
+                lastName, 
+                address1,
+                address2,
+                city,
+                province,
+                postalCode,
+                contactNumber,
+                emailAddress,
+                communityDetail,
+                username,
+                active,
+                dateAdded : currentDate,
+                lastUpdateDate : currentDate
+            }
+            console.log('Creating Member with', memberToCreate )
+            try {
+                let createResponse = await fetch('/member', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(memberToCreate)
+                })
+    
+                if (createResponse.status === 200) {
+                    onMemberFormClick("Success");
+    
+                    // setFirstName("");
+                    // setLastName("");
+                    // setAddress1("");
+                    // setAddress2("");
+                    // setCity("");
+                    // setProvince("");
+                    // setPostalCode("");
+                    // setContactNumber([]);
+                    // setEmailAddress("");
+                    // setCommunityDetail([]);
+                    // setUsername("");
+                    // setActive("true");
+                }
+                // the server didn't like the data for some reason
+                console.log('Create response is', createResponse)
+                if (createResponse.status !== 200) {
+                    let errorMessage = await createResponse.text()
+                    console.log('We had an error.  it was: ', errorMessage)
+                    setCreateError(errorMessage)
+                }
+                else {
+                    setCreateError(undefined)
+                }
+            }
+            catch (error) {
+                // the server cannot be reached
+                console.error('197 Fetch failed to reach the server.', error)
+            }
+    
         }
     }
 
@@ -203,8 +298,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
 
                 <div className="row">
                     <div>
-                        <label htmlFor="contactNumber">Contact Number:</label>
-                
+                        <label htmlFor="contactNumber">Contact Number:</label>                
                         <table>                      
                             <tbody>
                                 {contactNumber.map( (cn, index) => { 
@@ -234,12 +328,23 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
                                                 <tbody>
                                                     <tr><th>Community</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Action</th></tr>                                                
                                                     {communityDetail.map( (cd, index) => {
+
+                                                            console.log(cd)
                                                             return (<tr key = {index}>
                                                                         <td width="43%">
-                                                                            <select name="community" value={cd._id} onChange={(e) => onCommunityDetailChange(e, index)}>
-                                                                                <option>--Select--</option>
-                                                                                    {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
-                                                                            </select>
+                                                                            {
+                                                                                 !existingMember ?(
+                                                                                    <select name="community" value={cd._id} onChange={(e) => onCommunityDetailChange(e, index)}>
+                                                                                    <option>--Select2--</option>
+                                                                                        {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
+                                                                                    </select>
+                                                                                ):(
+                                                                                    <select name="community" value={communityDetail[index].community._id} onChange={(e) => onCommunityDetailChange(e, index)}>
+                                                                                        <option>--Select1--</option>
+                                                                                            {communityList.map(item => <option key={item.name} value={item._id}>{item.name}</option>)} 
+                                                                                    </select>
+                                                                               )
+                                                                            }
                                                                         </td>
                                                                         <td width="19%">
                                                                             <Datepicker format={"MM/DD/yyyy"} value={moment(cd.renewalDate).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "renewalDate")}}/>
@@ -274,13 +379,19 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
                     <label htmlFor="emailAddress">Email Address:</label>
                     <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
                 </div>
-                <td>
-                    <label htmlFor="username">Username:</label> 
-                    <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
-                        <option>--Select--</option>
-                        {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
-                    </select>
-                </td>    
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label htmlFor="username">Username:</label> 
+                                <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
+                                    <option>--Select--</option>
+                                    {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
+                                </select>
+                            </td>  
+                        </tr>
+                    </tbody>
+                </table>  
                 <div>
                     <label htmlFor="active">Active:</label>                
                     <select value={active} onChange={(event) => onInputChange(event, setActive)}>
@@ -296,4 +407,4 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger}) => {
     ):"";
 }
 
-export default MemberForm
+export default MemberForm2
