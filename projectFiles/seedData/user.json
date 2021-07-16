@@ -4,11 +4,6 @@
   },
   "username": "Yasir",
   "password": "password",
-  "userLevel": [
-    {
-      "$oid": "609b04213fedfb45458a5f58"
-    }
-  ],
   "active": true,
   "dateAdded": {
     "$date": "2021-05-10T05:25:53.202Z"
@@ -20,11 +15,6 @@
   "_id": {
     "$oid": "60e73016186f7d4530029dfc"
   },
-  "userLevel": [
-    {
-      "$oid": "609b04213fedfb45458a5f58"
-    }
-  ],
   "username": "Parker",
   "password": "password",
   "active": true,

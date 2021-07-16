@@ -11,10 +11,6 @@ const userSchema = new Schema({
         // trim:true
     },
     password: String,
-    userLevel:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userLevel" 
-    },],
     active: Boolean,
     dateAdded: Date,
     lastUpdateDate: Date

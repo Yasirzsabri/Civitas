@@ -6,7 +6,7 @@ const user = require('../models/user');
 //Create a new user
 router.post('/', async (req, res) =>{
     try{
-        req.body.userLevel= ["609b044c3fedfb45458a5f7b"]
+        // req.body.userLevel= ["609b044c3fedfb45458a5f7b"]
         let newUser = new user(req.body);
         await newUser.save();
         console.log("Created a new user:", newUser);

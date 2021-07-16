@@ -15,7 +15,7 @@ router.get('/', async (req, res) =>{
 //Find one user by id
 router.get('/:id', async (req,res) => {
     try{
-        let data = await user.find({}).populate("userLevel", {name:1});
+        let data = await user.find({});
         console.info('Found the user:', data);
         res.send(data);
     } catch(error){

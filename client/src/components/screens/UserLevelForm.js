@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './Form.css';
+import './form.css';
 import * as AiIcons from 'react-icons/ai';
 
 const UserLevelForm = (props) => {

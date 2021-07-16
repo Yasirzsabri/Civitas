@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* List all members */
 router.get('/', async (req, res) => {
-  let data = await member.find({}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
+  let data = await member.find({}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1}).populate("username", {username:1});
   console.info(`records retrieved from mongoose:`, data?.length)
   console.log('data returned=',data)
   res.send(data);
@@ -27,7 +27,7 @@ router.get('/username/:id', async function(req, res) {
   
   try {
     // let data = await member.find({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
-    let data = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
+    let data = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1}).populate("username", {username:1});
     
     // let data = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("username", {username:1});
     console.info(`Found user and corresponding member record:`, data)

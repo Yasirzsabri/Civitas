@@ -1,5 +1,5 @@
 import { useState , useEffect} from "react"
-import './Form.css';
+import './form.css';
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
@@ -7,29 +7,29 @@ import * as  RiIcons from 'react-icons/ri';
 const UserForm = (props) => {
     let [username, setUsername] = useState("")
     let [password, setPassword] = useState("")
-    let [userLevel, setUserLevel] = useState([])
-    let [userLevelList, setUserLevelList] = useState([])
+    // let [userLevel, setUserLevel] = useState([])
+    // let [userLevelList, setUserLevelList] = useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
    
-     //fetch userLevel
-     const getUserLevelList = async () =>{
-        let response= await fetch('/userLevel');
-        let data = await response.json();        
-        setUserLevelList(data)  
-    }
+    //  //fetch userLevel
+    //  const getUserLevelList = async () =>{
+    //     let response= await fetch('/userLevel');
+    //     let data = await response.json();        
+    //     setUserLevelList(data)  
+    // }
 
-    useEffect(()=>{
-        getUserLevelList()
-    }, [])
-    //userLevel: ["609b044c3fedfb45458a5f7b"]
-    //active: "true"
+    // useEffect(()=>{
+    //     getUserLevelList()
+    // }, [])
+    // userLevel: ["609b044c3fedfb45458a5f7b"]
+    // active: "true"
     async function onCreateClicked() {
         let currentDate = new Date();
         let userToCreate = {
             username, 
             password,
-            userLevel,
+            // userLevel,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -58,7 +58,7 @@ const UserForm = (props) => {
 
                 setUsername("");
                 setPassword("")
-                setUserLevel([])
+                // setUserLevel([])
                 setActive("true");                          
             }
 
@@ -85,27 +85,27 @@ const UserForm = (props) => {
         setFunction(event.target.value);   
     };
 
-    const onUserLevelChange = (e, i)=>{
-        let newUserLevel = [...userLevel]
-        newUserLevel[i]= e.target.value
-       // console.log("90 e.target.value:", e.target.value)
-       //console.log("91 newUserLevel:", newUserLevel)
+    // const onUserLevelChange = (e, i)=>{
+    //     let newUserLevel = [...userLevel]
+    //     newUserLevel[i]= e.target.value
+    //    // console.log("90 e.target.value:", e.target.value)
+    //    //console.log("91 newUserLevel:", newUserLevel)
         
-        setUserLevel(newUserLevel)
-    }
+    //     setUserLevel(newUserLevel)
+    // }
 
-    const onUserLevelAdd = () =>{
-        let newUserLevel = [...userLevel]
-        newUserLevel.push("")
-        setUserLevel(newUserLevel)
-        console.log('103 userLevel: ', userLevel)
-    }
+    // const onUserLevelAdd = () =>{
+    //     let newUserLevel = [...userLevel]
+    //     newUserLevel.push("")
+    //     setUserLevel(newUserLevel)
+    //     console.log('103 userLevel: ', userLevel)
+    // }
 
-    const onUserLevelDelete = (index) => {
-        let newUserLevel = [...userLevel]
-        newUserLevel.splice(index, 1)
-        setUserLevel(newUserLevel)
-    }
+    // const onUserLevelDelete = (index) => {
+    //     let newUserLevel = [...userLevel]
+    //     newUserLevel.splice(index, 1)
+    //     setUserLevel(newUserLevel)
+    // }
 
     const onClickAdd = ()=>{
         onCreateClicked();
@@ -131,7 +131,7 @@ const UserForm = (props) => {
 
                 {props.minimalFlag ? (null) : 
                 (<>
-                <div>
+                {/* <div>
                     <label htmlFor="userLevel">UserLevel:</label> 
                     <table>
                         <tbody>
@@ -163,7 +163,7 @@ const UserForm = (props) => {
                             
                         </tbody>
                     </table>
-                </div>
+                </div> */}
                 
                 <div>
                     <label htmlFor="active">Active:</label>                
