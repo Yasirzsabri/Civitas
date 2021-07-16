@@ -27,6 +27,7 @@ const Pay = () => {
       setLoad(true);
     };
     document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
+    getCommunityList();
   });
 
   const squarePayment = isLoad ? (
@@ -51,6 +52,7 @@ const Pay = () => {
         let response= await fetch('/community');
         let data = await response.json();
         setCommunityList(data);
+        console.log("55 stupid data: ",data)
     }
     
   
