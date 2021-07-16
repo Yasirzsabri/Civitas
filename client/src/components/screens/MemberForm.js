@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-
 import moment from "moment";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -222,7 +221,7 @@ const MemberForm2 = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => 
     }
 
     const onContactNumberDelete = (index) => {
-        let newContactNumber = [...contactNumber];
+        let newContactNumber = [...contactNumber];  
         newContactNumber.splice(index, 1);
         setContactNumber(newContactNumber);
     }
