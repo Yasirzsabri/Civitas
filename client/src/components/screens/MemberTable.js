@@ -460,7 +460,7 @@ console.log("69 userLevelList: ", data)
                                   </td>
                                   <td>{
                                       inEditMode.status && inEditMode.rowKey === row._id ? (
-                                        <select name="active" value={active} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
+                                        <select name="active"  value={cdi.active} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
                                           <option value="true">true</option>
                                           <option value="false">false</option>
                                         </select>

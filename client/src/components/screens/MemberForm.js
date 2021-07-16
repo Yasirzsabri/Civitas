@@ -341,8 +341,8 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                 <tbody>
                                                     <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Active</th><th>Action</th></tr>                                                
                                                     {communityDetail.map( (cd, index) => {
-
-                                                            console.log(cd)
+                                                            if (cd.active===undefined) cd.active=true
+                                                            console.log("345 cd: ",cd)                                                           
                                                             return (<tr key = {index}>
                                                                         <td width="33%">
                                                                             {
@@ -383,10 +383,10 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                                         <td width="14%">
                                                                             <Datepicker format={"MM/DD/yyyy"} value={moment(cd.memberSince).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "memberSince")}}/>
                                                                         </td>
-                                                                        <td width="9%">                                                                         
-                                                                            <select name="active" value={active} onChange={(e) => onCommunityDetailChange(e, index)}>
-                                                                            <option value="true">true</option>
-                                                                            <option value="false">false</option>
+                                                                        <td width="9%">                                                                        
+                                                                            <select name="active" default = {true} value={cd.active} onChange={(e) => onCommunityDetailChange(e, index)}>
+                                                                                <option value="true">true</option>
+                                                                                <option value="false">false</option>
                                                                             </select>
                                                                         </td>
                                                                         <td>

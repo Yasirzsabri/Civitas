@@ -34,6 +34,7 @@ const memberSchema = new Schema({
     renewalDate: Date,
     membershipPaidDate: Date,
     memberSince: Date,
+    active: Boolean
   },],
   username:{
     type: mongoose.Schema.Types.ObjectId,
