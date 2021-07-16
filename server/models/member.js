@@ -27,9 +27,14 @@ const memberSchema = new Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Community"
     },
+    userLevel:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "userLevel" 
+    },
     renewalDate: Date,
     membershipPaidDate: Date,
     memberSince: Date,
+    active: Boolean
   },],
   username:{
     type: mongoose.Schema.Types.ObjectId,

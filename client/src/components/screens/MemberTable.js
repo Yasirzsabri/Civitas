@@ -30,6 +30,8 @@ const Member = () => {
     const [emailAddress, setEmailAddress] = useState("");
     const [communityDetail, setCommunityDetail] = useState([]);
     const [communityList, setCommunityList]= useState([]);
+    const [userLevelList, setUserLevelList] = useState([])
+
     const [username, setUsername]= useState("");
     const [usernameList, setUsernameList]= useState([]);
 
@@ -48,6 +50,8 @@ const Member = () => {
       let response= await fetch('/community');
       let data = await response.json();
       setCommunityList(data);
+
+      console.log("54 communityList: ",data)
     }
     
     //fetch user list 
@@ -56,7 +60,15 @@ const Member = () => {
       let data = await response.json();
       setUsernameList(data);
     }
-  
+
+     //fetch userLevellist 
+     const getUserLevelList = async () =>{
+        let response= await fetch('/userLevel');
+        let data = await response.json();        
+        setUserLevelList(data)  
+console.log("69 userLevelList: ", data)
+    }
+
     const updateMember = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newUsername, newActive) => {
       let currentDate = new Date();
       let memberToUpdate = {
@@ -149,12 +161,14 @@ const Member = () => {
       let response = await fetch('/member');
       let data = await response.json();
       setRows(data);
+    console.log("164 getMember data: ", data)
     };
     
     useEffect(() => {
       getMember();
       getCommunityList();
       getUsernameList();
+      getUserLevelList();
     }, [addBtnPopupForm]);
 
     const onContactNumberChange = (e, id, index) => {
@@ -212,7 +226,7 @@ const Member = () => {
 
       for (let i=0; i < newRows.length; i++) {
         if (newRows[i]._id === id) {
-          newRows[i].communityDetail.push({community: "", renewalDate: currentDate, memberSince: currentDate });
+          newRows[i].communityDetail.push({community: "", userLevel: "", renewalDate: currentDate, memberSince: currentDate });
           setCommunityDetail(newRows[i].communityDetail);
           break;
         }        
@@ -395,10 +409,10 @@ const Member = () => {
             <td>
               <table width="100%">
                   <tbody>               
-                    <tr><th>Community</th><th>Renewal Date</th><th>MbrShp Paid Date</th><th>Membership Since</th></tr>                            
-                      {row.communityDetail.map( (cdi, index) => {
+                    <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>MbrShp Paid Date</th><th>Membership Since</th><th>Active</th></tr>                            
+                      {row.communityDetail.map( (cdi, index) => { console.log("410 cdi: ",cdi)
                         return (<tr key={index}>                          
-                                  <td width="61%">{
+                                  <td width="46%">{
                                       inEditMode.status && inEditMode.rowKey === row._id ? (
                                         <select name="community" value={communityDetail[index].community._id} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
                                           <option>--Select--</option>
@@ -406,6 +420,17 @@ const Member = () => {
                                         </select>
                                       ) : (
                                         cdi.community.name
+                                      )                         
+                                    }
+                                  </td>
+                                  <td width="15%">{
+                                      inEditMode.status && inEditMode.rowKey === row._id ? (
+                                        <select name="userLevel" value={communityDetail[index].userLevel._id} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
+                                          <option>--Select--</option>
+                                            {userLevelList.map(item => <option key={item.name} value={item._id}>{item.name}</option>)} 
+                                        </select>
+                                      ) : (
+                                        cdi.userLevel.name
                                       )                         
                                     }
                                   </td>
@@ -432,13 +457,25 @@ const Member = () => {
                                         moment(cdi.memberSince).format("MM/DD/yyyy")
                                       )                         
                                     }
-                                  </td>{
+                                  </td>
+                                  <td>{
                                       inEditMode.status && inEditMode.rowKey === row._id ? (
-                                        <td>
-                                          <button className="clear" onClick={() => onCommunityDetailDelete(row._id, index)}><RiIcons.RiDeleteBinFill/></button>
-                                        </td>
-                                      )  : null  
+                                        <select name="active"  value={cdi.active} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
+                                          <option value="true">true</option>
+                                          <option value="false">false</option>
+                                        </select>
+                                      ):(
+                                        String(cdi.active)
+                                      )                                         
                                     }
+                                  </td>
+                                  {
+                                    inEditMode.status && inEditMode.rowKey === row._id ? (
+                                      <td>
+                                        <button className="clear" onClick={() => onCommunityDetailDelete(row._id, index)}><RiIcons.RiDeleteBinFill/></button>
+                                      </td>
+                                    )  : null  
+                                  }
                                 </tr> 
                                )                                
                           }
