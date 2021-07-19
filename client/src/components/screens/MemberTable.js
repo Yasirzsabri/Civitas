@@ -50,8 +50,7 @@ const Member = () => {
       let response= await fetch('/community');
       let data = await response.json();
       setCommunityList(data);
-
-      console.log("54 communityList: ",data)
+      // console.log("54 communityList: ",data)
     }
     
     //fetch user list 
@@ -66,7 +65,7 @@ const Member = () => {
         let response= await fetch('/userLevel');
         let data = await response.json();        
         setUserLevelList(data)  
-console.log("69 userLevelList: ", data)
+// console.log("69 userLevelList: ", data)
     }
 
     const updateMember = (id, newFirstName, newLastName, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newEmailAddress, newCommunityDetail, newUsername, newActive) => {
@@ -153,7 +152,7 @@ console.log("69 userLevelList: ", data)
       if (deleteResponse.status === 200) {
         getMember();
       }  
-      console.log('Create response is', deleteResponse)      
+      // console.log('Delete response is', deleteResponse)      
     }
 
     const getMember = async () => {
@@ -161,7 +160,7 @@ console.log("69 userLevelList: ", data)
       let response = await fetch('/member');
       let data = await response.json();
       setRows(data);
-    console.log("164 getMember data: ", data)
+    // console.log("164 getMember data: ", data)
     };
     
     useEffect(() => {
@@ -410,8 +409,9 @@ console.log("69 userLevelList: ", data)
               <table width="100%">
                   <tbody>               
                     <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>MbrShp Paid Date</th><th>Membership Since</th><th>Active</th></tr>                            
-                      {row.communityDetail.map( (cdi, index) => { console.log("410 cdi: ",cdi)
-                        return (<tr key={index}>                          
+                    {/* {row.communityDetail.map( (cdi, index) => { console.log("410 cdi: ",cdi) */}
+                    {row.communityDetail.map( (cdi, index) => {
+                      return (<tr key={index}>                          
                                   <td width="46%">{
                                       inEditMode.status && inEditMode.rowKey === row._id ? (
                                         <select name="community" value={communityDetail[index].community._id} onChange={(e) => onCommunityDetailChange(e, row._id, index)}>
@@ -478,9 +478,8 @@ console.log("69 userLevelList: ", data)
                                   }
                                 </tr> 
                                )                                
-                          }
-                        )
-                      }
+                      })
+                    }
                       <tr>
                           {inEditMode.status && inEditMode.rowKey === row._id ? (
                               <td>

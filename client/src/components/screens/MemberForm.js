@@ -18,11 +18,11 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
 
     let [member, setMember] = useState({})
     let [dateAdded, setdateAdded] = useState(undefined)
-    let [lastUpdateDate, setLastUpdateDate]  = useState(undefined)
+    // let [lastUpdateDate, setLastUpdateDate]  = useState(undefined)
 
     let [existingMember, setExistingMember] = useState(false)
 
-    let [memberId, setMemberId] = useState("")
+    // let [memberId, setMemberId] = useState("")
     let [firstName, setFirstName] = useState("")
     let [lastName, setLastName] = useState("")
     let [address1, setAddress1] = useState("")
@@ -63,8 +63,8 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
 
     //fetch member record, if there is one
     const getMember = async (id) => {
-        console.log("59 in getMember id is: ",id)
-        console.log("60 in getMember calledFromHomePage is: ", homePageFlag)
+        // console.log("59 in getMember id is: ",id)
+        // console.log("60 in getMember calledFromHomePage is: ", homePageFlag)
         
         if(id && homePageFlag){
             try{
@@ -75,7 +75,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
     
                     setMember(data);
             
-                    setMemberId(data._id);
+                    // setMemberId(data._id);
                     setFirstName(data.firstName);
                     setLastName(data.lastName);
                     setAddress1(data.address1);
@@ -90,16 +90,16 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                     setUsername(data.username);
                     setActive(data.active);
                     setdateAdded(data.dateAdded);
-                    setLastUpdateDate(data.lastUpdateDate);
+                    // setLastUpdateDate(data.lastUpdateDate);
                     setExistingMember(true)                
                 }           
             }
             catch(error) {
-               console.log("83 error ",error.message)
+                console.log("83 error ",error.message)
             }            
         }
         else {
-            console.log("94 MemberForm id is undefined: ",id)
+            if (homePageFlag) console.log("94 MemberForm id is undefined: ",id)
         }
 
     }
@@ -111,6 +111,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
             getUsernameList();
             getMember(authContext.id);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authContext]);
 
 
@@ -194,7 +195,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                     // setActive("true");
                 }
                 // the server didn't like the data for some reason
-                console.log('Create response is', createResponse)
+                // console.log('Create response is', createResponse)
                 if (createResponse.status !== 200) {
                     let errorMessage = await createResponse.text()
                     console.log('We had an error.  it was: ', errorMessage)
@@ -213,7 +214,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
     }
 
     const onInputChange = (event, setFunction) => {
-        console.log('Changing input to be ', event.target.value)
+        // console.log('Changing input to be ', event.target.value)
         setFunction(event.target.value);
     };
 
@@ -242,13 +243,13 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
     }
 
     const onCommunityDetailChange = (e, i) => {
-        console.log("246 i, e",i,e)
+        // console.log("246 i, e",i,e)
         let newCommunityDetail = [...communityDetail]
-        console.log("248 newCommunityDetail: ",newCommunityDetail)
+        // console.log("248 newCommunityDetail: ",newCommunityDetail)
         newCommunityDetail[i][e.target.name] = e.target.value 
-        console.log("250 i e.target.name e.target.value: ",i,e.target.name,e.target.value)
+        // console.log("250 i e.target.name e.target.value: ",i,e.target.name,e.target.value)
         setCommunityDetail(newCommunityDetail);
-        console.log("252 newCommunityDetail: ",newCommunityDetail)
+        // console.log("252 newCommunityDetail: ",newCommunityDetail)
     }  
     // the event passed back by datePicker contains simply a date, nothing else
     const onCommunityDetailChangeDate = (e, i, dt) => {
@@ -341,7 +342,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                     <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Active</th><th>Action</th></tr>                                                
                                                     {communityDetail.map( (cd, index) => {
                                                             if (cd.active===undefined) cd.active=true
-                                                            console.log("345 cd: ",cd)                                                           
+                                                            // console.log("345 cd: ",cd)                                                           
                                                             return (<tr key = {index}>
                                                                         <td width="33%">
                                                                             {

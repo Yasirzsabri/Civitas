@@ -33,10 +33,13 @@ router.get('/username/:id', async function(req, res) {
     console.info(`Found user and corresponding member record:`, data)
 
     if (data) {
+      // console.log("36 member ***")
       res.send(data);
     }
     else {
-      res.sendStatus(123)
+      // console.log("40 member ***")
+      res.send(data);
+      // res.sendStatus(123)
     }
   } catch (error) {
     console.log(error)

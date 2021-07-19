@@ -37,7 +37,7 @@ const UserLevelForm = (props) => {
                 setActive("true");
             }
 
-            console.log('Create response is', createResponse)
+            // console.log('Create response is', createResponse)
             if (createResponse.status !== 200) {
                 let errorMessage = await createResponse.text()
                 console.log('We had an error.  it was: ', errorMessage)
@@ -60,7 +60,7 @@ const UserLevelForm = (props) => {
 
 
     const onInputChange = (event, setFunction) => {
-        console.log('Changing input to be ', event.target.value)
+        // console.log('Changing input to be ', event.target.value)
         setFunction(event.target.value);
     };
 

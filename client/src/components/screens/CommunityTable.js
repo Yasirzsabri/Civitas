@@ -72,7 +72,7 @@ const CommunityTable = () => {
       .then(response => response.json())
       .then(json => {
           onCancel();
-          console.log("updateResponse = ", updateResponse);
+          // console.log("updateResponse = ", updateResponse);
       })    
     }
 
@@ -127,7 +127,7 @@ const CommunityTable = () => {
       if (deleteResponse.status === 200) {
         getCommunities();
       }  
-      console.log('Create response is', deleteResponse)      
+      // console.log('Create response is', deleteResponse)      
     }
 
     const getCommunities = async () => {
