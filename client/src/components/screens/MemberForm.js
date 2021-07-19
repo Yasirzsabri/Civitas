@@ -135,7 +135,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 dateAdded,
                 lastUpdateDate : currentDate
             }
-        
+        console.log("138 our member to update looks like: ",memberToUpdate)
             let updateResponse = fetch(`/member/${member._id}`, {
               method: "PUT",
               headers: {

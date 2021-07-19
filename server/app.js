@@ -62,8 +62,8 @@ defaultClient.basePath = 'https://connect.squareupsandbox.com';
 app.post('/process-payment', async (req, res) => {
   console.log(req.cookies)
   const request_params = req.body;
-  console.log (request_params)
-  console.log(req.user)
+  console.log ("65  request_params:", request_params)
+  console.log(req.sessionStore)
 
   // length of idempotency_key should be less than 45
   const idempotency_key = crypto.randomBytes(22).toString('hex');
