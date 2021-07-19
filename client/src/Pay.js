@@ -28,7 +28,7 @@ const Pay = () => {
     };
     document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
     getCommunityList();
-  });
+  },[]);
 
   const squarePayment = isLoad ? (
         <Square paymentForm={ window.SqPaymentForm }/>

@@ -97,7 +97,7 @@ const UserLevelTable = () => {
       if (deleteResponse.status === 200) {
         getUserLevel();
       }  
-      console.log('Create response is', deleteResponse)      
+      // console.log('Delete response is', deleteResponse)      
     }
 
     const displayRows =rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {

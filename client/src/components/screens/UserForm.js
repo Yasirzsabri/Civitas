@@ -1,29 +1,14 @@
-import { useState , useEffect} from "react"
+// import { useState , useEffect} from "react"
+import { useState } from "react"
 import './form.css';
 import * as  AiIcons from 'react-icons/ai';
-import * as  SiIcons from 'react-icons/si';
-import * as  RiIcons from 'react-icons/ri';
 
 const UserForm = (props) => {
     let [username, setUsername] = useState("")
     let [password, setPassword] = useState("")
-    // let [userLevel, setUserLevel] = useState([])
-    // let [userLevelList, setUserLevelList] = useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
    
-    //  //fetch userLevel
-    //  const getUserLevelList = async () =>{
-    //     let response= await fetch('/userLevel');
-    //     let data = await response.json();        
-    //     setUserLevelList(data)  
-    // }
-
-    // useEffect(()=>{
-    //     getUserLevelList()
-    // }, [])
-    // userLevel: ["609b044c3fedfb45458a5f7b"]
-    // active: "true"
     async function onCreateClicked() {
         let currentDate = new Date();
         let userToCreate = {
@@ -34,12 +19,12 @@ const UserForm = (props) => {
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
-        console.log('Creating a User:', userToCreate )
+        // console.log('Creating a User:', userToCreate )
        
         try { 
             let stupid='/user';
             
-            if(props.minimalFlag){
+            if(props.homePageFlag){
                 stupid = '/register';
             }
 
@@ -51,19 +36,18 @@ const UserForm = (props) => {
                 body: JSON.stringify(userToCreate)
 
             })
-            console.log('Creating a user:', userToCreate )
+            // console.log('Creating a user:', userToCreate )
 
             if (createResponse.status === 200) {
                 props.onUserFormClick("Success");
 
                 setUsername("");
                 setPassword("")
-                // setUserLevel([])
                 setActive("true");                          
             }
 
             // the server didn't like the data for some reason
-            console.log('Create response is:', createResponse)
+            // console.log('Create response is:', createResponse)
             if (createResponse.status !== 200) {
                 let errorMessage = await createResponse.text()
                 console.log('We had an error.  it was: ', errorMessage)
@@ -80,32 +64,10 @@ const UserForm = (props) => {
     }
 
     const onInputChange = (event, setFunction) => {
-        console.log('event: ', event)
-        console.log('Changing input to be ', event.target.value)
+        // console.log('event: ', event)
+        // console.log('Changing input to be ', event.target.value)
         setFunction(event.target.value);   
     };
-
-    // const onUserLevelChange = (e, i)=>{
-    //     let newUserLevel = [...userLevel]
-    //     newUserLevel[i]= e.target.value
-    //    // console.log("90 e.target.value:", e.target.value)
-    //    //console.log("91 newUserLevel:", newUserLevel)
-        
-    //     setUserLevel(newUserLevel)
-    // }
-
-    // const onUserLevelAdd = () =>{
-    //     let newUserLevel = [...userLevel]
-    //     newUserLevel.push("")
-    //     setUserLevel(newUserLevel)
-    //     console.log('103 userLevel: ', userLevel)
-    // }
-
-    // const onUserLevelDelete = (index) => {
-    //     let newUserLevel = [...userLevel]
-    //     newUserLevel.splice(index, 1)
-    //     setUserLevel(newUserLevel)
-    // }
 
     const onClickAdd = ()=>{
         onCreateClicked();
@@ -129,54 +91,18 @@ const UserForm = (props) => {
                     <input id="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
                 </div>
 
-                {props.minimalFlag ? (null) : 
-                (<>
-                {/* <div>
-                    <label htmlFor="userLevel">UserLevel:</label> 
-                    <table>
-                        <tbody>
-                            {
-                                userLevel.map((s, index) =>{
-                                    return (<tr key={index}>
-                                        <td>{
-                                                <select  name="_id" value={s._id} onChange={(event) => onUserLevelChange(event, index)}>
-                                                <option>--Select--</option>
-                                                {userLevelList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
-                                                )}
-                                                </select>
-                                            }
-                                        </td>
-                                        {
-                                            <td>
-                                                <button className="clear"
-                                                onClick ={()=> onUserLevelDelete(index)} ><RiIcons.RiDeleteBinFill/></button>
-                                            </td>
-                                        }
-                                    </tr>)
-                                })
-                            }
-                            <tr>
-                                <td>
-                                    <button onClick= {onUserLevelAdd}><SiIcons.SiAddthis/></button>
-                                </td>
-                            </tr>   
-                            
-                        </tbody>
-                    </table>
-                </div> */}
-                
-                <div>
-                    <label htmlFor="active">Active:</label>                
-                    <select value={active} onChange={(event) => onInputChange(event, setActive)}>
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                    </select>
-                </div>
-                </>
-                )
+                {props.homePageFlag ? (null) : 
+                    (<>                
+                        <div>
+                            <label htmlFor="active">Active:</label>                
+                            <select value={active} onChange={(event) => onInputChange(event, setActive)}>
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select>
+                        </div>
+                    </>
+                    )
                 }  
-
-
                 <br/>            
                 <button disabled={ createUserDataInvalid } onClick={ onClickAdd } >Add User</button>
                 { createError && <div>{createError}</div> }  

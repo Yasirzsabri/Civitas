@@ -90,7 +90,7 @@ const Navbar = () => {
     const [sidebar, setSidebar] = useState(false)
 
     const showSidebar = (e)=>{
-        console.log('click', e)
+        // console.log('click', e)
         setSidebar(!sidebar)
     }
 

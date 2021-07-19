@@ -79,7 +79,7 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
             }
 
             // the server didn't like the data for some reason
-            console.log('Create response is', createResponse)
+            // console.log('Create response is', createResponse)
             if (createResponse.status !== 200) {
                 let errorMessage = await createResponse.text()
                 console.log('We had an error.  it was: ', errorMessage)
@@ -96,12 +96,12 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
     }
 
     const onInputChange = (event, setFunction) => {
-        console.log('Changing input to be ', event.target.value)
+        // console.log('Changing input to be ', event.target.value)
         setFunction(event.target.value);
     };
 
     const onInputChangeDate = (event, setFunction) => {
-        console.log('Changing input to be ', event)
+        // console.log('Changing input to be ', event)
         setFunction(event);
     };
 
