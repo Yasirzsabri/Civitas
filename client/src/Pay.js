@@ -2,20 +2,34 @@ import './Pay.css';
 //import Navbar from './navbar/Navbar';
 import Square from '../src/components/Square';
 import React, { useState, useEffect } from 'react';
-import moment from "moment";
-import existingMember from './components/screens/MemberForm';
-import index from './components/screens/MemberForm';
-import cd from './components/screens/MemberForm';
-import setCommunityList from './components/screens/MemberForm';
-import memberToUpdate from './components/screens/MemberForm';
-import member from './components/screens/MemberTable';
+
 
 
 
 const Pay = () => {
     let [communityList, setCommunityList] = useState([]);
     let [community, setCommunity] = useState("");
+    let [fee,setFee]=useState();
   const [isLoad, setLoad] = useState(false);
+
+
+  const getCommunityList = async () => {
+    let response= await fetch('/community');
+    let data = await response.json();
+    
+    setCommunityList(data); 
+  }
+
+  useEffect(() =>{
+  const setCommunityFee = async() => {
+      
+      let response= await fetch(`/community/${community}`);
+      let data = await response.json();
+      setFee(data.membershipFee)
+  }
+  setCommunityFee()
+},[community])
+
   useEffect(() => {
     let sqPaymentScript = document.createElement("script");
     // sandbox: https://js.squareupsandbox.com/v2/paymentform
@@ -28,33 +42,16 @@ const Pay = () => {
     };
     document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
     getCommunityList();
-  });
+  },[]);
 
   const squarePayment = isLoad ? (
-        <Square paymentForm={ window.SqPaymentForm }/>
+        <Square paymentForm={ window.SqPaymentForm }
+        community={community}
+        fee={fee}
+         />
     ) : (
        null
     )
-    let updateResponse = fetch(`/member/${member._id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(memberToUpdate)
-      })
-      .then(response => response.json())
-      .then(json => {
-          // fetch the updated data
-          // getMember();
-          console.log("updateResponse = ", updateResponse);
-      })    
-      const getCommunityList = async () => {
-        let response= await fetch('/community');
-        let data = await response.json();
-        setCommunityList(data);
-        console.log("55 stupid data: ",data)
-    }
-    
   
   return (
     <>
@@ -66,7 +63,7 @@ const Pay = () => {
        </select> 
         </div>
       <div className="Pay">
-        <h1>Pay For A Membership</h1>
+        <h1>Pay For A Membership </h1>
        {squarePayment}
         </div>
         

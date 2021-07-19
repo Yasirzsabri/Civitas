@@ -14,6 +14,9 @@
 .home-title{
     display:flex;
     align-items: center;
+    background-image: url(1.jpg);
+    height: 150px;
+    
 }
 
 .home-title > img {
@@ -27,6 +30,7 @@
     color: #85C232;
     /* color: black; */
     margin-bottom:5px;
+   
 }
 
 .home-greeting > p {
@@ -54,12 +58,12 @@
 .logo-image{
     
     
-    background-image:url('../images/civitas.jpg');
+    background-image:url('');
     background-size: contain;
-    background-position:cente ;
+    background-position:top ;
     background-repeat:no-repeat;
     background-clip: padding-box;
-    height: 50%;
+    height: 80%;
 
 
 } 

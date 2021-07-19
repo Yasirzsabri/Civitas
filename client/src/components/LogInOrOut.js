@@ -25,7 +25,10 @@ const LogInOrOut = () => {
     return (isLoggedIn) ? 
             <>
                 <div>
-                    <span>Hello {authContext.username}</span>
+                    <span>
+                        <h3>Hello {authContext.username}
+                        </h3>
+                        </span>
                         <br></br>
                     <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>  
                     <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
@@ -38,7 +41,7 @@ const LogInOrOut = () => {
                  <div className="col-20 offset-15">
                      <div className="card">
                          <div className="card-body" >
-                         <h4 className="card-title text-center">Login</h4>
+                         <h4 className="card-title ">Login</h4>
                             <div className="card-text">
                              
                                  <div>

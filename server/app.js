@@ -1,3 +1,4 @@
+require('./auth/configurePassport')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,37 +6,35 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
 var passport = require('passport')
-
-require('./auth/configurePassport')
-
-
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-
-
-
 var user = require('./routes/user');
 var auth = require('./routes/auth');
 var register = require('./routes/register');
 var userLevel = require('./routes/userLevel');
 var home = require('./routes/home');
+var cors = require('cors');
 var community = require('./routes/community');
 var member = require('./routes/member');
+const bodyParser = require('body-parser');
+const crypto = require('crypto');
+const dotenv = require('dotenv');
+const squareConnect = require('square-connect');
+
 var app = express();
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors())
 
-app.use(express.static(path.join(__dirname, 'public')));
+dotenv.config();
+
+
+// Set the Access Token
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 
 
 app.use('/user',user)
@@ -46,6 +45,53 @@ app.use('/home',home)
 app.use('/community',community)
 app.use('/member',member)
 
+
+// Set Square Connect credentials and environment
+const defaultClient = squareConnect.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+const accessToken = process.env.ACCESS_TOKEN
+oauth2.accessToken = accessToken;
+
+// Set 'basePath' to switch between sandbox env and production env
+// sandbox: https://connect.squareupsandbox.com
+// production: https://connect.squareup.com
+defaultClient.basePath = 'https://connect.squareupsandbox.com';
+
+app.post('/process-payment', async (req, res) => {
+  console.log(req.cookies)
+  const request_params = req.body;
+  console.log (request_params)
+  console.log(req.user)
+
+  // length of idempotency_key should be less than 45
+  const idempotency_key = crypto.randomBytes(22).toString('hex');
+
+  // Charge the customer's card
+  const payments_api = new squareConnect.PaymentsApi();
+  const request_body = {
+    source_id: request_params.nonce,
+    amount_money: {
+      amount: request_params.fee, // $60.00 charge
+      currency: 'CAD'
+    },
+    idempotency_key: idempotency_key
+  };
+
+  try {
+    const response = await payments_api.createPayment(request_body);
+    res.status(200).json({
+      'title': 'Payment Successful',
+      'result': response
+    });
+  } catch(error) {
+    res.status(500).json({
+      'title': 'Payment Failure',
+      'result': error.response.text
+    });
+  }
+});
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 

@@ -15,6 +15,7 @@ const Home = () => {
                      <div className="home-greeting">
                         <h1>Communities Home Page</h1>
                         <p>Welcome to Civitas</p>
+                        
                      </div>
                  </div>
                  
