@@ -31,7 +31,7 @@ const LogInOrOut = () => {
                         </span>
                         <br></br>
                     <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>  
-                    <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
+                    <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Community Update/Signup</button>
                     <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick = {handleMemberFormClick} homePageFlag = {true}/>
 
                 </div> 
