@@ -67,6 +67,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
         // console.log("60 in getMember calledFromHomePage is: ", homePageFlag)
         
         if(id && homePageFlag){
+            if (homePageFlag) setUsername(authContext.id)
             try{
                 let response= await fetch(`/member/username/${id}`); 
 
@@ -135,7 +136,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 dateAdded,
                 lastUpdateDate : currentDate
             }
-        console.log("138 our member to update looks like: ",memberToUpdate)
+        // console.log("138 our member to update looks like: ",memberToUpdate)
             let updateResponse = fetch(`/member/${member._id}`, {
               method: "PUT",
               headers: {
@@ -168,7 +169,9 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 dateAdded : currentDate,
                 lastUpdateDate : currentDate
             }
-            console.log('Creating Member with', memberToCreate )
+            // console.log('172 Creating Member with', memberToCreate )
+            // console.log("173, username: ", username)
+            // console.log("174 authContext: ", authContext)
             try {
                 let createResponse = await fetch('/member', {
                     method: 'POST',
@@ -267,7 +270,8 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
 
     const onClickAdd = ()=>{
         onCreateClicked();
-        setTrigger(false);   
+        setTrigger(false); 
+        getMember(authContext.id) 
     }
 
     let createMemberDataInvalid = !emailAddress || (emailAddress.trim().length === 0)
@@ -275,7 +279,11 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
     return (trigger)? (
         <div className='createform'>
             <div className="popup-in">
-                <h4>Add a New Member</h4>
+                {homePageFlag ? (
+                    <><h4>Update/Insert Member Information</h4></>
+                ) : (
+                    <><h4>Add a New Member</h4></>
+                )}
                 <button className="closebtn" onClick={()=>setTrigger(false)}><AiIcons.AiOutlineClose/></button>
 
                 <div>
@@ -342,6 +350,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                     <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Active</th><th>Action</th></tr>                                                
                                                     {communityDetail.map( (cd, index) => {
                                                             if (cd.active===undefined) cd.active=true
+                                                            if (cd.userLevel==="")  cd.userLevel= {_id: "609b044c3fedfb45458a5f7b", name: "Member"}
                                                             // console.log("345 cd: ",cd)                                                           
                                                             return (<tr key = {index}>
                                                                         <td width="33%">
@@ -359,8 +368,10 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                                                )
                                                                             }
                                                                         </td>
-                                                                        <td width="16%">
-                                                                            {
+                                                                        <td width="16%">{
+                                                                            homePageFlag ? (
+                                                                                cd.userLevel.name
+                                                                            ) : (
                                                                                  !existingMember ?(
                                                                                     <select name="userLevel" value={cd._id} onChange={(e) => onCommunityDetailChange(e, index)}>
                                                                                     <option>--Select2--</option>
@@ -372,22 +383,44 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                                                             {userLevelList.map(item => <option key={item.name} value={item._id}>{item.name}</option>)} 
                                                                                     </select>
                                                                                )
-                                                                            }
+                                                                            )
+                                                                          }
                                                                         </td>
-                                                                        <td width="14%">
-                                                                            <Datepicker format={"MM/DD/yyyy"} value={moment(cd.renewalDate).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "renewalDate")}}/>
+                                                                        <td width="14%">{
+                                                                            homePageFlag ? (
+                                                                                moment(cd.renewalDate).format("MM/DD/yyyy")
+                                                                            ) : (
+                                                                                <Datepicker format={"MM/DD/yyyy"} value={moment(cd.renewalDate).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "renewalDate")}}/>    
+                                                                            )                                                                            
+                                                                          }
                                                                         </td>
-                                                                        <td width="14%">
-                                                                            <Datepicker format={"MM/DD/yyyy"} value={moment(cd.membershipPaidDate).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "membershipPaidDate")}}/>
+                                                                        <td width="14%">{
+                                                                            homePageFlag ? (
+                                                                                moment(cd.membershipPaidDate).format("MM/DD/yyyy")
+                                                                            ) : (
+                                                                                <Datepicker format={"MM/DD/yyyy"} value={moment(cd.membershipPaidDate).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "membershipPaidDate")}}/>
+                                                                            )                                                                            
+                                                                          }
                                                                         </td>
-                                                                        <td width="14%">
-                                                                            <Datepicker format={"MM/DD/yyyy"} value={moment(cd.memberSince).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "memberSince")}}/>
+                                                                        <td width="14%">{
+                                                                            homePageFlag ? (
+                                                                                moment(cd.memberSince).format("MM/DD/yyyy")
+                                                                            ) : (
+                                                                                <Datepicker format={"MM/DD/yyyy"} value={moment(cd.memberSince).format("MM/DD/yyyy") } onChange={ (e) => {onCommunityDetailChangeDate(e, index, "memberSince")}}/>
+                                                                            )                                                                            
+                                                                          }
                                                                         </td>
-                                                                        <td width="9%">                                                                        
-                                                                            <select name="active" default = {true} value={cd.active} onChange={(e) => onCommunityDetailChange(e, index)}>
-                                                                                <option value="true">true</option>
-                                                                                <option value="false">false</option>
-                                                                            </select>
+
+                                                                        <td width="9%"> {
+                                                                            homePageFlag ? (
+                                                                                String(cd.active)
+                                                                            ) : (                                                                                                                                              
+                                                                                <select name="active" default = {true} value={cd.active} onChange={(e) => onCommunityDetailChange(e, index)}>
+                                                                                    <option value="true">true</option>
+                                                                                    <option value="false">false</option>
+                                                                                </select>
+                                                                            )
+                                                                          } 
                                                                         </td>
                                                                         <td>
                                                                             <button className="clear" onClick={ () => onCommunityDetailDelete(index) }><RiIcons.RiDeleteBinFill/></button>
@@ -415,26 +448,36 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 </div>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr>                            
                             <td>
                                 <label htmlFor="username">Username:</label> 
-                                <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
-                                    <option>--Select--</option>
-                                    {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
-                                </select>
+                                {homePageFlag ? ( authContext.username
+                                 ) : (
+                                    <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
+                                        <option>--Select--</option>
+                                        {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
+                                    </select>
+                                 ) 
+                                }
                             </td>  
                         </tr>
                     </tbody>
                 </table>  
                 <div>
-                    <label htmlFor="active">Active:</label>                
-                    <select value={active} onChange={(event) => onInputChange(event, setActive)}>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
-                    </select>
+                    <label htmlFor="active">Active:</label>    
+                    {                      
+                    homePageFlag ? (
+                        String(active)  
+                    ) : (                                  
+                        <select value={active} onChange={(event) => onInputChange(event, setActive)}>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                        )
+                    }
                 </div>
                 <br/>            
-                <button disabled={ createMemberDataInvalid } onClick={ onClickAdd }>Add Member</button>
+                <button disabled={ createMemberDataInvalid } onClick={ onClickAdd }>{homePageFlag ? (<>Update/Insert Member</>) : (<>Add Member</>) }</button>
                 { createError && <div>{createError}</div> }  
             </div>          
         </div>
