@@ -14,6 +14,8 @@ var home = require('./routes/home');
 var cors = require('cors');
 var community = require('./routes/community');
 var member = require('./routes/member');
+var mail = require('./routes/mail');
+
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const dotenv = require('dotenv');
@@ -44,6 +46,7 @@ app.use('/userLevel',userLevel)
 app.use('/home',home)
 app.use('/community',community)
 app.use('/member',member)
+app.use('/mail',mail)
 
 
 // Set Square Connect credentials and environment
