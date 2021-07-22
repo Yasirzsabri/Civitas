@@ -280,7 +280,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
         <div className='createform'>
             <div className="popup-in">
                 {homePageFlag ? (
-                    <><h4>Update/Insert Member Information</h4></>
+                    <><h4>Update/Insert Community Member Information</h4></>
                 ) : (
                     <><h4>Add a New Member</h4></>
                 )}
@@ -347,25 +347,29 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                         <label htmlFor="communityDetail">Community Detail:</label>
                                             <table width="100%">
                                                 <tbody>
-                                                    <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Active</th><th>Action</th></tr>                                                
+                                                    <tr><th>Community</th><th>User Level</th><th>Renewal Date</th><th>Paid Date</th><th>Membership Since</th><th>Active</th><th>Delete</th></tr>                                                
                                                     {communityDetail.map( (cd, index) => {
                                                             if (cd.active===undefined) cd.active=true
                                                             if (cd.userLevel==="")  cd.userLevel= {_id: "609b044c3fedfb45458a5f7b", name: "Member"}
-                                                            // console.log("345 cd: ",cd)                                                           
+                                                            // console.log("354 cd: ",cd)  
+                                                            // console.log("355  cd.community.name: ",cd.community.name)                                                         
                                                             return (<tr key = {index}>
                                                                         <td width="33%">
                                                                             {
-                                                                                 !existingMember ?(
+                                                                                !existingMember ?(
                                                                                     <select name="community" value={cd._id} onChange={(e) => onCommunityDetailChange(e, index)}>
                                                                                     <option>--Select2--</option>
                                                                                         {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
                                                                                     </select>
-                                                                                ):(
-                                                                                    <select name="community" value={communityDetail[index].community._id} onChange={(e) => onCommunityDetailChange(e, index)}>
-                                                                                        <option>--Select1--</option>
-                                                                                            {communityList.map(item => <option key={item.name} value={item._id}>{item.name}</option>)} 
-                                                                                    </select>
-                                                                               )
+                                                                                ):(cd.community.name !== undefined ? (
+                                                                                        cd.community.name
+                                                                                    ):(
+                                                                                        <select name="community" value={communityDetail[index].community._id} onChange={(e) => onCommunityDetailChange(e, index)}>
+                                                                                            <option>--Select1--</option>
+                                                                                                {communityList.map(item => <option key={item.name} value={item._id}>{item.name}</option>)} 
+                                                                                        </select>
+                                                                                    )                                                                                
+                                                                                )
                                                                             }
                                                                         </td>
                                                                         <td width="16%">{
@@ -422,8 +426,13 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                                                                             )
                                                                           } 
                                                                         </td>
-                                                                        <td>
-                                                                            <button className="clear" onClick={ () => onCommunityDetailDelete(index) }><RiIcons.RiDeleteBinFill/></button>
+                                                                        <td>{
+                                                                            !homePageFlag || cd.community.name === undefined ? (
+                                                                                <button className="clear" onClick={ () => onCommunityDetailDelete(index) }><RiIcons.RiDeleteBinFill/></button>
+                                                                            ) : (
+                                                                                null
+                                                                            )
+                                                                        }                                                                           
                                                                         </td>
                                                                     </tr> )
                                                      })
@@ -448,10 +457,10 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 </div>
                 <table>
                     <tbody>
-                        <tr>                            
+                        <tr>                        
                             <td>
-                                <label htmlFor="username">Username:</label> 
-                                {homePageFlag ? ( authContext.username
+                                <label htmlFor="username">Username:</label>     
+                                {homePageFlag ? (authContext.username
                                  ) : (
                                     <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
                                         <option>--Select--</option>
@@ -467,7 +476,9 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                     <label htmlFor="active">Active:</label>    
                     {                      
                     homePageFlag ? (
-                        String(active)  
+                        <div>
+                            {String(active)}
+                        </div>
                     ) : (                                  
                         <select value={active} onChange={(event) => onInputChange(event, setActive)}>
                             <option value="true">true</option>
@@ -477,7 +488,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                     }
                 </div>
                 <br/>            
-                <button disabled={ createMemberDataInvalid } onClick={ onClickAdd }>{homePageFlag ? (<>Update/Insert Member</>) : (<>Add Member</>) }</button>
+                <button disabled={ createMemberDataInvalid } onClick={ onClickAdd }>{homePageFlag ? (<>Update/Insert</>) : (<>Add Member</>) }</button>
                 { createError && <div>{createError}</div> }  
             </div>          
         </div>
