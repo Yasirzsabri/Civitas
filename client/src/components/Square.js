@@ -1,19 +1,24 @@
 import React from 'react';
 import config from './paymentForm';
 import { useContext } from "react";
-import AuthenticationContext from "../AuthenticationContext"
+import AuthenticationContext from "../AuthenticationContext";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 const Square = ({ paymentForm,fee,community }) => {
     const authContext = useContext(AuthenticationContext)
 
-    let memberData={}
-    let stupidfidx=undefined
-    let BobsYourUncle=false
+    let memberData=undefined
+    let communityDetailIdx=undefined
+    let isMemberOfCommunity=false
+    let paymentSuccessfull=false
 
+    
     console.log("10 authContext.username: ", authContext.username)
     console.log("11 authContext.id: ", authContext.id)
     console.log("12 community: ",community)
+    console.log("13 mamber",authContext.memberData)
     config.callbacks={
         /*
         * callback function: cardNonceResponseReceived
@@ -26,22 +31,23 @@ const Square = ({ paymentForm,fee,community }) => {
             errors.forEach(function (error) {
                 console.error('  ' + error.message);
             });
+            
             alert('Encountered errors, check browser developer console for more details');
             return;
         }
 
-// smart shit
+
 
         const getMember = async (id) => {
-          // console.log("59 in getMember id is: ",id)
-          // console.log("60 in getMember calledFromHomePage is: ", homePageFlag)
           
           try{
               let response= await fetch(`/member/username/${authContext.id}`); 
+              
 
               if(response.ok){
                   let data = await response.json();
                   memberData=data
+                  
                   console.log("40 data: ", data)
                   console.log("41 data: ", data.communityDetail[0])
                   console.log("42 data: ", data.communityDetail[0]._id)
@@ -49,9 +55,24 @@ const Square = ({ paymentForm,fee,community }) => {
                   console.log("44 data: ", data.communityDetail[0].membershipPaidDate)
               }           
           }
+          
           catch(error) {
+            console.log('this happened');
+            
               console.log("45 error ",error.message)
           } 
+          console.log("60 data ",memberData)
+          if (memberData){
+            for (let i=0; i< memberData.communityDetail.length; i++) {
+              console.log(" 62 " ,i,memberData.communityDetail[i].community._id, community)
+              if (memberData.communityDetail[i].community._id === community) {
+                communityDetailIdx=i
+                isMemberOfCommunity=true
+                break;
+              }        
+            }
+          }
+        if (isMemberOfCommunity){
 
           try{
             let response = await fetch('http://localhost:3000/process-payment', {
@@ -65,9 +86,11 @@ const Square = ({ paymentForm,fee,community }) => {
                 fee:fee
               })
             })
+            
 
             if(response.ok){
               let data2 = await response.json();
+              paymentSuccessfull=true
               console.log("68 data: ", data2)
             }           
 
@@ -75,6 +98,9 @@ const Square = ({ paymentForm,fee,community }) => {
           catch{
             console.log("73 square error")
           }
+          console.log("86 paymentSuccessfull",paymentSuccessfull)
+          
+          if (paymentSuccessfull){
 
           try{  console.log("76 our data: ",memberData)
 
@@ -92,6 +118,14 @@ const Square = ({ paymentForm,fee,community }) => {
             let username = memberData.username
             let active = memberData.active
             let dateAdded = memberData.dateAdded
+            
+
+            memberData.communityDetail[communityDetailIdx].membershipPaidDate = currentDate;
+            
+            
+
+            console.log ("107 base communityDetail",communityDetail) 
+            //membershipPaidDate
 
             let memberToUpdate = {
               firstName, 
@@ -110,7 +144,7 @@ const Square = ({ paymentForm,fee,community }) => {
               lastUpdateDate : currentDate
             }
     
-console.log("98 memberToUpdate: ",memberToUpdate)
+            console.log("98 memberToUpdate: ",memberToUpdate)
             let updateResponse = await fetch(`/member/${memberData._id}`, {
             method: "PUT",
             headers: {
@@ -120,50 +154,22 @@ console.log("98 memberToUpdate: ",memberToUpdate)
             })
             if(updateResponse.ok){
               let data = await updateResponse.json();
-              console.log("86 update data: ",data)             
+              paymentSuccessfull=true
+              console.log("86 update data: ",data);
+              NotificationManager.success('success', 'Success!');
+              alert('payment successful')
             }           
           }
+          
           catch(error){
             console.log("82 our update failed, error: ",error)
           }
+        }
+      }
     
 
         }
         getMember();
-
-        // determined that user belongs to community in dropdown
-
-
-
-           //alert(`The generated nonce is:\n${nonce}`);
-          //  fetch('http://localhost:3000/process-payment', {
-          //     method: 'POST',
-          //     headers: {
-          //       'Accept': 'application/json',
-          //       'Content-Type': 'application/json'
-          //     },
-          //     body: JSON.stringify({
-          //       nonce: nonce,
-          //       fee:fee
-          //     })
-          //   })
-          //   .catch(err => {
-          //     alert('Network error: ' + err);
-          //   })
-          //   .then(response => {
-          //     if (!response.ok) {
-          //       return response.text().then(errorInfo => Promise.reject(errorInfo));
-          //     }
-          //     return response.text();
-          //   })
-          //   .then(data => {
-          //     console.log("51 our data: ", JSON.stringify(data));
-          //     alert('Payment complete successfully!\nCheck browser developer console form more details');
-          //   })
-          //   .catch(err => {
-          //     console.error(err);
-          //     alert('Payment failed to complete!\nCheck browser developer console form more details');
-          //   });
         }
       }
 console.log(config.applicationId)
@@ -174,14 +180,13 @@ console.log(config.applicationId)
     }
 
     return (
-        <div id="form-container">
-            <div id="sq-card-number"></div>
-            <div className="third" id="sq-expiration-date"></div>
-            <div className="third" id="sq-cvv"></div>
-            <div className="third" id="sq-postal-code"></div>
-            <button id="sq-creditcard" className="button-credit-card" onClick={requestCardNonce}> Pay ${fee} </button>
-        </div>
-      
+      <div id="form-container">
+          <div id="sq-card-number"></div>
+          <div className="third" id="sq-expiration-date"></div>
+          <div className="third" id="sq-cvv"></div>
+          <div className="third" id="sq-postal-code"></div>
+          <button id="sq-creditcard" className="button-credit-card" onClick={requestCardNonce}> Pay ${fee} </button>
+      </div>
     )
 }
 

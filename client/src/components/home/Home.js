@@ -23,12 +23,12 @@ const Home = () => {
                     <div >
                         <div className="logo-image"></div>  
                     </div>
-                    <div className="Login">
-                        
-                        <div>
+                    {/* <div className="Login"> */}
+                    <div className="container">
+                        {/* <div> */}
                             {/* <Login /> */}
                             <LogInOrOut />
-                        </div>
+                        {/* </div> */}
                     </div> 
                     
             

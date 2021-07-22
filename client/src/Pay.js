@@ -2,6 +2,7 @@ import './Pay.css';
 //import Navbar from './navbar/Navbar';
 import Square from '../src/components/Square';
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 
@@ -56,14 +57,16 @@ const Pay = () => {
   return (
     <>
     
-      <div>
-      <select name="community" value={community} onChange={(e) => setCommunity(e.target.value)}>
+      <div >
+      <select  name="community" value={community} onChange={(e) => setCommunity(e.target.value)}>
          <option>--Select--</option>
             {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
        </select> 
         </div>
       <div className="Pay">
-        <h1>Pay For A Membership </h1>
+        <p class="text-center">
+          <h4>Pay For A Membership </h4>
+          </p>
        {squarePayment}
         </div>
         

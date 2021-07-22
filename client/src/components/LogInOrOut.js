@@ -24,22 +24,24 @@ const LogInOrOut = () => {
     }
     return (isLoggedIn) ? 
             <>
-                <div>
+                <div className="text-center">
                     <span>
                         <h3>Hello {authContext.username}
                         </h3>
                         </span>
                         <br></br>
-                    <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>  
+                    <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>
+                    &nbsp;&nbsp;
                     <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Member Form</button>
                     <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick = {handleMemberFormClick} homePageFlag = {true}/>
 
                 </div> 
             </>
             : 
-            <div className="container">
-                 <div className="col-20 offset-15">
-                     <div className="card">
+            <div className="container-fluid">
+                <div className="row">
+                <div className="col-4 offset-4">
+                     <br /><div className="card">
                          <div className="card-body" >
                          <h4 className="card-title ">Login</h4>
                             <div className="card-text">
@@ -54,7 +56,7 @@ const LogInOrOut = () => {
                                          required
                                          onChange={(e) => setUsername(e.target.value)}
                                          className="form-control" />
-                                 </div>
+                                 </div> 
                                      <div>
                                          <label htmlFor="password" className="form-label">Password</label>
                                          <input
@@ -72,8 +74,8 @@ const LogInOrOut = () => {
                                     <div className ="buttons" >
                                         <div className="row-fluid text-center" >
                                             <button className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
-                                            
-                                            <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
+                                            &nbsp;&nbsp;
+                                            <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>SignUp</button>
 
                                             <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm}  homePageFlag ={true} onUserFormClick = {handleUserFormClick} />
                                         </div>
@@ -83,6 +85,8 @@ const LogInOrOut = () => {
                          </div>
                      </div>
                  </div>
+                </div>
+                 
             </div>
 
 }

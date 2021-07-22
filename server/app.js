@@ -18,6 +18,7 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const dotenv = require('dotenv');
 const squareConnect = require('square-connect');
+const { title } = require('process');
 
 var app = express();
 app.use(logger('dev'));
@@ -78,19 +79,22 @@ app.post('/process-payment', async (req, res) => {
     },
     idempotency_key: idempotency_key
   };
-
   try {
     const response = await payments_api.createPayment(request_body);
     res.status(200).json({
       'title': 'Payment Successful',
-      'result': response
+      'result': response,
+      
     });
-  } catch(error) {
+  
+  } 
+  catch(error) {
     res.status(500).json({
       'title': 'Payment Failure',
       'result': error.response.text
     });
   }
+  
 });
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

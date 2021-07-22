@@ -2,6 +2,7 @@
     padding: 20px 35px;
     margin:0;
     height:100vh;
+
     /* background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70)); */
     
     background-image: url("");
@@ -40,10 +41,10 @@
 }
 
 .home-cards {
-    display:grid;
+    /* display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap:30px;
-    margin:20px 0;
+    margin:20px 0; */
 }
 
 .logo {

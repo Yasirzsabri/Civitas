@@ -76,6 +76,6 @@ button {
     transition: background .2s ease-in-out;
   }
   
-  .button-credit-card:hover {
+.button-credit-card:hover {
     background-color: #4281CB;
   }
