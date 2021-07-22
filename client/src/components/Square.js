@@ -13,6 +13,7 @@ const Square = ({ paymentForm,fee,community }) => {
     let communityDetailIdx=undefined
     let isMemberOfCommunity=false
     let paymentSuccessfull=false
+    
 
     
     console.log("10 authContext.username: ", authContext.username)
@@ -24,16 +25,16 @@ const Square = ({ paymentForm,fee,community }) => {
         * callback function: cardNonceResponseReceived
         * Triggered when: SqPaymentForm completes a card nonce request
         */
+       
         cardNonceResponseReceived: function (errors, nonce, cardData) {
         if (errors) {
             // Log errors from nonce generation to the browser developer console.
-            console.error('Encountered errors:');
+            console.error('Encountered errors');
             errors.forEach(function (error) {
-                console.error('  ' + error.message);
+            console.error('  ' + error.message);
             });
-            
-            alert('Encountered errors, check browser developer console for more details');
-            return;
+           alert('Encountered errors, check browser developer console for more details')
+          return;
         }
 
 

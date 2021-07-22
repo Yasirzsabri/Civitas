@@ -64,8 +64,8 @@ const Pay = () => {
        </select> 
         </div>
       <div className="Pay">
-        <p class="text-center">
-          <h4>Pay For A Membership </h4>
+        <p className="text-center">
+          Pay For A Membership 
           </p>
        {squarePayment}
         </div>
