@@ -48,7 +48,7 @@ router.get('/username/:id', async function(req, res) {
 });
 
 /* Create a member */
-router.post('/member', async (req, res) => {
+router.post('/', async (req, res) => {
 
   // console.log("*** INSIDE router.post, req.username",req.username);
   // console.log("*** INSIDE router.post, req.session ",req.session);
