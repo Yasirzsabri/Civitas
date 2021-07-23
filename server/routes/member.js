@@ -47,6 +47,23 @@ router.get('/username/:id', async function(req, res) {
   }
 });
 
+router.get('/communityDetail/:id', async function(req, res) {
+  
+  try {
+    const memberForUser = await member.findOne({username: req.params.id}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1}).populate("username", {username:1});
+    console.log("line53",memberForUser)
+    const communityList = memberForUser.communityDetail.map(community=>{
+      return community.community
+    })
+    console.log("line58 im here ",communityList)
+    res.send(communityList)
+  
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
+  }
+});
+
 /* Create a member */
 router.post('/', async (req, res) => {
 

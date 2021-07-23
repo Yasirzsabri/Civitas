@@ -11,7 +11,7 @@
 }
 
 .popup-in{
-    position:relative;
+    position:fixed;
     padding:25px;
     width:100%;
     max-width: 1000px;
@@ -81,7 +81,7 @@
     margin-right: 3px;
 }
 .createform button{
-    background-color: #86C232;
+    background-color: #4242427a;
     border: 0;
     padding: 8px;
     border-radius: 8px;

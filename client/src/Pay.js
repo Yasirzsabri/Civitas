@@ -2,24 +2,26 @@ import './Pay.css';
 //import Navbar from './navbar/Navbar';
 import Square from '../src/components/Square';
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.css'
-
+import 'bootstrap/dist/css/bootstrap.css';
+import AuthenticationContext from "./AuthenticationContext";
+import { useContext } from "react";
 
 
 
 const Pay = () => {
+  const authContext = useContext(AuthenticationContext)
     let [communityList, setCommunityList] = useState([]);
     let [community, setCommunity] = useState("");
     let [fee,setFee]=useState();
   const [isLoad, setLoad] = useState(false);
 
 
-  const getCommunityList = async () => {
-    let response= await fetch('/community');
-    let data = await response.json();
+  // const getCommunityList = async () => {
+  //   let response= await fetch('/community');
+  //   let data = await response.json();
     
-    setCommunityList(data); 
-  }
+  //   setCommunityList(data); 
+  // }
 
   useEffect(() =>{
   const setCommunityFee = async() => {
@@ -42,8 +44,19 @@ const Pay = () => {
       setLoad(true);
     };
     document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
-    getCommunityList();
+    // getCommunityList();
+    getCommunityListForUser();
   },[]);
+
+   const getCommunityListForUser = async () => {
+    const communityListResponse = await fetch(`/member/communityDetail/${authContext.id}`)
+    if (communityListResponse.status===200){
+      const communityListForUser = await communityListResponse.json()
+      console.log("line55 I'm here ",communityListForUser)
+      setCommunityList(communityListForUser) 
+    } 
+
+  }
 
   const squarePayment = isLoad ? (
         <Square paymentForm={ window.SqPaymentForm }
@@ -60,7 +73,7 @@ const Pay = () => {
       <div >
       <select  name="community" value={community} onChange={(e) => setCommunity(e.target.value)}>
          <option>--Select--</option>
-            {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
+            {communityList?.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
        </select> 
         </div>
       <div className="Pay">

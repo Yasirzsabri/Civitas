@@ -2,7 +2,7 @@ import React from 'react';
 import config from './paymentForm';
 import { useContext } from "react";
 import AuthenticationContext from "../AuthenticationContext";
-import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 
@@ -25,18 +25,22 @@ const Square = ({ paymentForm,fee,community }) => {
         * callback function: cardNonceResponseReceived
         * Triggered when: SqPaymentForm completes a card nonce request
         */
-       
-        cardNonceResponseReceived: function (errors, nonce, cardData) {
+  
+        cardNonceResponseReceived: function (errors, nonce, cardData)
+         {console.log("line30 check")
         if (errors) {
             // Log errors from nonce generation to the browser developer console.
             console.error('Encountered errors');
             errors.forEach(function (error) {
             console.error('  ' + error.message);
-            });
-           alert('Encountered errors, check browser developer console for more details')
+            
+            }
+            );
+            
           return;
         }
-
+        
+        // alert('Invalid Selection Wrong Community');
 
 
         const getMember = async (id) => {
@@ -60,8 +64,9 @@ const Square = ({ paymentForm,fee,community }) => {
           catch(error) {
             console.log('this happened');
             
-              console.log("45 error ",error.message)
+              // console.log("45 error ",error.message)
           } 
+          
           console.log("60 data ",memberData)
           if (memberData){
             for (let i=0; i< memberData.communityDetail.length; i++) {
@@ -157,8 +162,8 @@ const Square = ({ paymentForm,fee,community }) => {
               let data = await updateResponse.json();
               paymentSuccessfull=true
               console.log("86 update data: ",data);
-              NotificationManager.success('success', 'Success!');
-              alert('payment successful')
+
+              alert('Payment Successful');
             }           
           }
           

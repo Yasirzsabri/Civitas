@@ -29,10 +29,13 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(_id, done) {
     User.findById(_id, function(err, user) {
         // console.log('31 deserialer user: ', user)
+        if (user.username){
         done(err, {
             _id: _id,
             username: user.username,
             userLevel: user.userLevel
-        });
+          
+        });}
+        
     });
 });
