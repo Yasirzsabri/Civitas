@@ -1,4 +1,5 @@
 require('./auth/configurePassport')
+require('./batch/membershipExpiryNotice')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

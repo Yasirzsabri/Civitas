@@ -38,7 +38,8 @@ const memberSchema = new Schema({
   },],
   username:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
+    ref: "user",
+    unique: true
   },
   active: Boolean,
   dateAdded: Date,
