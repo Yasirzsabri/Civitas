@@ -10,57 +10,104 @@ async function test(_id){
     User.findById(_id, async function(err, user) {
 
         let newNavbarAccess=false
-        let newCommunityDetail=[]
+        // let newCommunityDetail=[]
 
         if(user.username){
             console.log("user.username: ",user.username)
 
-            let data = await member.find({username: {"$eq": _id}}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1, level:1}).populate("username", {username:1});
+            let memberRecord = await member.findOne({username: _id}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1, level:1}).populate("username", {username:1});
             
-            console.log("data, _id : ",data,_id)
+            // console.log("data, _id : ",data,_id)
 
-            // should only ever be 1 member record due unique index on username in member collectiom and the member.js model
-            if(data.length>1){
-                console.log("deserializeUser in configurePassport, user: ",user.username," retrieved more than 1 member record.")
-            }
-            else{
-                // I know there can be only 1. Parker July 25, 2021
-                for(i=0;i<data.length;i++) {
+            if(memberRecord){
+                // newCommunityDetail=[...memberRecord.communityDetail]
 
-                    newCommunityDetail=[...data[i].communityDetail]
-    
-                    for(j=0;j<data[i].communityDetail.length;j++){
-                        
-                        console.log("communityDetail: ",data[i].communityDetail[j])
-                        if (data[i].communityDetail[j].userLevel.level=1) newNavbarAccess=true
-                    }
+                for(j=0;j<memberRecord.communityDetail.length;j++){                    
+                    // console.log("communityDetail: ",data.communityDetail[j])
+                    if (memberRecord.communityDetail[j].userLevel.level=1) newNavbarAccess=true
                 }
                 // done(err, {
                 //     _id: _id,
                 //     username: user.username,
-                //     communityDetail: newCommunityDetail,
-                //     navbarAccess : newNavbarAccess
-                  
+                //     navbarAccess : newNavbarAccess,                 
+                //     member: memberRecord                  
                 // })   
                 
                 let stupid = {
                     _id: _id,
                     username: user.username,
-                    communityDetail:  newCommunityDetail,
-                    navbarAccess : newNavbarAccess                  
+                    navbarAccess : newNavbarAccess,                 
+                    member: memberRecord
                 } 
                 console.log("stupid: ", stupid)  
-                console.log("stupid.communityDetail[0].community.name: ", stupid.communityDetail[0].community.name)  
-                console.log("stupid.communityDetail[0].userLevel.name: ", stupid.communityDetail[0].userLevel.name)  
-                console.log("stupid.communityDetail[0].userLevel.level: ", stupid.communityDetail[0].userLevel.level)  
-                console.log("stupid.communityDetail[0].active: ", stupid.communityDetail[0].active)  
-    
-    
+                console.log("stupid.navbarAccess: ", stupid.navbarAccess)  
+                console.log("stupid.member.emailAddress: ", stupid.member.emailAddress)      
+                console.log("stupid.member.communityDetail[0].community.name: ", stupid.member.communityDetail[0].community.name)  
+                console.log("stupid.member.communityDetail[0].userLevel.name: ", stupid.member.communityDetail[0].userLevel.name)  
+                console.log("stupid.member.communityDetail[0].userLevel.level: ", stupid.member.communityDetail[0].userLevel.level)  
+                console.log("stupid.member.communityDetail[0].active: ", stupid.member.communityDetail[0].active)  
+                console.log("stupid.member.emailAddress: ", stupid.member.emailAddress)      
             }
         }
       }
     )
 }
+
+// async function test(_id){
+//     User.findById(_id, async function(err, user) {
+
+//         let newNavbarAccess=false
+//         let newCommunityDetail=[]
+
+//         if(user.username){
+//             console.log("user.username: ",user.username)
+
+//             let data = await member.find({username: {"$eq": _id}}).populate("communityDetail.community", {name:1}).populate("communityDetail.userLevel", {name:1, level:1}).populate("username", {username:1});
+            
+//             console.log("data, _id : ",data,_id)
+
+//             // should only ever be 1 member record due unique index on username in member collectiom and the member.js model
+//             if(data.length>1){
+//                 console.log("deserializeUser in configurePassport, user: ",user.username," retrieved more than 1 member record.")
+//             }
+//             else{
+//                 // I know there can be only 1. Parker July 25, 2021
+//                 for(i=0;i<data.length;i++) {
+
+//                     newCommunityDetail=[...data[i].communityDetail]
+    
+//                     for(j=0;j<data[i].communityDetail.length;j++){
+                        
+//                         console.log("communityDetail: ",data[i].communityDetail[j])
+//                         if (data[i].communityDetail[j].userLevel.level=1) newNavbarAccess=true
+//                     }
+//                 }
+//                 // done(err, {
+//                 //     _id: _id,
+//                 //     username: user.username,
+//                 //     communityDetail: newCommunityDetail,
+//                 //     navbarAccess : newNavbarAccess
+                  
+//                 // })   
+                
+//                 let stupid = {
+//                     _id: _id,
+//                     username: user.username,
+//                     communityDetail:  newCommunityDetail,
+//                     navbarAccess : newNavbarAccess                  
+//                 } 
+//                 console.log("stupid: ", stupid)  
+//                 console.log("stupid.communityDetail[0].community.name: ", stupid.communityDetail[0].community.name)  
+//                 console.log("stupid.communityDetail[0].userLevel.name: ", stupid.communityDetail[0].userLevel.name)  
+//                 console.log("stupid.communityDetail[0].userLevel.level: ", stupid.communityDetail[0].userLevel.level)  
+//                 console.log("stupid.communityDetail[0].active: ", stupid.communityDetail[0].active)  
+    
+    
+//             }
+//         }
+//       }
+//     )
+// }
 
 test('60e73016186f7d4530029dfc')
 
