@@ -1,8 +1,7 @@
 import React from 'react';
 import config from './paymentForm';
 import { useContext } from "react";
-import AuthenticationContext from "../AuthenticationContext";
-
+import AuthenticationContext from "../../AuthenticationContext";
 import 'bootstrap/dist/css/bootstrap.css'
 
 
@@ -81,7 +80,8 @@ const Square = ({ paymentForm,fee,community }) => {
         if (isMemberOfCommunity){
 
           try{
-            let response = await fetch('http://localhost:3000/process-payment', {
+            // let response = await fetch('http://localhost:3000/process-payment', {
+            let response = await fetch('/square/process-payment', {              
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
