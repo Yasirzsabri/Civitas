@@ -8,7 +8,7 @@ import CommunityTable from './components/screens/CommunityTable';
 import MemberTable from './components/screens/MemberTable';
 import AuthenticationProvider from './AuthenticationProvider'
 import React, { useState, useEffect } from 'react';
-import Pay from './Pay';
+import Pay from './components/square/Pay';
 
 const App = () => {
   return (

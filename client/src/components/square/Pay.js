@@ -1,9 +1,9 @@
 import './Pay.css';
 //import Navbar from './navbar/Navbar';
-import Square from '../src/components/Square';
+import Square from './Square';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import AuthenticationContext from "./AuthenticationContext";
+import AuthenticationContext from "../../AuthenticationContext";
 import { useContext } from "react";
 
 
