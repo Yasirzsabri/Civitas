@@ -1,6 +1,10 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user')
+// const userLevel = require('../models/userLevel');  
+// const member = require('../models/member');
+// const community = require('../models/community');
+
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -27,15 +31,30 @@ passport.serializeUser(function(user, done) {
 });
   
 passport.deserializeUser(function(_id, done) {
-    User.findById(_id, function(err, user) {
-        // console.log('31 deserialer user: ', user)
+    User.findById(_id, async function(err, user) {
+              
         if (user.username){
-        done(err, {
+          done(err, {
             _id: _id,
             username: user.username,
-            userLevel: user.userLevel
-          
-        });}
-        
+            navbarAccess : user.navbarAccess,                 
+            member: user.member                 
+          }); 
+        }    
     });
 });
+
+// passport.deserializeUser(function(_id, done) {
+//   User.findById(_id, function(err, user) {
+//       // console.log('31 deserialer user: ', user)
+//       if (user.username){
+//       done(err, {
+//           _id: _id,
+//           username: user.username,
+//           userLevel: user.userLevel
+        
+//       });}
+      
+//   });
+// });
+

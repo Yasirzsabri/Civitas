@@ -5,9 +5,8 @@ const user = require('../models/user');
 
 //List all users
 router.get('/', async (req, res) =>{
-    //let data = await user.find({}).populate("userLevel", {name:1});
-    //let data = await user.find({}).populate("userLevel").populate("supplier").sort({name:1});
-    let data = await user.find({}).populate("userLevel", {name:1});
+    // let data = await user.find({}).populate("userLevel", {name:1});
+    let data = await user.find({});
     console.info('Records retrieved from mongoose:', data?.length);
     res.send(data);
 })

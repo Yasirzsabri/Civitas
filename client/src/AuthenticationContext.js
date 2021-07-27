@@ -3,7 +3,8 @@ import React from 'react'
 const AuthenticationContext = React.createContext({
     username: "",
     id: "",
-    userLevel: [],
+    navbarAccess: false,
+    member: {},
     logIn: (username, password) => {},
     logOut: () => {}
 })

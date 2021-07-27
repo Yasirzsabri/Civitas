@@ -72,7 +72,7 @@ const CommunityTable = () => {
       .then(response => response.json())
       .then(json => {
           onCancel();
-          // console.log("updateResponse = ", updateResponse);
+          console.log("updateResponse = ", updateResponse);
       })    
     }
 

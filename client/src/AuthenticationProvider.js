@@ -4,7 +4,8 @@ import AuthenticationContext from './AuthenticationContext'
 const AuthenticationProvider = ({ children }) => {
     let [username, setUsername] = useState()
     let [id,setId] = useState()
-    let [userLevel, setUserLevel] = useState()
+    let [navbarAccess, setNavbarAccess] = useState()
+    let [member, setMember] = useState()
 
     const logIn = (username, password) => {
         async function logintoserver() {
@@ -17,10 +18,26 @@ const AuthenticationProvider = ({ children }) => {
             }
             let response = await fetch('/auth/login', loginOptions)
             let loggedInUser = await response.json()
+            
+            let newNavbarAccess=false
+            let memberRecord={}
+
+            if (loggedInUser._id){
+                response= await fetch(`/auth/member/${loggedInUser._id}`)
+                memberRecord= await response.json()
+
+                if(memberRecord.username){
+                  let j=0
+                  for(j=0;j<memberRecord.communityDetail.length;j++){                    
+                      if (memberRecord.communityDetail[j].userLevel.level===1) newNavbarAccess=true
+                  }                      
+              }
+            }
 
             setUsername(loggedInUser.username)
             setId(loggedInUser._id)
-            setUserLevel(loggedInUser.userLevel)
+            setNavbarAccess(newNavbarAccess)
+            setMember(memberRecord)
         }
         logintoserver()
     }
@@ -28,13 +45,15 @@ const AuthenticationProvider = ({ children }) => {
     const logOut = () => {
         setUsername(undefined)
         setId(undefined)
-        setUserLevel(undefined)
+        setNavbarAccess(undefined)
+        setMember(undefined)
     }
 
     let contextValue = {
         username,
         id,
-        userLevel,
+        navbarAccess,
+        member,
         logIn,
         logOut
     }

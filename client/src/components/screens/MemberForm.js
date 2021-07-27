@@ -96,7 +96,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 }           
             }
             catch(error) {
-                console.log("83 error ",error.message)
+                console.log("99 MemberForm error ",error.message)
             }            
         }
         else {

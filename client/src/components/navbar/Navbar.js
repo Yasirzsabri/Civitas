@@ -7,11 +7,11 @@ import { useContext } from "react"
 import AuthenticationContext from "../../AuthenticationContext"
 import './Navbar.css';
 
-
 const Navbar = () => {
     const authContext = useContext(AuthenticationContext)
-    const isLoggedIn = authContext.username !== undefined
 
+    console.log("Navbar authContext: ",authContext)
+    
     const sidebarItems = [
         {
             title:'Home',
@@ -94,7 +94,7 @@ const Navbar = () => {
         setSidebar(!sidebar)
     }
 
-    return (isLoggedIn) ? 
+    return (authContext.navbarAccess) ? 
         <div>
             <div className="navbar">
                 <Link to='#' className='menu-bars'>
