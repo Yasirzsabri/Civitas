@@ -15,6 +15,7 @@ var home = require('./routes/home');
 var cors = require('cors');
 var community = require('./routes/community');
 var member = require('./routes/member');
+var event = require('./routes/event');
 var mail = require('./routes/mail');
 var square = require('./routes/square');
 const bodyParser = require('body-parser');
@@ -45,6 +46,7 @@ app.use('/userLevel',userLevel)
 app.use('/home',home)
 app.use('/community',community)
 app.use('/member',member)
+app.use('/event',event)
 app.use('/mail',mail)
 app.use('/square',square)
 

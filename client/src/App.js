@@ -9,6 +9,7 @@ import MemberTable from './components/screens/MemberTable';
 import AuthenticationProvider from './AuthenticationProvider'
 import React, { useState, useEffect } from 'react';
 import Pay from './components/square/Pay';
+import EventTable from './components/screens/EventTable';
 
 const App = () => {
   return (
@@ -20,7 +21,6 @@ const App = () => {
           <Route exact path='/'>
             <Home/>            
           </Route>
-          
           <Route path='/user-level'>
             <UserLevelTable/>
           </Route>
@@ -35,6 +35,9 @@ const App = () => {
           </Route>
           <Route path='/Pay'>
             <Pay/>
+          </Route>
+          <Route path='/events'>
+            <EventTable/>
           </Route>
         </Switch>
       </Router>

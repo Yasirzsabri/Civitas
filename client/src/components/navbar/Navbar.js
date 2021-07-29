@@ -85,6 +85,12 @@ const Navbar = () => {
             icon: <FaIcons.FaCcVisa />,
             class_name:'nav-text'
         },
+        {   
+            title:'Community Events',
+            path:'/events',
+            icon: <FaIcons.FaCalendar/>,
+            class_name:'nav-text'
+        },
     ]
 
     const [sidebar, setSidebar] = useState(false)

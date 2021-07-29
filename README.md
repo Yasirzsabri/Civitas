@@ -171,6 +171,7 @@ $ npm install react-icons --save
 $ npm install react-paginate
 $ npm install uuid
 $ npm install react-bootstrap bootstrap 
+$ npm install fullcalendar
 $ cd ..
 $ git add .
 $ git commit -m "adding nodemon to speed development"

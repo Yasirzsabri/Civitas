@@ -12,6 +12,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^5.0.2",
     "express": "^4.17.0",
+    "fullcalendar": "^5.8.0",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "moment": "^2.29.1",
