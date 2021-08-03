@@ -86,8 +86,14 @@ const Navbar = () => {
             class_name:'nav-text'
         },
         {   
-            title:'Community Events',
+            title:'Add Events',
             path:'/events',
+            icon: < FaIcons.FaRegCalendarPlus />,
+            class_name:'nav-text'
+        },
+        {   
+            title:'Community Events',
+            path:'/calendar',
             icon: <FaIcons.FaCalendar/>,
             class_name:'nav-text'
         },

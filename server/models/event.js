@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   address1: String,
   address2: String,
