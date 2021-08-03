@@ -157,12 +157,13 @@ const UserTable = () => {
                 <h2>Users</h2>
                 <button className="add-u" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
                 <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} minimalFlag ={false} onUserFormClick = {handleUserFormClick} />
-                <table>
+                <table  className='aaa'>
                     <tbody>
                     <tr><th>Username</th><th>Password</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                         {displayRows}
                     </tbody>
                 </table>
+                
                 <ReactPaginate 
                     previousLabel = {"Prev"}
                     NextLabel = {"Next"}

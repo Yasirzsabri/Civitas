@@ -1,4 +1,12 @@
-table{
+.table{
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    text-align: center; 
+    border-collapse: collapse;
+    margin-bottom: 30px; 
+}
+.aaa{
     margin: 0 auto;
     display:flex;
     justify-content: center;
@@ -9,7 +17,7 @@ table{
 
 th {
     background-color: black;
-    color: #86C232;  
+    color: #dee0da;  
 }
 
 td {
@@ -43,11 +51,11 @@ td {
 
 .paginationBttns a:hover{
     color:black;
-    background-color: #86C232;
+    background-color: #daddd6;
 }
 .paginationActive a{
     color:black;
-    background-color: #86C232;
+    background-color: #e5e9e0;
 }
 
 .slash{
@@ -56,7 +64,7 @@ td {
 }
 
 .list-table button {
-    background-color: #86C232;
+    background-color: #dcdfd9;
     border: 0;
     padding: 8px;
     border-radius: 8px;

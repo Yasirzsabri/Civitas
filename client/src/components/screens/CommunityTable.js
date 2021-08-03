@@ -473,7 +473,7 @@ const CommunityTable = () => {
           <button onClick={()=>setAddBtnPopupForm(true)}>New Community</button>
           <CommunityForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onCommunityFromClick={handleCommunityFormClick} />
 
-          <table>
+          <table className='aaa'>
               <tbody>
                 <tr><th>Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Province</th><th>Postal Code</th>
                 <th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>Member Fee</th><th>GST</th><th>PST</th>

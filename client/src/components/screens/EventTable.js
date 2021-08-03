@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
 import Datepicker from "react-datepicker";
@@ -9,7 +10,6 @@ import * as RiIcons from 'react-icons/ri';
 import * as BsIcons from 'react-icons/bs';
 import * as SiIcons from 'react-icons/si';
 
-// a comment
 const EventTable = () => {
     const [rows, setRows] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
@@ -192,7 +192,7 @@ const EventTable = () => {
 
     const displayRows =rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
       return (
-        <tr key= {row.name}>
+        <tr className="Tb" key= {row._id} >
             <td>
                 {
                   inEditMode.status && inEditMode.rowKey === row._id ?(
@@ -356,13 +356,13 @@ const EventTable = () => {
       )
     })
     return (
-      <div>
+      <div >
         <div className="list-table">
           <h2>Event Maintanence</h2>
           <button onClick={()=>setAddBtnPopupForm(true)}>New Event</button>
           <EventForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onEventFormClick={handleEventFormClick} homePageFlag = {false} />
-          <table>
-              <tbody>
+          <table className='aaa'>
+              <tbody className="civitasTable">
                 <tr><th>Event Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Start Date</th><th>End Date</th><th>community</th><th>Fee</th><th>Contact Number</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                
               </tbody>
@@ -377,7 +377,9 @@ const EventTable = () => {
             nextLinkClassName = {"nextBttn"}
             disabledClassName={"paginationDisabled"}
             activeClassName= {"paginationActive"}
-          />       
+          />  
+          {/* <Calendar rows={rows}></Calendar> */}
+
         </div>
       </div>
     )

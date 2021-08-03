@@ -162,7 +162,7 @@ const UserLevelTable = () => {
           <h2>User Level Maintanence</h2>
           <button className="add-ul" onClick={()=>setAddBtnPopupForm(true)}>New User Level</button>
           <UserLevelForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserLevelFromClick={handleUserLevelFormClick} />
-          <table>
+          <table className='aaa'>
               <tbody>
                 <tr><th>Name</th><th>Level</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                

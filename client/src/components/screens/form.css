@@ -1,46 +1,73 @@
 .createform{
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
+    top:0; 
+     left: 400px; 
+    width: 60%;
     height:100vh;
     background-color: rgba(0,0,0,0.2);
     display:flex;
     justify-content: center;
     align-items: center;
+     margin-bottom: auto;
 }
 
-.popup-in{
+/* .popup-in{
     position:fixed;
     padding:25px;
     width:100%;
     max-width: 1000px;
     background-color: #fff;
-}
-
-.popup-in .closebtn{
-    position: absolute;
-    top: 16px;
-    right:16px;
-    font-weight: bold;
-    background-color: white;
-    font-size: larger;
-}
-
+} */
+.popup-in{
+    margin: auto;
+  background: rgba(243, 241, 241, 0.493);
+  width: 100%;
+  padding: 25px;
+  margin-bottom: auto;
+  align-self: center;
+    /* position:fixed;
+    padding:25px;
+    width:100%;
+    max-width: 1000px;
+    background-color: #fff;
+    table-layout: auto;
+    width: 1200px;
+    table-layout: auto;
+    table-layout: fixed; */
+} 
 .createform label{
     text-align:left;
     display:block;
+} 
+
+.popup-in closebtn{
+    position: absolute;
+    top: 2px;
+    right: 7px;
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
+    margin-bottom: auto;
+}
+
+.popup-in-signUp {
+    margin: auto;
+    background: rgba(243, 241, 241, 0.493);
+    width: 100%;
+    padding: 225px;
+    margin-bottom: auto;
+    align-self: center;
 }
 
 .createform h4{
-    margin-bottom: 20px;
+    margin-bottom: auto;
 }
 
 .createform input, select{
     width:100%;
     padding: 6px 10px;
     margin:8px 0;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(12, 10, 10);
     box-sizing: border-box;
     display:block;   
 }
@@ -81,7 +108,8 @@
     margin-right: 3px;
 }
 .createform button{
-    background-color: #4242427a;
+    background-color: #f1f1f1;
+
     border: 0;
     padding: 8px;
     border-radius: 8px;
@@ -93,4 +121,15 @@
     font-weight: bold;
     background-color: white;
     font-size: larger;
+}
+
+
+.closebtn {
+    position: absolute;
+    top: 30px;
+    right: 4px;;
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
+    margin-bottom: auto;
 }
