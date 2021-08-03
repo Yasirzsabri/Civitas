@@ -3,7 +3,7 @@
     "$oid": "6099cdc63fedfb45458a073c"
   },
   "username": "Yasir",
-  "password": "password",
+  "password": "$2a$10$aIoxUGuchOfUivTRjpGKyOUCzIT.3Kzw14OTty0DsK.3p7UpixoXi",
   "active": true,
   "dateAdded": {
     "$date": "2021-05-10T05:25:53.202Z"
@@ -16,7 +16,7 @@
     "$oid": "60e73016186f7d4530029dfc"
   },
   "username": "Parker",
-  "password": "password",
+  "password": "$2a$10$aIoxUGuchOfUivTRjpGKyOUCzIT.3Kzw14OTty0DsK.3p7UpixoXi",
   "active": true,
   "dateAdded": {
     "$date": "2021-07-08T17:04:22.338Z"

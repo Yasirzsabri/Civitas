@@ -172,6 +172,7 @@ $ npm install react-paginate
 $ npm install uuid
 $ npm install react-bootstrap bootstrap 
 $ npm install fullcalendar
+$ npm install bcryptjs --save
 $ cd ..
 $ git add .
 $ git commit -m "adding nodemon to speed development"

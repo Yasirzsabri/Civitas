@@ -5,7 +5,6 @@ const User = require('../models/user')
 // const member = require('../models/member');
 // const community = require('../models/community');
 
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log('Passport is asking to authenticate user: ', username, ' with password ', password)
@@ -16,15 +15,42 @@ passport.use(new LocalStrategy(
         console.log('  No user exists')
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (user.password !== password) {
-        console.log('  Password doesn\'t match')
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      console.log('  Returning the user!')
-      return done(null, user);
+
+      user.comparePassword(password, function(matchError, isMatch) {
+        if (matchError) {
+          console.log('  Error checking password')
+          return done(null, false, { message: 'Error checking password.' });
+        } else if (!isMatch) {
+          console.log('  Password doesn\'t match')
+          return done(null, false, { message: 'Incorrect password.' });
+        } else {
+          console.log('  Returning the user!')
+          return done(null, user);
+        }
+      })
     });
   }
 ));
+
+// passport.use(new LocalStrategy(
+//   function(username, password, done) {
+//     console.log('Passport is asking to authenticate user: ', username, ' with password ', password)
+//     User.findOne({ username: username }, function(err, user) {
+//       console.log('  Found user', user)
+//       if (err) { return done(err); }
+//       if (!user) {
+//         console.log('  No user exists')
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (user.password !== password) {
+//         console.log('  Password doesn\'t match')
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       console.log('  Returning the user!')
+//       return done(null, user);
+//     });
+//   }
+// ));
 
 passport.serializeUser(function(user, done) {
     done(null, user._id);
