@@ -16,14 +16,14 @@ const AuthenticationProvider = ({ children }) => {
                 },
                 body: JSON.stringify({ username, password })
             }
-            let response = await fetch('/auth/login', loginOptions)
+            let response = await fetch('/api/auth/login', loginOptions)
             let loggedInUser = await response.json()
             
             let newNavbarAccess=false
             let memberRecord={}
 
             if (loggedInUser._id){
-                response= await fetch(`/auth/member/${loggedInUser._id}`)
+                response= await fetch(`/api/auth/member/${loggedInUser._id}`)
                 memberRecord= await response.json()
 
                 if(memberRecord.username){

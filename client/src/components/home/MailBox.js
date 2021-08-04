@@ -16,7 +16,7 @@ const MailBox = () => {
         data.append("body", body);
         data.append("file", file[0]);
 
-        fetch("/home/sendemail", {
+        fetch("/api/home/sendemail", {
             method:"POST",
             body: data,
         }).then((newemail) => {

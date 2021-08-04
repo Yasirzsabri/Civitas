@@ -25,7 +25,7 @@ const UserLevelTable = () => {
 
     const getUserLevel = async () => {
         // fetch uses the "proxy" value set in client/package.json
-        let response = await fetch('/userLevel');
+        let response = await fetch('/api/userLevel');
         let data = await response.json();
         setRows(data);
       };
@@ -42,7 +42,7 @@ const UserLevelTable = () => {
           lastUpdateDate : currentDate
       }
 
-      let updateResponse = fetch(`/userLevel/${id}`, {
+      let updateResponse = fetch(`/api/userLevel/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ const UserLevelTable = () => {
     }
 
     async function handleDeleteClick(itemID) {
-      let deleteResponse = await fetch(`/userLevel/${itemID}`, {
+      let deleteResponse = await fetch(`/api/userLevel/${itemID}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'

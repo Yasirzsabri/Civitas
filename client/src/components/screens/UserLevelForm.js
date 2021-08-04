@@ -20,7 +20,7 @@ const UserLevelForm = (props) => {
         }
         console.log('Creating User Level with', userLevelToCreate )
         try {
-            let createResponse = await fetch('/userLevel', {
+            let createResponse = await fetch('/api/userLevel', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

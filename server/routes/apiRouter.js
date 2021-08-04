@@ -1,0 +1,25 @@
+const router = require('express').Router()
+
+const user = require('./user');
+const auth = require('./auth');
+const register = require('./register');
+const userLevel = require('./userLevel');
+const home = require('./home');
+const community = require('./community');
+const member = require('./member');
+const event = require('./event');
+const mail = require('./mail');
+const square = require('./square');
+
+router.use('/user',user)
+router.use('/auth',auth)
+router.use('/register',register)
+router.use('/userLevel',userLevel)
+router.use('/home',home)
+router.use('/community',community)
+router.use('/member',member)
+router.use('/event',event)
+router.use('/mail',mail)
+router.use('/square',square)
+
+module.exports = router

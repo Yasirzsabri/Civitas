@@ -42,7 +42,7 @@ const EventTable = () => {
     
     //fetch communities
     const getCommunityList = async () => {
-      let response= await fetch('/community');
+      let response= await fetch('/api/community');
       let data = await response.json();
       setCommunityList(data);
       // console.log("54 communityList: ",data)
@@ -66,7 +66,7 @@ const EventTable = () => {
           lastUpdateDate : currentDate
       }
 
-      let updateResponse = fetch(`/event/${id}`, {
+      let updateResponse = fetch(`/api/event/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ const EventTable = () => {
     }
 
     async function handleDeleteClick(itemID) {
-      let deleteResponse = await fetch(`/event/${itemID}`, {
+      let deleteResponse = await fetch(`/api/event/${itemID}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -132,7 +132,7 @@ const EventTable = () => {
     }
 
     const getEvent = async () => {
-      let response = await fetch('/event');
+      let response = await fetch('/api/event');
       let data = await response.json();
       setRows(data);
     };

@@ -47,7 +47,7 @@ const Member = () => {
     
     //fetch communities
     const getCommunityList = async () => {
-      let response= await fetch('/community');
+      let response= await fetch('/api/community');
       let data = await response.json();
       setCommunityList(data);
       // console.log("54 communityList: ",data)
@@ -55,14 +55,14 @@ const Member = () => {
     
     //fetch user list 
     const getUsernameList = async () => {
-      let response= await fetch('/user');
+      let response= await fetch('/api/user');
       let data = await response.json();
       setUsernameList(data);
     }
 
      //fetch userLevellist 
      const getUserLevelList = async () =>{
-        let response= await fetch('/userLevel');
+        let response= await fetch('/api/userLevel');
         let data = await response.json();        
         setUserLevelList(data)  
 // console.log("69 userLevelList: ", data)
@@ -86,7 +86,7 @@ const Member = () => {
           lastUpdateDate : currentDate
       }
 
-      let updateResponse = fetch(`/member/${id}`, {
+      let updateResponse = fetch(`/api/member/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -143,7 +143,7 @@ const Member = () => {
     }
 
     async function handleDeleteClick(itemID) {
-      let deleteResponse = await fetch(`/member/${itemID}`, {
+      let deleteResponse = await fetch(`/api/member/${itemID}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -157,7 +157,7 @@ const Member = () => {
 
     const getMember = async () => {
       // fetch uses the "proxy" value set in client/package.json
-      let response = await fetch('/member');
+      let response = await fetch('/api/member');
       let data = await response.json();
       setRows(data);
     // console.log("164 getMember data: ", data)

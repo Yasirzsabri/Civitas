@@ -42,21 +42,21 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
 
     //fetch community list
     const getCommunityList = async () => {
-        let response= await fetch('/community');
+        let response= await fetch('/api/community');
         let data = await response.json();
         setCommunityList(data);
     }
 
     //fetch user list 
     const getUsernameList = async () => {
-        let response= await fetch('/user');
+        let response= await fetch('/api/user');
         let data = await response.json();
         setUsernameList(data);
     }
 
      //fetch userLevel
      const getUserLevelList = async () =>{
-        let response= await fetch('/userLevel');
+        let response= await fetch('/api/userLevel');
         let data = await response.json();        
         setUserLevelList(data)  
     }
@@ -69,7 +69,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
         if(id && homePageFlag){
             if (homePageFlag) setUsername(authContext.id)
             try{
-                let response= await fetch(`/member/username/${id}`); 
+                let response= await fetch(`/api/member/username/${id}`); 
 
                 if(response.ok){
                     let data = await response.json();
@@ -137,7 +137,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
                 lastUpdateDate : currentDate
             }
         // console.log("138 our member to update looks like: ",memberToUpdate)
-            let updateResponse = fetch(`/member/${member._id}`, {
+            let updateResponse = fetch(`/api/member/${member._id}`, {
               method: "PUT",
               headers: {
                 'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
             // console.log("173, username: ", username)
             // console.log("174 authContext: ", authContext)
             try {
-                let createResponse = await fetch('/member', {
+                let createResponse = await fetch('/api/member', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

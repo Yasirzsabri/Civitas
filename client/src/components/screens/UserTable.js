@@ -28,7 +28,7 @@ const UserTable = () => {
 
     //fetch data and set rows
     const getUsers = async () =>{
-        let response= await fetch('/user');
+        let response= await fetch('/api/user');
         let data = await response.json();
         // console.log("data:", data)
         setRows(data)
@@ -48,7 +48,7 @@ const UserTable = () => {
             active: newActive,
             lastUpdateDate: currentDate
         }
-        let updateResponse = fetch(`/user/${id}`, {
+        let updateResponse = fetch(`/api/user/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": 'application/json'
@@ -81,7 +81,7 @@ const UserTable = () => {
 
     //delete a row
     const handleDeleteClick = async (itemId)=> {
-        let deleteResponse = await fetch(`/user/${itemId}`, {
+        let deleteResponse = await fetch(`/api/user/${itemId}`, {
             method:"DELETE",
             headers: {
                 'Content-Type': 'application/json'}
