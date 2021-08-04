@@ -22,10 +22,10 @@ const UserForm = (props) => {
         // console.log('Creating a User:', userToCreate )
        
         try { 
-            let stupid='/user';
+            let stupid='/api/user';
             
             if(props.homePageFlag){
-                stupid = '/register';
+                stupid = '/api/register';
             }
 
             let createResponse = await fetch(`${stupid}`, {

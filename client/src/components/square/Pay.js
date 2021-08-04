@@ -26,7 +26,7 @@ const Pay = () => {
   useEffect(() =>{
   const setCommunityFee = async() => {
       
-      let response= await fetch(`/community/${community}`);
+      let response= await fetch(`/api/community/${community}`);
       let data = await response.json();
       setFee(data.membershipFee)
   }
@@ -49,7 +49,7 @@ const Pay = () => {
   },[]);
 
    const getCommunityListForUser = async () => {
-    const communityListResponse = await fetch(`/member/communityDetail/${authContext.id}`)
+    const communityListResponse = await fetch(`/api/member/communityDetail/${authContext.id}`)
     if (communityListResponse.status===200){
       const communityListForUser = await communityListResponse.json()
       console.log("line55 I'm here ",communityListForUser)

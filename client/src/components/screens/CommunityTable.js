@@ -62,7 +62,7 @@ const CommunityTable = () => {
           lastUpdateDate : currentDate
       }
 
-      let updateResponse = fetch(`/community/${id}`, {
+      let updateResponse = fetch(`/api/community/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ const CommunityTable = () => {
 
     //callback
     async function handleDeleteClick(itemID) {
-      let deleteResponse = await fetch(`/community/${itemID}`, {
+      let deleteResponse = await fetch(`/api/community/${itemID}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -132,7 +132,7 @@ const CommunityTable = () => {
 
     const getCommunities = async () => {
       // fetch uses the "proxy" value set in client/package.json
-      let response = await fetch('/community');
+      let response = await fetch('/api/community');
       let data = await response.json();
 
       // console.log("data = ", data);

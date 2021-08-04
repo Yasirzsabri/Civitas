@@ -7,17 +7,21 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
 var passport = require('passport')
-var user = require('./routes/user');
-var auth = require('./routes/auth');
-var register = require('./routes/register');
-var userLevel = require('./routes/userLevel');
-var home = require('./routes/home');
+
+// IMPORT ROUTES
+var apiRouter = require('./routes/apiRouter');
+
+// var user = require('./routes/user');
+// var auth = require('./routes/auth');
+// var register = require('./routes/register');
+// var userLevel = require('./routes/userLevel');
+// var home = require('./routes/home');
 var cors = require('cors');
-var community = require('./routes/community');
-var member = require('./routes/member');
-var event = require('./routes/event');
-var mail = require('./routes/mail');
-var square = require('./routes/square');
+// var community = require('./routes/community');
+// var member = require('./routes/member');
+// var event = require('./routes/event');
+// var mail = require('./routes/mail');
+// var square = require('./routes/square');
 const bodyParser = require('body-parser');
 // const crypto = require('crypto');
 const dotenv = require('dotenv');
@@ -36,19 +40,44 @@ app.use(cors())
 
 dotenv.config();
 
+// ***************************  taken from superheros *********************************************
+// USE ROUTES
+app.use('/api', apiRouter);
+
+// serve the react application
+app.use(express.static('../client/build'))
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.resolve(__dirname,'../client/build','index.html'))
+})
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.send('error');
+});
+// ***************************  taken from superheros *********************************************
 
 
-
-app.use('/user',user)
-app.use('/auth',auth)
-app.use('/register',register)
-app.use('/userLevel',userLevel)
-app.use('/home',home)
-app.use('/community',community)
-app.use('/member',member)
-app.use('/event',event)
-app.use('/mail',mail)
-app.use('/square',square)
+// app.use('/user',user)
+// app.use('/auth',auth)
+// app.use('/register',register)
+// app.use('/userLevel',userLevel)
+// app.use('/home',home)
+// app.use('/community',community)
+// app.use('/member',member)
+// app.use('/event',event)
+// app.use('/mail',mail)
+// app.use('/square',square)
 
 // // Set Square Connect credentials and environment
 // const defaultClient = squareConnect.ApiClient.instance;

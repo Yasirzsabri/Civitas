@@ -35,7 +35,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
 
     //fetch community list
     const getCommunityList = async () => {
-        let response= await fetch('/community');
+        let response= await fetch('/api/community');
         let data = await response.json();
         setCommunityList(data);
     }
@@ -63,7 +63,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
             lastUpdateDate : currentDate
         }
         try {
-            let createResponse = await fetch('/event', {
+            let createResponse = await fetch('/api/event', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

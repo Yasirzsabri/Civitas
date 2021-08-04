@@ -50,7 +50,7 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
         }
 
         try {
-            let createResponse = await fetch('/community', {
+            let createResponse = await fetch('/api/community', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -45,7 +45,7 @@ const Square = ({ paymentForm,fee,community }) => {
         const getMember = async (id) => {
           
           try{
-              let response= await fetch(`/member/username/${authContext.id}`); 
+              let response= await fetch(`/api/member/username/${authContext.id}`); 
               
 
               if(response.ok){
@@ -81,7 +81,7 @@ const Square = ({ paymentForm,fee,community }) => {
 
           try{
             // let response = await fetch('http://localhost:3000/process-payment', {
-            let response = await fetch('/square/process-payment', {              
+            let response = await fetch('/api/square/process-payment', {              
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
@@ -151,7 +151,7 @@ const Square = ({ paymentForm,fee,community }) => {
             }
     
             console.log("98 memberToUpdate: ",memberToUpdate)
-            let updateResponse = await fetch(`/member/${memberData._id}`, {
+            let updateResponse = await fetch(`/api/member/${memberData._id}`, {
             method: "PUT",
             headers: {
               'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ const Calendar =()=>{
     let newEvents=[]
     
      const getEvent = async () => {
-      let response= await fetch('/event');
+      let response= await fetch('/api/event');
       let data = await response.json();
       let i = 0
       for(i=0;i<data.length;i++){

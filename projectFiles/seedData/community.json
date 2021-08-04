@@ -42,4 +42,48 @@
     "$date": "2021-06-28T01:04:15.698Z"
   },
   "__v": 0
+},{
+  "_id": {
+    "$oid": "60f16f4047e80f0654df48dc"
+  },
+  "name": "Heyho",
+  "address1": "somewhere",
+  "address2": "",
+  "city": "lost",
+  "province": "stupid",
+  "postalCode": "2ub bbb",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60f16f4047e80f0654df48dd"
+      },
+      "name": "cell",
+      "phoneNumber": "567"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60f16f4047e80f0654df48de"
+      },
+      "firstName": "you",
+      "lastName": "you know"
+    }
+  ],
+  "emailAddress": "abc@def.net",
+  "membershipFee": 66,
+  "GST": 0.05,
+  "PST": 0,
+  "HST": 0,
+  "membershipStartPeriod": {
+    "$date": "2021-07-16T11:35:00.658Z"
+  },
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-07-16T11:36:31.801Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-07-16T11:36:31.801Z"
+  },
+  "__v": 0
 }]
