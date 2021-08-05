@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AuthenticationContext from './AuthenticationContext'
 
 const AuthenticationProvider = ({ children }) => {
@@ -6,6 +6,46 @@ const AuthenticationProvider = ({ children }) => {
     let [id,setId] = useState()
     let [navbarAccess, setNavbarAccess] = useState()
     let [member, setMember] = useState()
+    let [loading, setLoading] = useState(true);
+
+    const reEstablishConnection = async () => {
+        if (!isLoggedIn()) {
+            try {
+                let response = await fetch('/api/auth/loggedInUser')
+                if (response && response.ok) {
+                    const data = await response.json()
+                    if (data._id) {
+                        setContextData(data._id, data.username)
+                    }
+                }
+            } catch (error) { 
+                console.log("AuthenticationProvider error 21: ",error)
+            }
+        }
+        setLoading(false);
+    }
+
+    const setContextData = async(id, username) =>{
+        let newNavbarAccess=false
+        let memberRecord={}
+        let response=undefined
+    
+        if (id){
+            response= await fetch(`/api/auth/member/${id}`)
+            memberRecord= await response.json()
+    
+            if(memberRecord.username){
+              let j=0
+              for(j=0;j<memberRecord.communityDetail.length;j++){                    
+                  if (memberRecord.communityDetail[j].userLevel.level===1) newNavbarAccess=true
+              }                      
+          }
+        }
+        setUsername(username)
+        setId(id)
+        setNavbarAccess(newNavbarAccess)
+        setMember(memberRecord)
+    }
 
     const logIn = (username, password) => {
         async function logintoserver() {
@@ -19,30 +59,23 @@ const AuthenticationProvider = ({ children }) => {
             let response = await fetch('/api/auth/login', loginOptions)
             let loggedInUser = await response.json()
             
-            let newNavbarAccess=false
-            let memberRecord={}
-
-            if (loggedInUser._id){
-                response= await fetch(`/api/auth/member/${loggedInUser._id}`)
-                memberRecord= await response.json()
-
-                if(memberRecord.username){
-                  let j=0
-                  for(j=0;j<memberRecord.communityDetail.length;j++){                    
-                      if (memberRecord.communityDetail[j].userLevel.level===1) newNavbarAccess=true
-                  }                      
-              }
-            }
-
-            setUsername(loggedInUser.username)
-            setId(loggedInUser._id)
-            setNavbarAccess(newNavbarAccess)
-            setMember(memberRecord)
+            setContextData(loggedInUser._id, loggedInUser.username) 
         }
         logintoserver()
     }
 
-    const logOut = () => {
+    const logOut = async() => {
+        if (isLoggedIn()) {
+            try {
+                let response = await fetch('/api/auth/logout');
+
+                if(!response.ok) {
+                    console.log("AuthenticationProvider trouble logging out")
+                }
+            } catch (error) {
+            }
+    
+        }
         setUsername(undefined)
         setId(undefined)
         setNavbarAccess(undefined)
@@ -58,9 +91,20 @@ const AuthenticationProvider = ({ children }) => {
         logOut
     }
 
+    const isLoggedIn = () => {
+        return contextValue.id;
+    }
+    
+    useEffect(() => { reEstablishConnection() }, []);
+
     return (
         <AuthenticationContext.Provider value={ contextValue }>
-            { children }
+            {
+                loading ?
+                (<div>loading...</div>)
+                :
+                (children)
+            }
         </AuthenticationContext.Provider>
     )
 }
