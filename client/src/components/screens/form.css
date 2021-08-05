@@ -1,14 +1,14 @@
 .createform{
     position:fixed;
-    top:0; 
-     left: 400px; 
+    top:25px; 
+    left: 340px; 
     width: 60%;
     height:100vh;
     background-color: rgba(0,0,0,0.2);
     display:flex;
     justify-content: center;
     align-items: center;
-     margin-bottom: auto;
+    margin-bottom: auto;
 }
 
 /* .popup-in{
@@ -20,7 +20,7 @@
 } */
 .popup-in{
     margin: auto;
-  background: rgba(243, 241, 241, 0.493);
+  background: rgb(253, 253, 253);
   width: 100%;
   padding: 25px;
   margin-bottom: auto;

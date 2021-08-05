@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react"
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin,{DateClickArg} from '@fullcalendar/interaction';
+import { useState, useEffect } from "react";
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import EventForm from './EventForm';
+
 
 
 
 
 const Calendar =()=>{
+  const [addBtnPopupForm,setAddBtnPopupForm] = useState(false)
   let [events, setEvents] = useState({})
     let newEvents=[]
     
@@ -37,18 +40,36 @@ const Calendar =()=>{
      
   })
  }
+ const handleEventFormClick = (eventFormData) => {
+}
+
+
 return(
-    <FullCalendar
+
+ 
+ <> 
+ <FullCalendar
 
   plugins={[ dayGridPlugin,interactionPlugin ]}
   initialView="dayGridMonth"
   events={events}
-  eventClick={handleDateClick}
+  eventClick={()=>setAddBtnPopupForm(true)}
   //  events={[
   //   { title: 'event 1', date: '2021-07-29' },
   //   { title: 'event 2', date: '2021-07-30' }
   //  ]}
+        
 /> 
+<div>
+   <EventForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onEventFormClick = {handleEventFormClick} homePageFlag = {true}/>
+ </div>
+</>
+
 )
+
+
+
+
+
 }
 export default Calendar
