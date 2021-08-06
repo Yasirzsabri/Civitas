@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AuthenticationContext from './AuthenticationContext'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const AuthenticationProvider = ({ children }) => {
     let [username, setUsername] = useState()
@@ -101,7 +102,12 @@ const AuthenticationProvider = ({ children }) => {
         <AuthenticationContext.Provider value={ contextValue }>
             {
                 loading ?
-                (<div>loading...</div>)
+                (<div className="text-center"> 
+                    <span>
+                        <h1><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>loading...</h1>
+                    </span>
+                    <br></br>
+                 </div>)
                 :
                 (children)
             }
