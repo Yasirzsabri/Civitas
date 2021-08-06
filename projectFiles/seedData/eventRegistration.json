@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "6101dfd4fbfb682e75e1d905"
+  },
+  "name": "event one",
+  "address1": "somewhere in calgary",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "start": {
+    "$date": "2021-08-16T02:30:00.503Z"
+  },
+  "end": {
+    "$date": "2021-08-16T05:30:00.503Z"
+  },
+  "community": {
+    "$oid": "60d91f40e7ca6434287d6907"
+  },
+  "fee": 60,
+  "contactNumber": [
+    {
+      "name": "Cresmont General Info:",
+      "phoneNumber": "123 456-7890"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-07-16T00:49:04.503Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-07-16T00:49:04.503Z"
+  }
+},{
+  "_id": {
+    "$oid": "6101dffefbfb682e75e1d927"
+  },
+  "name": "event 22",
+  "address1": "somewhere in AB",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "start": {
+    "$date": "2021-07-16T02:30:00.503Z"
+  },
+  "end": {
+    "$date": "2021-07-16T05:30:00.503Z"
+  },
+  "community": {
+    "$oid": "60d91f40e7ca6434287d6907"
+  },
+  "fee": 455,
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "6102da6c74715a28a0c760bf"
+      },
+      "name": "Cresmont General Info:",
+      "phoneNumber": "123 456-7890"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-07-16T00:49:04.503Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-07-29T19:31:42.821Z"
+  }
+}]
