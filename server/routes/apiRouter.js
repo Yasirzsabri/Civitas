@@ -8,6 +8,7 @@ const home = require('./home');
 const community = require('./community');
 const member = require('./member');
 const event = require('./event');
+const eventRegistration = require('./eventRegistration');
 const mail = require('./mail');
 const square = require('./square');
 
@@ -19,6 +20,7 @@ router.use('/home',home)
 router.use('/community',community)
 router.use('/member',member)
 router.use('/event',event)
+router.use('/eventRegistration',eventRegistration)
 router.use('/mail',mail)
 router.use('/square',square)
 

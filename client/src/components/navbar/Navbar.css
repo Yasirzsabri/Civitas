@@ -4,6 +4,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    
   }
   
   .menu-bars {
@@ -11,6 +12,7 @@
     color:#787978;
     font-size: 2rem;
     background: none;
+    z-index: 99999;
   }
   
   .nav-menu {
@@ -23,11 +25,13 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index: 99999;
   }
   
   .nav-menu.active {
     left: 0;
     transition: 350ms;
+    z-index: 99999;
   }
   
   .nav-text {
@@ -37,6 +41,7 @@
     padding: 8px 0px 8px 16px;
     list-style: none;
     height: 60px;
+    z-index: 99999;
   }
   
   .nav-text a {
@@ -49,14 +54,17 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
+    z-index: 99999;
   }
   
   .nav-text a:hover {
     background-color: #353535;
+    z-index: 99999;
   }
   
   .nav-menu-items {
     width: 100%;
+    z-index: 99999;
   }
   
   .navbar-toggle {
@@ -66,8 +74,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    z-index: 99999;
   }
   
   span {
     margin-left: 16px;
+    z-index: 99999;
   }

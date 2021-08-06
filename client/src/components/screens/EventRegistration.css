@@ -4,12 +4,16 @@
     left: 340px; 
     width: 60%;
     height:100vh;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgb(136, 136, 139);
     display:flex;
     justify-content: center;
     align-items: center;
     margin-bottom: auto;
     z-index: 9999;
+}
+.row{
+    width: 40px;
+
 }
 
 /* .popup-in{
@@ -21,7 +25,7 @@
 } */
 .popup-in{
     margin: auto;
-  background: rgb(253, 253, 253);
+  background: rgb(136, 136, 139);
   width: 100%;
   padding: 25px;
   margin-bottom: auto;
@@ -41,6 +45,7 @@
     text-align:left;
     display:block;
 } 
+
 
 .popup-in closebtn{
     position: absolute;
@@ -63,6 +68,7 @@
 
 .createform h4{
     margin-bottom: auto;
+    background-position-x: center;
 }
 
 .createform input, select{
@@ -109,7 +115,7 @@
     margin-top: 10px;
     margin-right: 3px;
 }
-.createform button{
+/* .createform button{
     background-color: #f1f1f1;
 
     border: 0;
@@ -117,7 +123,7 @@
     border-radius: 8px;
     cursor: pointer;
 
-}
+} */
 
 .createform .clear{
     font-weight: bold;
@@ -126,7 +132,7 @@
 }
 
 
-.closebtn {
+/* .closebtn {
     position: absolute;
     top: 30px;
     right: 4px;;
@@ -134,4 +140,4 @@
     background-color: white;
     font-size: larger;
     margin-bottom: auto;
-}
+} */
