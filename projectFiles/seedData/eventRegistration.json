@@ -1,36 +1,37 @@
 [{
-  "0": {
-    "firstName": "Yasir",
-    "lastName": "SmartGuy",
-    "address1": "Somewhere in Calgaru",
-    "address2": "I kill the bunny1",
-    "city": "Calgary",
-    "province": "Alberta",
-    "postalCode": "T3B 5W5",
-    "contactNumber": [
-      {
-        "name": "home #",
-        "phoneNumber": "567"
-      }
-    ],
-    "emailAddress": "yasir.zsabri@gmail.com",
-    "username": {
-      "$oid": "6099cdc63fedfb45458a073c"
-    },
-    "event": {
-      "$oid": "6101dfd4fbfb682e75e1d905"
-    },
-    "numberOfAttendees": 1,
-    "feePaid": false,
-    "active": true,
-    "dateAdded": {
-      "$date": "2021-07-16T13:55:35.098Z"
-    },
-    "lastUpdateDate": {
-      "$date": "2021-07-28T20:01:40.594Z"
-    }
-  },
   "_id": {
-    "$oid": "610d821e1b829223b2371b1b"
+    "$oid": "610eefa91b829223b2100c9d"
+  },
+  "firstName": "Yasir",
+  "lastName": "SmartGuy",
+  "address1": "Somewhere in Calgaru",
+  "address2": "I kill the bunny1",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T3B 5W5",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "610f120f4021fa3244875c9f"
+      },
+      "name": "home #",
+      "phoneNumber": "567"
+    }
+  ],
+  "emailAddress": "yasir.zsabri@gmail.com",
+  "username": {
+    "$oid": "6099cdc63fedfb45458a073c"
+  },
+  "event": {
+    "$oid": "6101dfd4fbfb682e75e1d905"
+  },
+  "numberOfAttendees": 1,
+  "feePaid": false,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-07-16T13:55:35.098Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-08-07T23:07:35.243Z"
   }
 }]

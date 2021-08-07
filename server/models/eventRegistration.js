@@ -23,7 +23,7 @@ const eventRegistrationSchema = new Schema({
   },
   event: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "event",
+    ref: "Event",
     required: true
   },
   numberOfAttendees: Number,

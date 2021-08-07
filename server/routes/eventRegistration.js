@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* List all Event Registration records */
 router.get('/', async (req, res) => {
-  let data = await eventRegistration.find({}).populate("user", {username:1}).populate("event", {name:1});
+  let data = await eventRegistration.find({}).populate("username", {username:1}).populate("event",{name:1})
   console.info(`records retrieved from mongoose:`, data?.length)
   console.log('data returned=',data)
   res.send(data);
