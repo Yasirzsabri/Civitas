@@ -1,33 +1,35 @@
-.createform{
+.createform1{
     position:fixed;
     top:25px; 
     left: 340px; 
-    width: 60%;
-    height:100vh;
-    background-color: rgb(136, 136, 139);
+    width: 70%;
+    height:90vh;
     display:flex;
     justify-content: center;
     align-items: center;
     margin-bottom: auto;
     z-index: 9999;
+    overflow-y:scroll !important;
 }
 
 
-/* .popup-in{
+ .popup-in1{
     position:fixed;
     padding:25px;
     width:100%;
     max-width: 1000px;
-    background-color: #fff;
-} */
-.popup-in{
+    background-color: rgb(136, 136, 139);
+    overflow-y:scroll !important;
+} 
+.popup-in1{
     margin: auto;
   background: rgb(136, 136, 139);
   width: 100%;
-  padding: 25px;
+  /* padding: 25px; */
   margin-bottom: auto;
   align-self: center;
   z-index: 9999;
+  overflow-y:scroll !important;
     /* position:fixed;
     padding:25px;
     width:100%;
@@ -38,57 +40,58 @@
     table-layout: auto;
     table-layout: fixed; */
 } 
-.createform label{
+/* .createform label{
     text-align:left;
     display:block;
-} 
+}  */
 
 
-.popup-in closebtn{
-    position: absolute;
-    top: 2px;
-    right: 7px;
+.popup-in1 closebtn{
+    /* position: absolute; */
+    /* top: 2px;
+    right: 7px; */
     font-weight: bold;
     background-color: white;
     font-size: larger;
     margin-bottom: auto;
+   
 }
 
-.popup-in-signUp {
+/* .popup-in-signUp {
     margin: auto;
     background: rgba(243, 241, 241, 0.493);
     width: 100%;
     padding: 225px;
     margin-bottom: auto;
     align-self: center;
-}
+} */
 
-.createform h4{
+/* .createform h4{
     margin-bottom: auto;
     background-position-x: center;
-}
+} */
 
-.createform input, select{
+/* .createform input, select{
     width:100%;
     padding: 6px 10px;
     margin:8px 0;
     border: 1px solid rgb(12, 10, 10);
     box-sizing: border-box;
     display:block;   
-}
-
+} */
+/* 
 .createform .row{
     width:100%;
     clear:both;  
-}
+} */
 
-.createform .col3{
+/* .createform .col3{
     float:left;
     width: 32%;
     margin-right: 7.7px;
-}
+} */
 
-.createform .col4{
+/* .createform .col4{
     float:left;
     width: 23%;
     margin-right: 7.7px;
@@ -103,15 +106,15 @@
     width:48%;
     float:left;
     margin-right: 11.5px;
-}
+} */
 
-.createform table{ 
+/* .createform table{ 
     display: flex;
     justify-content: flex-start;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-right: 3px;
-}
+} */
 /* .createform button{
     background-color: #f1f1f1;
 
@@ -122,11 +125,11 @@
 
 } */
 
-.createform .clear{
+/* .createform .clear{
     font-weight: bold;
     background-color: white;
     font-size: larger;
-}
+} */
 
 
 /* .closebtn {
@@ -138,3 +141,17 @@
     font-size: larger;
     margin-bottom: auto;
 } */
+
+/* label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+} */
+
+.mid{
+text-align: center;
+}
