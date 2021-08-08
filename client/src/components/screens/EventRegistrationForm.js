@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react"
-import moment from "moment";
-import Datepicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
@@ -12,69 +10,101 @@ import './form.css';
 import { useContext } from "react"
 import AuthenticationContext from "../../AuthenticationContext"
                    
-const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
+const EventRegistrationForm = ({onEventRegistrationFormClick, trigger, setTrigger}) => {
     // eslint-disable-next-line
     const authContext = useContext(AuthenticationContext)
 
-    let [event, setEvent] = useState({})
-    let [dateAdded, setdateAdded] = useState(undefined)
-
-    let [name, setName] = useState("")
+    let [firstName, setFirstName] = useState("")
+    let [lastName, setLastName] = useState("")
     let [address1, setAddress1] = useState("")
     let [address2, setAddress2] = useState("")
     let [city, setCity] = useState("")
     let [province, setProvince] = useState("")
-    let [start, setStart] = useState(new Date())
-    let [end, setEnd] = useState(new Date())
-    let [community, setCommunity]= useState("")
-    let [communityList, setCommunityList]= useState([])
-    let [fee, setFee] = useState("")
+    let [postalCode, setPostalCode] = useState("")
     let [contactNumber, setContactNumber] = useState([])
+    let [emailAddress, setEmailAddress] = useState("")
+    let [username, setUsername]= useState("")
+    let [usernameList, setUsernameList]= useState([])
+    let [event, setEvent] = useState("");
+    let [eventList, setEventList] = useState([]);
+    let [numberOfAttendees, setNumberOfAttendees] = useState("");
+    let [feePaid, setFeePaid] = useState("false");
+
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
 
-    //fetch community list
-    const getCommunityList = async () => {
-        let response= await fetch('/api/community');
+    //fetch user list 
+    const getUsernameList = async () => {
+        let response= await fetch('/api/user');
         let data = await response.json();
-        setCommunityList(data);
+        setUsernameList(data);
     }
 
+     //fetch event list 
+     const getEventList = async () => {
+        let response= await fetch('/api/event');
+        let data = await response.json();
+        setEventList(data);
+      }
+
     useEffect( () => {
-      getCommunityList(); 
-    }, []);
+        if (authContext.id){
+            getUsernameList();
+            getEventList();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [authContext]);
+
 
     async function onCreateClicked(e) {
         let currentDate = new Date()
 
-        let eventToCreate = {
-            name,  
+        let eventRegistrationToCreate = {
+            firstName, 
+            lastName, 
             address1,
             address2,
             city,
             province,
-            start,
-            end,
-            community,
-            fee,
+            postalCode,
             contactNumber,
+            emailAddress,
+            username,
+            event, 
+            numberOfAttendees, 
+            feePaid,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
         try {
-            let createResponse = await fetch('/api/event', {
+            let createResponse = await fetch('/api/eventRegistration', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(eventToCreate)
+                body: JSON.stringify(eventRegistrationToCreate)
             })
 
             if (createResponse.status === 200) {
-                onEventFormClick("Success");
-
+                onEventRegistrationFormClick("Success");
                 
+                setFirstName("")
+                setLastName("")
+                setAddress1("")
+                setAddress2("")
+                setCity("")
+                setProvince("")
+                setPostalCode("")
+                setContactNumber([])
+                setEmailAddress("")
+                setUsername("")
+                setUsernameList([])
+                setEvent("");
+                setEventList([]);
+                setNumberOfAttendees("")
+                setFeePaid("false")
+                setActive("true")
             }
             
             if (createResponse.status !== 200) {
@@ -87,11 +117,13 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
             }
         }
         catch (error) {
-            console.error('197 Fetch failed to reach the server.', error)
-        }
+            // the server cannot be reached
+            console.error('EventRegistrationForm:  Fetch failed to reach the server.', error)
+        }        
     }
 
     const onInputChange = (event, setFunction) => {
+        // console.log('Changing input to be ', event.target.value)
         setFunction(event.target.value);
     };
 
@@ -115,20 +147,24 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
 
     const onClickAdd = ()=>{
         onCreateClicked();
-        setTrigger(false);  
+        setTrigger(false); 
     }
 
-    let createEventDataInvalid = !name || (name.trim().length === 0)
+    let createEventRegistrationDataInvalid = !emailAddress || (emailAddress.trim().length === 0)
 
     return (trigger)? (
         <div className='createform'>
             <div className="popup-in">
-                <><h4>Add a New Event</h4></>
+                <><h4>Add a New EventRegistration</h4></>
                 <button className="closebtn" onClick={()=>setTrigger(false)}><AiIcons.AiOutlineClose/></button>
 
                 <div>
-                    <label htmlFor="name">Event Name:</label>
-                    <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
+                    <label htmlFor="firstName">First Name:</label>
+                    <input id="firstName" value={firstName} onChange={(event) => onInputChange(event,setFirstName)}/>
+                </div>
+                <div>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input id="lastName" value={lastName} onChange={(event) => onInputChange(event,setLastName)}/>
                 </div>
                 <div>
                     <label htmlFor="address1">Address1:</label>
@@ -148,25 +184,11 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                         <input id="province" value={province} onChange={(event) => onInputChange(event,setProvince)}/>
                     </div>
                     <div className="col3">
-                        <label htmlFor="start">start:</label>
-                        <Datepicker format={"MM/DD/yyyy"} value={moment(start).format("MM/DD/yyyy")} onChange={ (event) => {setStart(event)}}/>
-                    </div>
-                    <div className="col3">
-                        <label htmlFor="end">end:</label>
-                        <Datepicker format={"MM/DD/yyyy"} value={moment(end).format("MM/DD/yyyy")} onChange={ (event) => {setEnd(event)}}/>
-                    </div>
-                    <div className="col3">
-                        <label htmlFor="community">Community:</label>
-                        <select value={community._id} onChange={(event) => onInputChange(event, setCommunity)}>
-                            <option>--Select--</option>
-                            {communityList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
-                        </select>
-                    </div>
-                    <div className="col3">
-                        <label htmlFor="fee">Fee:</label>
-                        <input id="fee" value={fee} onChange={(event) => onInputChange(event,setFee)}/>
+                        <label htmlFor="postalCode">Postal Code:</label>
+                        <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
                     </div>
                 </div>
+
                 <div className="row">
                     <div>
                         <label htmlFor="contactNumber">Contact Number:</label>                
@@ -195,19 +217,61 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                         </table>            
                     </div> 
                 </div>            
+
                 <div>
-                    <label htmlFor="active">Active:</label> 
-                    <select value={active} onChange={(event) => onInputChange(event, setActive)}>
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                    </select>   
+                    <label htmlFor="emailAddress">Email Address:</label>
+                    <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>                        
+                            <td>
+                                <label htmlFor="username">Username:</label>     
+                                    <select value={username._id} onChange={(event) => onInputChange(event, setUsername)}>
+                                        <option>--Select--</option>
+                                        {usernameList.map(item=> <option key={item.username} value={item._id}>{item.username}</option>)} 
+                                    </select>
+                            </td>  
+                        </tr>
+                    </tbody>
+                </table>  
+                <table>
+                    <tbody>
+                        <tr>                        
+                            <td>
+                                <label htmlFor="event">Event:</label>     
+                                    <select value={event._id} onChange={(event) => onInputChange(event, setEvent)}>
+                                        <option>--Select--</option>
+                                        {eventList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>)} 
+                                    </select>
+                            </td>  
+                        </tr>
+                    </tbody>
+                </table> 
+                <div>
+                    <label htmlFor="numberOfAttendess"># Attendees:</label>
+                    <input id="numberOfAttendees" value={numberOfAttendees} onChange={(event) => onInputChange(event,setNumberOfAttendees)}/>
+                </div>
+                <div>
+                    <label htmlFor="feePaid">Fee Paid:</label>    
+                        <select value={feePaid} onChange={(event) => onInputChange(event, setFeePaid)}>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                </div>
+                <div>
+                    <label htmlFor="active">Active:</label>    
+                        <select value={active} onChange={(event) => onInputChange(event, setActive)}>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
                 </div>
                 <br/>            
-                <button disabled={ createEventDataInvalid } onClick={ onClickAdd }>{homePageFlag ? (<>Update/Insert</>) : (<>Add Event</>) }</button>
+                <button disabled={ createEventRegistrationDataInvalid } onClick={ onClickAdd }>Add EventRegistration</button>
                 { createError && <div>{createError}</div> }  
             </div>          
         </div>
     ):"";
 }
 
-export default EventForm
+export default EventRegistrationForm

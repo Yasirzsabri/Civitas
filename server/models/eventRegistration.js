@@ -17,19 +17,20 @@ const eventRegistrationSchema = new Schema({
     },
   ],
   emailAddress: String,
-  username:{
+  username: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "username"
-},
-event:{
-  type: mongoose.Schema.Types.ObjectId,
-  ref: "event",
-  required: true
-},
-
-  // active: true,
-  // dateAdded: currentDate,
-  // lastUpdateDate: currentDate
+    ref: "user"
+  },
+  event: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Event",
+    required: true
+  },
+  numberOfAttendees: Number,
+  feePaid: Boolean,
+  active: Boolean,
+  dateAdded: Date,
+  lastUpdateDate: Date
 });
 
 module.exports = mongoose.model('EventRegistration', eventRegistrationSchema, 'eventRegistration');

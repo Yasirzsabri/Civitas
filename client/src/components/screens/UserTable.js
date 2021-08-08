@@ -122,7 +122,7 @@ const UserTable = () => {
                 <td>
                     {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
-                            <select>
+                            <select value={active} onChange={(event) => setActive(event.target.value)}>
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </select>

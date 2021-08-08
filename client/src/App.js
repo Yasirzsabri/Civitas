@@ -10,6 +10,8 @@ import AuthenticationProvider from './AuthenticationProvider'
 import React, { useState, useEffect } from 'react';
 import Pay from './components/square/Pay';
 import EventTable from './components/screens/EventTable';
+import EventRegistrationTable from './components/screens/EventRegistrationTable';
+
 import Calendar from './components/screens/Calendar'
 const App = () => {
   return (
@@ -38,6 +40,9 @@ const App = () => {
           </Route>
           <Route path='/events'>
             <EventTable/>
+          </Route>
+          <Route path='/eventRegistration'>
+            <EventRegistrationTable/>
           </Route>
           <Route path='/Calendar'>
             <Calendar/>
