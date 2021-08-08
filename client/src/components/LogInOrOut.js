@@ -18,8 +18,8 @@ const LogInOrOut = () => {
     const handleMemberFormClick = (memberFormData) => {
     }
     const handleUserFormClick = (userFormData) => {
-        // if(userFormData === 'success'){
-        //     getUsers()
+        // if(userFormData === 'Success'){ 
+        //     console.log("Success!!!!")
         // }
     }
     return (isLoggedIn) ? 

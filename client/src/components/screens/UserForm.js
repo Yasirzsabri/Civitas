@@ -1,9 +1,11 @@
 // import { useState , useEffect} from "react"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import AuthenticationContext from "../../AuthenticationContext"
 import './form.css';
 import * as  AiIcons from 'react-icons/ai';
 
 const UserForm = (props) => {
+    const authContext = useContext(AuthenticationContext)
     let [username, setUsername] = useState("")
     let [password, setPassword] = useState("")
     let [active, setActive] = useState("true")
@@ -40,10 +42,13 @@ const UserForm = (props) => {
 
             if (createResponse.status === 200) {
                 props.onUserFormClick("Success");
+                 
+                // logon the new user if on home page
+                if(props.homePageFlag) authContext.logIn(username, password)
 
                 setUsername("");
                 setPassword("")
-                setActive("true");                          
+                setActive("true");                
             }
 
             // the server didn't like the data for some reason
