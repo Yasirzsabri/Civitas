@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react"
-import moment from "moment";
-import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
@@ -11,7 +9,7 @@ import AuthenticationContext from "../../AuthenticationContext"
 
 
                    
-const EventRegistration = ({onEventFormClick, trigger, setTrigger, homePageFlag, eventData,idx}) => {
+const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, idx, eventId}) => {
     // eslint-disable-next-line
     const authContext = useContext(AuthenticationContext)
     let [firstName, setFirstName] = useState("")
@@ -23,38 +21,34 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, homePageFlag,
     let [postalCode, setPostalCode] = useState("")
     let [contactNumber, setContactNumber] = useState([])
     let [emailAddress, setEmailAddress] = useState("")
-    let [event, setEvent] = useState({})
-    let [numberOfAttendees, setNumberOfAttendees] = useState("");  
-    let [dateAdded, setdateAdded] = useState(undefined)
-    let [lastUpdateDate, setLastUpdateDate] = useState("")
-
-    // let [name, setName] = useState("")
-    // let [start, setStart] = useState("")
-    // let [end, setEnd] = useState("")
-    // let [community, setCommunity]= useState("")
-    // let [communityList, setCommunityList]= useState([])
-    // let [fee, setFee] = useState("")
-    // let [contactNumber, setContactNumber] = useState([])
-    // let [active, setActive] = useState("true")
+    let [username, setUsername]= useState("")   
+   
+    let [event, setEvent] = useState("");
+    
+    let [numberOfAttendees, setNumberOfAttendees] = useState(""); 
+    let [feePaid, setFeePaid] = useState("false");
+    let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
 
 
-    //fetch community list
-    // const getCommunityList = async () => {
-    //     let response= await fetch('/api/community');
-    //     let data = await response.json();
-    //     setCommunityList(data);
-    // }
-    console.log("line42 " ,)
-    console.log("line 25552119",idx)
+
     console.log("line 44 ER" ,eventData[idx])
     // console.log("line 43",index)
-    // useEffect( () => {
-    //   getCommunityList(); 
-    // }, []);
+    
+    useEffect( () => {
+    //   setEventC(eventData[idx]._id); 
+      setUsername(authContext.id)
+      console.log("line43 idx ",eventData[idx])
+  
+      console.log("event Id line 45",eventId)
+    //    console.log("line44 _id ",eventData[idx]._id)
+    //   setEvent(eventData[idx]._id)
+    }, []);
+
 
     async function onCreateClicked(e) {
         let currentDate = new Date()
+        console.log("event Id line 53",eventId)
 
         let eventToCreate = {
             firstName,
@@ -66,20 +60,16 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, homePageFlag,
             postalCode,
             contactNumber,
             emailAddress,
-            event,
-
-
-            lastUpdateDate,
-
-
-            // start,
-            // end,
-            // community,
-            // fee,
-            // active,
-            // dateAdded : currentDate,
-            // lastUpdateDate : currentDate
+            username,
+            event : eventId,
+            numberOfAttendees, 
+            feePaid,
+            active,
+            dateAdded : currentDate,
+            lastUpdateDate : currentDate
         }
+        console.log("line 66",eventToCreate)
+        
         try {
             let createResponse = await fetch('/api/eventRegistration', {
                 method: 'POST',
@@ -219,7 +209,7 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, homePageFlag,
                                     <input id="address1" value={address1} className="form-control" onChange={(event) => onInputChange(event,setAddress1)}/>
                                 </div >
                                 <div className="col-sm-4">
-                                 <label htmlFor="address1">Addres2:</label>
+                                 <label htmlFor="address2">Address2:</label>
                                     <input id="address2" value={address2} className="form-control" onChange={(event) => onInputChange(event,setAddress2)}/>
                                 </div >
                                 <div className="col-sm-4">
@@ -234,6 +224,12 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, homePageFlag,
                                     <label htmlFor="postalCode">Postal Code:</label>
                                     <input id="postalCode" value={postalCode} className="form-control" onChange={(event) => onInputChange(event,setPostalCode)}/>
                                 </div>
+                                <div className="col-sm-4">
+                                    <label htmlFor="numberOfAttendees">Number Of Attendees</label>
+                                    <input id="numberOfAttendees" value={numberOfAttendees} onChange={(event) => onInputChange(event,setNumberOfAttendees)}/>
+                                </div>
+                                
+
                                 <div className="col-sm-4">
                                 <div>
                                     <label htmlFor="contactNumber">Contact Number:</label>                

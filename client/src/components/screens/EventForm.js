@@ -152,7 +152,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                         <Datepicker format={"MM/DD/yyyy"} value={moment(start).format("MM/DD/yyyy")} onChange={ (event) => {setStart(event)}}/>
                     </div>
                     <div className="col3">
-                        <label htmlFor="end">end:</label>
+                        <label htmlFor="end" >end:</label>
                         <Datepicker format={"MM/DD/yyyy"} value={moment(end).format("MM/DD/yyyy")} onChange={ (event) => {setEnd(event)}}/>
                     </div>
                     <div className="col3">
