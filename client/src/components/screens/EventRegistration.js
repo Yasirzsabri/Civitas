@@ -170,7 +170,7 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
                         </div>
                         <div className="col-sm-4">
                             <label htmlFor="contactNumber">Contact Number:</label>
-                            <span className="form-control">{[0].phoneNumber}4035081155</span>
+                            <span className="form-control">{eventData[idx].contactNumber[0].phoneNumber}</span>
                         </div>
                         <div className="col-sm-4">
                             <label htmlFor="community">Community:</label>
@@ -186,92 +186,92 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
                         </div>
 
 
-
-                        <br></br>
-                        {/* registration */}
-                        <br></br>
-                        <div  >
-                            <h4>Registration</h4>
-                        </div>
+                        <h4 class="midText" >Event Registration</h4>
                         
-                        <div className="row">
-                            <div >
-                                <div className="col-sm-4">
-                                    <label htmlFor="firstName">First Name:</label>
-                                    <input id="firstName" value={firstName} className="form-control" onChange={(event) => onInputChange(event,setFirstName)}/>
-                                </div>
-                                <div className="col-sm-4">
-                                    <label htmlFor="lastName">Last Name:</label>
-                                    <input id="lastName" value={lastName} className="form-control" onChange={(event) => onInputChange(event,setLastName)}/>
-                                </div>
-                                <div className="col-sm-4">
-                                 <label htmlFor="address1">Address1:</label>
-                                    <input id="address1" value={address1} className="form-control" onChange={(event) => onInputChange(event,setAddress1)}/>
-                                </div >
-                                <div className="col-sm-4">
-                                 <label htmlFor="address2">Address2:</label>
-                                    <input id="address2" value={address2} className="form-control" onChange={(event) => onInputChange(event,setAddress2)}/>
-                                </div >
-                                <div className="col-sm-4">
-                                    <label htmlFor="city">City:</label>
-                                    <input id="city" value={city} className="form-control" onChange={(event) => onInputChange(event,setCity)}/>
-                                </div>
-                                <div className="col-sm-4">
-                                    <label htmlFor="province">Province:</label>
-                                    <input id="province" value={province}  className="form-control" onChange={(event) => onInputChange(event,setProvince)}/>
-                                </div>
-                                <div className="col-sm-4">
-                                    <label htmlFor="postalCode">Postal Code:</label>
-                                    <input id="postalCode" value={postalCode} className="form-control" onChange={(event) => onInputChange(event,setPostalCode)}/>
-                                </div>
-                                <div className="col-sm-4">
-                                    <label htmlFor="numberOfAttendees">Number Of Attendees</label>
-                                    <input id="numberOfAttendees" value={numberOfAttendees} onChange={(event) => onInputChange(event,setNumberOfAttendees)}/>
-                                </div>
-                                
+                        <div className="col-sm-4">
+                            <label htmlFor="firstName">First Name:</label>
+                            <input id="firstName" value={firstName} className="form-control" onChange={(event) => onInputChange(event,setFirstName)}/>
+                        </div>
 
-                                <div className="col-sm-4">
-                                <div>
-                                    <label htmlFor="contactNumber">Contact Number:</label>                
-                                            <table>                      
-                                                <tbody>
-                                                    {contactNumber.map( (cn, index) => { 
-                                                            return (<tr key={index}>                          
-                                                                        <td>
-                                                                            <input name="name" value={cn.name} placeholder="Type" onChange={(e) => onContactNumberChange(e, index)}/>                                                        
-                                                                        </td>
-                                                                        <td>
-                                                                            <input name="phoneNumber" value={cn.phoneNumber} placeholder="Phone #" onChange={(e) => onContactNumberChange(e, index)}/>
-                                                                        </td>
-                                                                        <td>                            
-                                                                            <button className="clear" onClick={ () => onContactNumberDelete(index) }><RiIcons.RiDeleteBinFill/></button>
-                                                                        </td>
-                                                                    </tr> )
-                                                        })
-                                                    }
-                                                    <tr>                                
-                                                        <td>
-                                                            <button onClick={ onContactNumberAdd }><SiIcons.SiAddthis/></button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>    
-                                            </table>            
-                                        </div> 
-                                </div>
+                        <div className="col-sm-4">
+                            <label htmlFor="lastName">Last Name:</label>
+                            <input id="lastName" value={lastName} className="form-control" onChange={(event) => onInputChange(event,setLastName)}/>
+                        </div>
+
+                        <div className="col-sm-4">
+                            <label htmlFor="address1">Address1:</label>
+                            <input id="address1" value={address1} className="form-control" onChange={(event) => onInputChange(event,setAddress1)}/>
+                        </div >
+
+                        <div className="col-sm-4">
+                            <label htmlFor="address2">Address2:</label>
+                            <input id="address2" value={address2} className="form-control" onChange={(event) => onInputChange(event,setAddress2)}/>
+                        </div >
+
+                        <div className="col-sm-4">
+                            <label htmlFor="city">City:</label>
+                            <input id="city" value={city} className="form-control" onChange={(event) => onInputChange(event,setCity)}/>
+                        </div>
+
+                        <div className="col-sm-4">
+                            <label htmlFor="province">Province:</label>
+                            <input id="province" value={province}  className="form-control" onChange={(event) => onInputChange(event,setProvince)}/>
+                        </div>
+                        <div className="col-sm-4">
+                            <label htmlFor="numberOfAttendees">Number Of Attendees</label>
+                            <input id="numberOfAttendees"  className="form-control" value={numberOfAttendees} onChange={(event) => onInputChange(event,setNumberOfAttendees)}/>
+                        </div>
+
+                        <div className="col-sm-4">
+                            <label htmlFor="postalCode">Postal Code:</label>
+                            <input id="postalCode" value={postalCode} className="form-control" onChange={(event) => onInputChange(event,setPostalCode)}/>
+                        </div>
+
+                        
+                            
+
+                        <div className="col-sm-4">
+                        <div>
+                            <label htmlFor="contactNumber">Contact Number:</label>                
+                                    <table className= "table">                      
+                                        <tbody>
+                                            {contactNumber.map( (cn, index) => { 
+                                                    return (<tr className="row" key={index}>                          
+                                                                {/* <td>
+                                                                    <input name="name" value={cn.name} placeholder="Type" onChange={(e) => onContactNumberChange(e, index)}/>                                                        
+                                                                </td> */}
+                                                                <td>
+                                                                    <input name="phoneNumber" value={cn.phoneNumber} className="form-control" placeholder="Phone #" onChange={(e) => onContactNumberChange(e, index)}/>
+                                                                </td>
+                                                                <td>                            
+                                                                    <button type="button" className="btn btn-light" onClick={ () => onContactNumberDelete(index) }><RiIcons.RiDeleteBinFill/></button>
+                                                                </td>
+                                                            </tr> )
+                                                })
+                                            }
+                                            <tr className="row">                                
+                                                <td className = "phoneTd">
+                                                    <button type="button" className="btn btn-light" onClick={ onContactNumberAdd }><SiIcons.SiAddthis/></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>    
+                                    </table>            
+                                </div> 
                             </div>
                         </div>
+                        
 
 
-                        <br></br>
+                        
                         <button type="button" className="btn btn-danger"  disabled={ createEventDataInvalid } onClick={ onClickAdd }> Register</button>
-                         { createError && <div>{createError}</div> }
+                        { createError && <div>{createError}</div> }
 
 
 
                     </div>
                 </div>
             </div>  
-        </div>
+        
         
         
      

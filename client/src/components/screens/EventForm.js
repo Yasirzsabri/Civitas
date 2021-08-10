@@ -61,7 +61,9 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
+        
         }
+        console.log("66 line start",start)
         try {
             let createResponse = await fetch('/api/event', {
                 method: 'POST',
@@ -119,6 +121,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
     }
 
     let createEventDataInvalid = !name || (name.trim().length === 0)
+    
 
     return (trigger)? (
         <div className='createform'>
@@ -148,12 +151,15 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                         <input id="province" value={province} onChange={(event) => onInputChange(event,setProvince)}/>
                     </div>
                     <div className="col3">
-                        <label htmlFor="start">start:</label>
-                        <Datepicker format={"MM/DD/yyyy"} value={moment(start).format("MM/DD/yyyy")} onChange={ (event) => {setStart(event)}}/>
+                        <label for="start">start:</label>
+                        <input type="datetime-local" id = "start" name= {start} value={start} onChange={ (event) => {setStart(event.target.value)}}/>
+                        {/* < input type="datetime-local"  format={"MM/DD/yyyy hh:mm a"} value={moment(start).format("MM/DD/yyyy hh:mm a")} onChange={ (event) => {setStart(event)}}/> */}
                     </div>
+                    
                     <div className="col3">
-                        <label htmlFor="end" >end:</label>
-                        <Datepicker format={"MM/DD/yyyy"} value={moment(end).format("MM/DD/yyyy")} onChange={ (event) => {setEnd(event)}}/>
+                        <label for="end" >end:</label>
+                        <input type="datetime-local" id="end" name={end} value={end}  onChange={ (event) => {setEnd(event.target.value)}}/>
+                        {/* <input type="datetime-local" id ="end" value="2018-06-12T19:30"  min="2018-06-07T00:00" max="2024-06-14T00:00" onChange={ (event) => {setEnd(event)}}/> */}
                     </div>
                     <div className="col3">
                         <label htmlFor="community">Community:</label>

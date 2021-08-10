@@ -24,7 +24,7 @@ const Calendar =()=>{
         newEvents.push({title: '' , date: ''})
         newEvents[i].title=data[i].name
         newEvents[i].date=data[i].start
-        newEvents[i].date=data[i].end
+        
         // newEvents[i].id=data[i]._id
         newEvents[i].id=i
     }

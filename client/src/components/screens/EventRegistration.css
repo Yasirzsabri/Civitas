@@ -9,7 +9,7 @@
     align-items: center;
     margin-bottom: auto;
     z-index: 9999;
-    overflow-y:scroll !important;
+    
 }
 
 
@@ -20,6 +20,7 @@
     max-width: 1000px;
     background-color: rgb(136, 136, 139);
     overflow-y:scroll !important;
+    
 } 
 .popup-in1{
     margin: auto;
@@ -30,6 +31,9 @@
   align-self: center;
   z-index: 9999;
   overflow-y:scroll !important;
+  height: 85vh;
+
+  
     /* position:fixed;
     padding:25px;
     width:100%;
@@ -154,4 +158,10 @@ label {
 
 .mid{
 text-align: center;
+}
+.midText{
+    margin: 20px;
+}
+.phoneTd{
+    
 }

@@ -83,6 +83,7 @@
     float:left;
     width: 32%;
     margin-right: 7.7px;
+    
 }
 
 .createform .col4{
@@ -134,4 +135,14 @@
     background-color: white;
     font-size: larger;
     margin-bottom: auto;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
 }
