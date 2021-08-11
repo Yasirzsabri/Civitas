@@ -20,6 +20,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
     let [dateAdded, setdateAdded] = useState(undefined)
 
     let [name, setName] = useState("")
+    let [description, setDescription] = useState("")
     let [address1, setAddress1] = useState("")
     let [address2, setAddress2] = useState("")
     let [city, setCity] = useState("")
@@ -49,6 +50,7 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
 
         let eventToCreate = {
             name,  
+            description,
             address1,
             address2,
             city,
@@ -132,6 +134,10 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                 <div>
                     <label htmlFor="name">Event Name:</label>
                     <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
+                </div>
+                <div>
+                    <label htmlFor="description">Description:</label>
+                    <input id="description" value={description} onChange={(event) => onInputChange(event,setDescription)}/>
                 </div>
                 <div>
                     <label htmlFor="address1">Address1:</label>

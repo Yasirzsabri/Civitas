@@ -3,7 +3,7 @@
     top:25px; 
     left: 340px; 
     width: 70%;
-    height:90vh;
+    height:90vh ;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -163,5 +163,5 @@ text-align: center;
     margin: 20px;
 }
 .phoneTd{
-    
+
 }

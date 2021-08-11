@@ -20,6 +20,7 @@ const EventTable = () => {
     });
 
     const [name,setName]= useState("");
+    const [description,setDescription]= useState("");
     const [address1, setAddress1] = useState("");
     const [address2, setAddress2] = useState("");
     const [city, setCity] = useState("");
@@ -48,11 +49,12 @@ const EventTable = () => {
       // console.log("54 communityList: ",data)
     }
 
-    const updateEvent = (id, newName,  newAddress1, newAddress2, newCity, newProvince, newStart, newEnd, newCommunity, newFee, newContactNumber, newActive) => {
+    const updateEvent = (id, newName, newDescription, newAddress1, newAddress2, newCity, newProvince, newStart, newEnd, newCommunity, newFee, newContactNumber, newActive) => {
       let currentDate = new Date();
 
       let eventToUpdate = {
           name: newName,
+          description: newDescription,
           address1: newAddress1,
           address2: newAddress2,
           city: newCity,
@@ -81,13 +83,14 @@ const EventTable = () => {
       })    
     }
 
-    const onEdit = (id, currentName, currentAddress1, currentAddress2, currentCity, currentProvince, currentStart, currentEnd, currentCommunity, currentFee, currentContactNumber, currentActive) => {
+    const onEdit = (id, currentName, currentDescription, currentAddress1, currentAddress2, currentCity, currentProvince, currentStart, currentEnd, currentCommunity, currentFee, currentContactNumber, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
       })    
 
       setName(currentName);
+      setDescription(currentDescription);
       setAddress1(currentAddress1);
       setAddress2(currentAddress2);
       setCity(currentCity);
@@ -199,6 +202,15 @@ const EventTable = () => {
                     <input value={name} onChange={(e)=> setName(e.target.value)}/>
                   ):(
                     row.name
+                  )
+                }
+            </td>
+            <td>
+                {
+                  inEditMode.status && inEditMode.rowKey === row._id ?(
+                    <input value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                  ):(
+                    row.description
                   )
                 }
             </td>
@@ -335,7 +347,7 @@ const EventTable = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, name, address1, address2, city, province, start, end, community, fee, contactNumber, active)}>
+                    <button onClick={() => onSave(row._id, name, description, address1, address2, city, province, start, end, community, fee, contactNumber, active)}>
                       Save
                     </button>
                     <button
@@ -345,7 +357,7 @@ const EventTable = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                    <button value={row.address1} onClick={() => onEdit(row._id, row.name, row.address1, row.address2, row.city, row.province, row.start, row.end, row.community, row.fee, row.contactNumber, row.active)}>
+                    <button value={row.address1} onClick={() => onEdit(row._id, row.name, row.description, row.address1, row.address2, row.city, row.province, row.start, row.end, row.community, row.fee, row.contactNumber, row.active)}>
                       <BsIcons.BsPencilSquare />
                     </button>                              
                 )       
@@ -363,7 +375,7 @@ const EventTable = () => {
           <EventForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onEventFormClick={handleEventFormClick} homePageFlag = {false} />
           <table className='aaa'>
               <tbody className="civitasTable">
-                <tr><th>Event Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Start Date</th><th>End Date</th><th>community</th><th>Fee</th><th>Contact Number</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                <tr><th>Event Name</th><th>Description</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Start Date</th><th>End Date</th><th>community</th><th>Fee</th><th>Contact Number</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                
               </tbody>
           </table>

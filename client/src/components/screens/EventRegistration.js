@@ -231,7 +231,7 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
                             
 
                         <div className="col-sm-4">
-                        <div>
+                        <div >
                             <label htmlFor="contactNumber">Contact Number:</label>                
                                     <table className= "table">                      
                                         <tbody>
