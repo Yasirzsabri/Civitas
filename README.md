@@ -163,6 +163,9 @@ $ npm install passport
 $ npm install express-session
 $ npm install passport-local
 $ npm install --save node-cron
+$ npm install bcryptjs --save
+$ npm install multer-gridfs-storage --save
+$ npm install gridfs-stream --save
 $ cd ../client
 $ npm install moment
 $ npm install react-datepicker
@@ -172,7 +175,6 @@ $ npm install react-paginate
 $ npm install uuid
 $ npm install react-bootstrap bootstrap 
 $ npm install fullcalendar
-$ npm install bcryptjs --save
 $ cd ..
 $ git add .
 $ git commit -m "adding nodemon to speed development"

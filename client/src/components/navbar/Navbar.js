@@ -67,6 +67,12 @@ const Navbar = () => {
             icon: <FaIcons.FaCalendar/>,
             class_name:'nav-text'
         },
+        {   
+            title:'Upload Event Images',
+            path:'/photos',
+            icon: <FaIcons.FaCalendar/>,
+            class_name:'nav-text'
+        },
     ]
 
     const [sidebar, setSidebar] = useState(false)

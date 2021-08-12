@@ -11,6 +11,8 @@ import React, { useState, useEffect } from 'react';
 import Pay from './components/square/Pay';
 import EventTable from './components/screens/EventTable';
 import EventRegistrationTable from './components/screens/EventRegistrationTable';
+import PhotoForm from './components/screens/PhotoForm';
+
 
 import Calendar from './components/screens/Calendar'
 const App = () => {
@@ -46,6 +48,9 @@ const App = () => {
           </Route>
           <Route path='/Calendar'>
             <Calendar/>
+          </Route>
+          <Route path='/photos'>
+            <PhotoForm/>
           </Route>
         </Switch>
       </Router>

@@ -11,6 +11,7 @@ const event = require('./event');
 const eventRegistration = require('./eventRegistration');
 const mail = require('./mail');
 const square = require('./square');
+const photos = require('./photos');
 
 router.use('/user',user)
 router.use('/auth',auth)
@@ -23,5 +24,6 @@ router.use('/event',event)
 router.use('/eventRegistration',eventRegistration)
 router.use('/mail',mail)
 router.use('/square',square)
+router.use('/photos',photos)
 
 module.exports = router
