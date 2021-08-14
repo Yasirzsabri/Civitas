@@ -24,13 +24,14 @@ router.post("/", upload.single("file"), async (req, res) => {
 
     // console.log("req.file.filename = ", req.file.filename);
 
-    const imageUrl = {imgUrl: `http://localhost:3000/upload/file/${req.file.filename}`};
+    // const imageUrl = {imgUrl: `http://localhost:3000/upload/file/${req.file.filename}`};
+
+    const imageUrl = {imgUrl: `upload/file/${req.file.filename}`};
 
     // console.log("imageUrl = ", imageUrl);
 
     return await res.send(imageUrl);
 });
-
 
 // Postman: http://localhost:4444/api/photos/files
 router.get("/files", async (req, res) => {
