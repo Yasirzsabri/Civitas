@@ -58,15 +58,15 @@ const PhotoForm = () => {
                 </img>
             </div>  */}
 
-            {!photos ? (null):
-                     photos.files.map((img,idx) => {
-                        return(
-                            <div key = {idx}> 
-                                <img src={'api/photos/file/'+img.filename}></img>
-                            </div>
+            {photos &&
+                photos.files.map((img,idx) => {
+                return(
+                    <div key = {idx}> 
+                        <img src={'api/photos/file/'+img.filename}></img>
+                    </div>
 
-                        )
-                     })
+                )
+                })
             }                                             
         </div>
     )
