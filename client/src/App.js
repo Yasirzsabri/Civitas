@@ -19,12 +19,14 @@ const App = () => {
   return (
     <>
      <AuthenticationProvider>
+       
       <Router>
         <Navbar />
         <Switch>
           <Route exact path='/'>
             <Home/>            
           </Route>
+
           <Route path='/user-level'>
             <UserLevelTable/>
           </Route>

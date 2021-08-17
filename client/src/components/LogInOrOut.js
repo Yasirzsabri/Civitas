@@ -5,7 +5,7 @@ import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.css'
 import UserForm from './screens/UserForm';
 import MemberForm from './screens/MemberForm';
-
+import './users/Login.css'
 
 const LogInOrOut = () => {
     const authContext = useContext(AuthenticationContext)
@@ -26,13 +26,13 @@ const LogInOrOut = () => {
             <>
                 <div className="text-center">
                     <span>
-                        <h3>Hello {authContext.username}
+                        <h3 className="h33">Hello {authContext.username}
                         </h3>
                         </span>
                         <br></br>
-                    <button className="btn btn-secondary" type="button"  onClick={() => authContext.logOut()}>Logout</button>
+                    <button className="btn btn-danger" type="button"  onClick={() => authContext.logOut()}>Logout</button>
                     &nbsp;&nbsp;
-                    <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>Community Update/Signup</button>
+                    <button className="btn btn-dark" type="button" onClick={()=>setAddBtnPopupForm(true)}>Community Update/Signup</button>
                     <MemberForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onMemberFormClick = {handleMemberFormClick} homePageFlag = {true}/>
 
                 </div> 
@@ -73,9 +73,9 @@ const LogInOrOut = () => {
                                      <br></br>
                                     <div className ="buttons" >
                                         <div className="row-fluid text-center" >
-                                            <button className="btn btn-secondary" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
+                                            <button className="btn btn-outline-danger" type="button" onClick={() => authContext.logIn(username, password)}>Login</button>
                                             &nbsp;&nbsp;
-                                            <button className="btn btn-secondary" type="button" onClick={()=>setAddBtnPopupForm(true)}>SignUp</button>
+                                            <button className="btn btn-outline-dark" type="button" onClick={()=>setAddBtnPopupForm(true)}>SignUp</button>
 
                                             <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm}  homePageFlag ={true} onUserFormClick = {handleUserFormClick} />
                                         </div>
