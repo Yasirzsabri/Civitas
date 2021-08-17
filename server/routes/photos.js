@@ -22,21 +22,48 @@ router.post("/", upload.single("file"), async (req, res) => {
         return await res.send("you must select a file.");
     }
 
-    console.log("req.file.filename = ", req.file.filename);
+    // console.log("req.file.filename = ", req.file.filename);
 
-    const imageUrl = {imgUrl: `http://localhost:3000/upload/file/${req.file.filename}`};
+    // const imageUrl = {imgUrl: `http://localhost:3000/upload/file/${req.file.filename}`};
 
-    console.log("imageUrl = ", imageUrl);
+    const imageUrl = {imgUrl: `upload/file/${req.file.filename}`};
+
+    // console.log("imageUrl = ", imageUrl);
 
     return await res.send(imageUrl);
 });
 
+// Postman: http://localhost:4444/api/photos/files
+router.get("/files", async (req, res) => {
+    gfs.files.find().toArray((err, files) => {
+        if (!files || files.length === 0){
+            return res.status(200).json({
+                success: false,
+                message: 'No files available'
+            });
+        }
+        files.map(file => {
+            if (file.contentType === 'image/jpeg'
+                || file.contentType === 'image/png'
+                || file.contentType === 'image/svg+xml'){
+                    file.isImage = true;
+            }
+            else {
+                file.isImage= false;
+            }
+        });
+        res.status(200).json({
+            success : true,
+            files
+        });
+    });     
+});
 
 // Postman: http://localhost:4444/api/photos/file/1628729402214-any-name-farside.jpg
 router.get("/file/:filename", async (req, res) => {
 
-    console.log("inside get by filename")
-    console.log("filename = ", req.params.filename)
+    // console.log("inside get by filename")
+    // console.log("filename = ", req.params.filename)
     
     try {
         const file = await gfs.files.findOne({ filename: req.params.filename });

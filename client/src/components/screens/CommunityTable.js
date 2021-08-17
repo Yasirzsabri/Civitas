@@ -18,7 +18,7 @@ const CommunityTable = () => {
       status: false,
       rowKey: null
     });
-
+    const [description, setDescription] = useState("");
     const [address1, setAddress1] = useState("");
     const [address2, setAddress2] = useState("");   
     const [city, setCity] = useState("");
@@ -42,9 +42,10 @@ const CommunityTable = () => {
       setPageNumber(selected)
     }
     
-    const updateCommunity = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMembershipFee, newGST, NewPST, newHST, newMembershipStartPeriod, newActive) => {
+    const updateCommunity = (id, newDescription, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMembershipFee, newGST, NewPST, newHST, newMembershipStartPeriod, newActive) => {
       let currentDate = new Date();
       let communityToUpdate = {
+          description: newDescription,
           address1: newAddress1,
           address2: newAddress2,
           city: newCity,
@@ -76,12 +77,13 @@ const CommunityTable = () => {
       })    
     }
 
-    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentEmailAddress, currentMembershipFee, currentGST, currentPST, currentHST, currentMembershipStartPeriod, currentActive) => {
+    const onEdit = (id, currentDescription, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentEmailAddress, currentMembershipFee, currentGST, currentPST, currentHST, currentMembershipStartPeriod, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
       })    
 
+      setDescription(currentDescription);
       setAddress1(currentAddress1);
       setAddress2(currentAddress2);
       setCity(currentCity);
@@ -98,8 +100,8 @@ const CommunityTable = () => {
       setActive(currentActive);
     }      
     
-    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMemberhipFee, newGST, newPST, newHST, newMembershipStartPeriod, newActive) => {
-      updateCommunity(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMemberhipFee, newGST, newPST, newHST, newMembershipStartPeriod, newActive);
+    const onSave = (id, newDescription, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMemberhipFee, newGST, newPST, newHST, newMembershipStartPeriod, newActive) => {
+      updateCommunity(id, newDescription, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newMemberhipFee, newGST, newPST, newHST, newMembershipStartPeriod, newActive);
     }
     
     const onCancel = () => {
@@ -244,7 +246,14 @@ const CommunityTable = () => {
       return (
         <tr key={row.name}>
             <td>{row.name}</td>
-
+            <td>{
+                  inEditMode.status && inEditMode.rowKey === row._id ? (
+                    <input value={description} onChange={(event) => setDescription(event.target.value)}/>
+                  ) : (
+                    row.description
+                  )                         
+                }
+            </td>
             <td>{
                   inEditMode.status && inEditMode.rowKey === row._id ? (
                     <input value={address1} onChange={(event) => setAddress1(event.target.value)}/>
@@ -444,7 +453,7 @@ const CommunityTable = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode, contactNumber, contactPerson, emailAddress, membershipFee, GST, PST, HST, membershipStartPeriod, active)}>
+                    <button onClick={() => onSave(row._id, description, address1, address2, city, province, postalCode, contactNumber, contactPerson, emailAddress, membershipFee, GST, PST, HST, membershipStartPeriod, active)}>
                       Save
                     </button>
                     <button
@@ -453,7 +462,7 @@ const CommunityTable = () => {
                     </button>
                   </React.Fragment> 
                 ) : (
-                  <button value={row.description} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,
+                  <button value={row.description} onClick={() => onEdit(row._id, row.description, row.address1, row.address2, row.city, row.province, row.postalCode,
                                                                                  row.contactNumber, row.contactPerson, row.emailAddress, row.membershipFee, 
                                                                                  row.GST, row.PST, row.HST, row.membershipStartPeriod, row.active )}>
                     <BsIcons.BsPencilSquare />
@@ -475,7 +484,7 @@ const CommunityTable = () => {
 
           <table className='aaa'>
               <tbody>
-                <tr><th>Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Province</th><th>Postal Code</th>
+                <tr><th>Name</th><th>Description</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Province</th><th>Postal Code</th>
                 <th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>Member Fee</th><th>GST</th><th>PST</th>
                 <th>HST</th><th>Mbrshp Start Period</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}  

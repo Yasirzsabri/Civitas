@@ -25,4 +25,18 @@
     "$date": "2021-07-09T14:30:07.544Z"
   },
   "__v": 0
+},{
+  "_id": {
+    "$oid": "61115281370e96002d764d56"
+  },
+  "username": "danib",
+  "password": "$2a$10$iRS/.A7tocxLMopOa0mCB.E214gukDmOy9a2W.FXoWoPRl5C2OKdm",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-08-09T16:06:24.350Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-08-09T16:06:24.350Z"
+  },
+  "__v": 0
 }]

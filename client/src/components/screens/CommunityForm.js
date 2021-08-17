@@ -10,6 +10,7 @@ import * as  RiIcons from 'react-icons/ri';
 
 const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
     let [name, setName] = useState("");
+    let [description, setDescription] = useState("");
     let [address1, setAddress1] = useState("");
     let [address2, setAddress2] = useState("");   
     let [city, setCity] = useState("");
@@ -31,6 +32,7 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
 
         let communityToCreate = {
             name,
+            description,
             address1,
             address2,
             city,
@@ -62,6 +64,7 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
                 onCommunityFromClick("Success");
 
                 setName("");
+                setDescription("");
                 setAddress1("");
                 setAddress2("");
                 setCity("");
@@ -159,6 +162,10 @@ const CommunityForm = ({onCommunityFromClick, trigger, setTrigger}) => {
                 <div>
                     <label htmlFor="name">Name:</label>
                     <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
+                </div>
+                <div>
+                    <label htmlFor="description">Name:</label>
+                    <input id="description" value={name} onChange={(event) => onInputChange(event,setDescription)}/>
                 </div>
                 <div>
                     <label htmlFor="address1">Address 1:</label>

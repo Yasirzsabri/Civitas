@@ -3,6 +3,7 @@
     "$oid": "6101dfd4fbfb682e75e1d905"
   },
   "name": "event one",
+  "description": "this is the description for event one",
   "address1": "somewhere in calgary",
   "address2": "",
   "city": "Calgary",
@@ -35,6 +36,7 @@
     "$oid": "6101dffefbfb682e75e1d927"
   },
   "name": "event 22",
+  "description": "this is the description for event 22",
   "address1": "somewhere in AB",
   "address2": "",
   "city": "Calgary",
@@ -65,4 +67,40 @@
   "lastUpdateDate": {
     "$date": "2021-07-29T19:31:42.821Z"
   }
+},{
+  "_id": {
+    "$oid": "611a770c207571002ee7c7bf"
+  },
+  "name": "Test Event",
+  "address1": "1509 18 Ave NW",
+  "address2": "basement",
+  "city": "Calgary",
+  "province": "AB",
+  "start": {
+    "$date": "2021-08-17T08:31:00Z"
+  },
+  "end": {
+    "$date": "2021-08-17T12:31:00Z"
+  },
+  "community": {
+    "$oid": "60d91f40e7ca6434287d6907"
+  },
+  "fee": 120,
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "611a770c207571002ee7c7c0"
+      },
+      "name": "Mobile",
+      "phoneNumber": "5878520234"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-08-16T14:32:43.499Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-08-16T14:32:43.499Z"
+  },
+  "__v": 0
 }]

@@ -3,6 +3,7 @@
     "$oid": "60d91f40e7ca6434287d6907"
   },
   "name": "Cresmont Community Association",
+  "description": "The Crestmont Community Association was incorporated as a not-for-profit organization on December 21st. 2009 in Calgary, Alberta, Canada.",
   "address1": "12400 Crestmont Blvd SW",
   "address2": "",
   "city": "Calgary",
@@ -47,6 +48,7 @@
     "$oid": "60f16f4047e80f0654df48dc"
   },
   "name": "Heyho",
+  "description": "some goofy description??",
   "address1": "somewhere",
   "address2": "",
   "city": "lost",
@@ -83,7 +85,7 @@
     "$date": "2021-07-16T11:36:31.801Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-07-16T11:36:31.801Z"
+    "$date": "2021-08-16T18:13:50.998Z"
   },
   "__v": 0
 }]
