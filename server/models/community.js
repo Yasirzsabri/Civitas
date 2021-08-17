@@ -8,6 +8,7 @@ const communitySchema = new Schema({
     required: true,
     unique: true
   },
+  description: String,
   address1: String,
   address2: String,
   city: String,
