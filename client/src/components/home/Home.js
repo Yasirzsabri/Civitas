@@ -40,17 +40,19 @@ const Home = () => {
                     <a href="index.html" className="scrollto"></a>
                 </div>
                 
-                <nav id="navbar" className="navbar order-last order-lg-0">
-                    <ul>
-                    <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a className="nav-link scrollto" href="#about">About</a></li>
-                    <li><a className="nav-link scrollto" href="http://localhost:4444/calendar">Events Schedule</a></li>
-                    <li><a className="nav-link scrollto" href="#venue">Become A Membership</a></li>
-                    <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
-                    <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <a className="buy-tickets scrollto" href="#buy-tickets">Buy Tickets</a>
+                <div className="nava" >
+                    <nav id="navbar" className="navbar order-last order-lg-0">
+                        <ul>
+                        <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
+                        {/* <li><a className="nav-link scrollto" href="#about">About</a></li> */}
+                        <li><a className="nav-link scrollto" href="http://localhost:4444/calendar">Events Schedule</a></li>
+                        <li><a className="nav-link scrollto" href="http://localhost:4444/Pay">Become A Membership</a></li>
+                        <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
+                        {/* <li><a className="nav-link scrollto" href="#contact">Contact</a></li> */}
+                        </ul>
+                    </nav>
+                    {/* <a className="buy-tickets scrollto" href="#buy-tickets">Buy Tickets</a> */}
+                </div>
             </div>
             </header >
            
@@ -76,7 +78,7 @@ const Home = () => {
                            <div className="speaker" data-aos="fade-up" data-aos-delay="100"> 
                                 <img src = {parker} alt="Speaker 1" className="img-fluid"></img>
                                 <div className="details">
-                                        <h3><a>Parker Sjogren</a></h3>
+                                        <h3><a >Parker Sjogren</a></h3>
                                         <p></p>
                                         <div className="social">
                                             <a href="https://www.linkedin.com/in/parkersjogren/">
@@ -129,11 +131,11 @@ const Home = () => {
                     <img className="d-block w-100" src={yasir} alt="Third slide"/>
                     </div>
                 </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a className="carousel-control-prev" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="sr-only">Previous</span>
                 </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a className="carousel-control-next"  role="button" data-slide="next">
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="sr-only">Next</span>
                 </a>

@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin,{DateClickArg} from '@fullcalendar/interaction';
 import EventRegistration from './EventRegistration'
-
+import './Calendar.css';
 
 
 
