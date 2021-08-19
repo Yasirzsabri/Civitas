@@ -26,7 +26,7 @@ const LogInOrOut = () => {
             <>
                 <div className="text-center">
                     <span>
-                        <h3 className="h33">Hello {authContext.username}
+                        <h3 className="h33"><span>Hello</span> {authContext.username}
                         </h3>
                         </span>
                         <br></br>
