@@ -69,7 +69,7 @@ const UserLevelForm = (props) => {
     return (props.trigger)? (
         <div className='createform'>
             <div className="popup-in">
-                <h4>Add a New Product Category</h4>
+                <h4>Add a New User Level</h4>
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 <div>
                     <label htmlFor="name">Name:</label>

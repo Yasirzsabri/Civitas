@@ -17,12 +17,14 @@
 
 th {
     background-color: black;
-    color: #dee0da;  
+    color: #dee0da;
+    min-width: 160px;
 }
 
 td {
     border: 1px solid #cecfd5;  
     font-size: small;
+    padding: 0px 10px;
 }
 
 .list-table h2{
@@ -77,4 +79,7 @@ td {
 .list-table .clear{
     background-color: white;
     font-size: medium;
+}
+tbody{
+    overflow-x: auto;
 }

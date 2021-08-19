@@ -453,7 +453,7 @@ const MemberForm = ({onMemberFormClick, trigger, setTrigger, homePageFlag}) => {
 
                 <div>
                     <label htmlFor="emailAddress">Email Address:</label>
-                    <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                    <input id="emailAddress" type="email"  required="required" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
                 </div>
                 <table>
                     <tbody>

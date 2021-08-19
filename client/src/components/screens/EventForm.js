@@ -158,13 +158,13 @@ const EventForm = ({onEventFormClick, trigger, setTrigger, homePageFlag}) => {
                     </div>
                     <div className="col3">
                         <label for="start">start:</label>
-                        <input type="datetime-local" id = "start" name= {start} value={start} onChange={ (event) => {setStart(event.target.value)}}/>
+                        <input id = "start" name= {start} value={start} onChange={ (event) => {setStart(event.target.value)}}/>
                         {/* < input type="datetime-local"  format={"MM/DD/yyyy hh:mm a"} value={moment(start).format("MM/DD/yyyy hh:mm a")} onChange={ (event) => {setStart(event)}}/> */}
                     </div>
                     
                     <div className="col3">
                         <label for="end" >end:</label>
-                        <input type="datetime-local" id="end" name={end} value={end}  onChange={ (event) => {setEnd(event.target.value)}}/>
+                        <input id="end" name={end} value={end}  onChange={ (event) => {setEnd(event.target.value)}}/>
                         {/* <input type="datetime-local" id ="end" value="2018-06-12T19:30"  min="2018-06-07T00:00" max="2024-06-14T00:00" onChange={ (event) => {setEnd(event)}}/> */}
                     </div>
                     <div className="col3">

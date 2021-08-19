@@ -93,7 +93,7 @@ const UserForm = (props) => {
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input id="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
+                    <input id="password" type="password" value={password} placeholder="Enter Password" onChange={(event)=> onInputChange(event,setPassword)}/>
                 </div>
 
                 {props.homePageFlag ? (null) : 
