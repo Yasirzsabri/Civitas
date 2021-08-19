@@ -58,9 +58,9 @@ const AuthenticationProvider = ({ children }) => {
                 body: JSON.stringify({ username, password })
             }
             let response = await fetch('/api/auth/login', loginOptions)
-            console.log("61 in AP response: ", response.status)
+
             if (response.status !==200) alert("Invalid Username/Password")
-            
+
             let loggedInUser = await response.json()
             
             setContextData(loggedInUser._id, loggedInUser.username) 
