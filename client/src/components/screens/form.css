@@ -4,7 +4,7 @@
     left: 340px; 
     width: 60%;
     height:100vh;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgb(243, 241, 241);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -27,15 +27,9 @@
   margin-bottom: auto;
   align-self: center;
   z-index: 9999;
-    /* position:fixed;
-    padding:25px;
-    width:100%;
-    max-width: 1000px;
-    background-color: #fff;
-    table-layout: auto;
-    width: 1200px;
-    table-layout: auto;
-    table-layout: fixed; */
+  overflow-x: auto;
+  height: 85vh;
+  
 } 
 .createform label{
     text-align:left;
@@ -54,7 +48,7 @@
 
 .popup-in-signUp {
     margin: auto;
-    background: rgba(243, 241, 241, 0.493);
+    background: rgb(243, 241, 241);
     width: 100%;
     padding: 225px;
     margin-bottom: auto;
@@ -111,8 +105,8 @@
     margin-right: 3px;
 }
 .createform button{
-    background-color: #f1f1f1;
-
+    background-color: #252525;
+    color: white;
     border: 0;
     padding: 8px;
     border-radius: 8px;

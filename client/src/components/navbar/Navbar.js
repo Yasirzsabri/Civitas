@@ -22,13 +22,13 @@ const Navbar = () => {
         {
             title:'Users',
             path:'/users',
-            icon: <FaIcons.FaUsers />,
+            icon: <FiIcons.FiUsers/>,
             class_name:'nav-text'
         },
         {
             title:'User Level',
             path:'/user-level',
-            icon: <FiIcons.FiUsers />,
+            icon: < FaIcons.FaUserCog  />,
             class_name:'nav-text'
         },
         {
@@ -62,7 +62,7 @@ const Navbar = () => {
             class_name:'nav-text'
         },
         {   
-            title:'Community Events',
+            title:'Community Calendar',
             path:'/calendar',
             icon: <FaIcons.FaCalendar/>,
             class_name:'nav-text'
@@ -70,7 +70,7 @@ const Navbar = () => {
         {   
             title:'Upload Event Images',
             path:'/photos',
-            icon: <FaIcons.FaCalendar/>,
+            icon: <FaIcons.FaRegImages/>,
             class_name:'nav-text'
         },
     ]

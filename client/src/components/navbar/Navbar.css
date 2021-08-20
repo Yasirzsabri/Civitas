@@ -81,4 +81,5 @@
   span {
     margin-left: 16px;
     z-index: 99999;
+    color: white !important;
   }

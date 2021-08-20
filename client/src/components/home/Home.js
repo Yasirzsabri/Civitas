@@ -4,7 +4,8 @@ import LogInOrOut from '../LogInOrOut';
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/vendor/swiper/swiper-bundle.min.css';
 import './assets/vendor/bootstrap-icons/bootstrap-icons.css';
-
+import 'bootstrap/dist/css/bootstrap.css'
+import { FaBeer } from 'react-icons/fa';
 import parker from './assets/img/speakers/1.jpg';
 import yasir from './assets/img/speakers/2.jpg';
 import a from './assets/img/gallery/1.jpg';
@@ -71,19 +72,24 @@ const Home = () => {
                 <div className="container" data-aos="fade-up">
                     <div className="section-header">
                         <h2> Developers </h2>
-                        <p>Here are Our Developers Team </p>
+                        <p>Here are our Developers </p>
+                        
                     </div>
                     <div className="row">
                        <div className="col-lg-6 col-md-4">
                            <div className="speaker" data-aos="fade-up" data-aos-delay="100"> 
                                 <img src = {parker} alt="Speaker 1" className="img-fluid"></img>
                                 <div className="details">
-                                        <h3><a >Parker Sjogren</a></h3>
+                                        <h3><a> <span>Parker Sjogren</span> </a></h3>
                                         <p></p>
                                         <div className="social">
-                                            <a href="https://www.linkedin.com/in/parkersjogren/">
-                                                <i className="fab fa-linkedin-in">  </i>
-                                                </a>
+                                        <a href="https://www.linkedin.com/in/parkersjogren">
+                                            <i className="bi bi-linkedin"></i>
+                                            
+                                            </a>
+                                        <a href="https://github.com/ParkerSjogren">
+                                         <i className="bi bi-github "  ></i>
+                                        </a>
                                         </div>
                                 </div>
                             </div>
@@ -92,12 +98,16 @@ const Home = () => {
                            <div className="speaker" data-aos="fade-up" data-aos-delay="100"> 
                                 <img src = {yasir} alt="Speaker 1" className="img-fluid"></img>
                                 <div className="details">
-                                        <h3><a>Yasir Sabri</a></h3>
+                                        <h3><a> <span>Yasir Sabri </span></a></h3>
                                         <p></p>
                                         <div className="social">
-                                            <a href="https://www.linkedin.com/in/yasir-sabri-5877079301/">
-                                                <i className="fab fa-linkedin-in">  </i>
-                                                </a> 
+                                        <a href="https://www.linkedin.com/in/yasir-sabri-5877079301/">
+                                            <i className="bi bi-linkedin"></i>
+                                            
+                                            </a>
+                                        <a href="https://github.com/Yasirzsabri">
+                                         <i className="bi bi-github "  ></i>
+                                        </a>
                                         </div>
                                 </div>
                             </div>
@@ -106,7 +116,7 @@ const Home = () => {
                 </div>  
             </section>
 
-            <section id="gallery">
+            {/* <section id="gallery">
             <div className="container" data-aos="fade-up">
                 <div className="section-header">
                  <h2>Gallery</h2>
@@ -139,7 +149,7 @@ const Home = () => {
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="sr-only">Next</span>
                 </a>
-                </div>
+                </div> */}
 
              {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
@@ -192,7 +202,7 @@ const Home = () => {
                     <div className="swiper-pagination"></div>
                 </div> */}
             
-            </section>
+            {/* </section> */}
 
 
 

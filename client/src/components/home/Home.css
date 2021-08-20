@@ -6,128 +6,6 @@
 details .h3 {
   color : white !important;
 }
- 
-/* .home-container {
-    padding: 20px 35px;
-    margin:0;
-    height:100vh; */
-    
-
-    /* background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70)); */
-/*     
-    background-image: url("");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-   
-} */
-/* 
-.home-title{
-    display:flex;
-    align-items: center;
-    background-image: url(1.jpg);
-    height: 150px;
-    
-} */
-
-/* .home-title > img {
-    max-height:100px;
-    object-fit:contain;
-    margin-right:20px;
-} */
-
-/* .home-greeting > h1 {
-    font-size: 24px;
-    color: #85C232;
-    /* color: black; */
-    /* margin-bottom:5px;
-    
-   
-}  */
-
-/* .home-greeting > p {
-    font-size: 14px;
-    font-weight:700;
-    color: #a5aaad;
-} */
-
-/* .home-cards { */
-    /* display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap:30px;
-    margin:20px 0; */
-/* } */
-
-/* .logo {
-    padding: 0;
-} */
-
-/* .card-inner {
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-} */
-/* .logo-image{
-    
-    
-    background-image:url('');
-    background-size: contain;
-    background-position:top ;
-    background-repeat:no-repeat;
-    background-clip: padding-box;
-    height: 80%;
-
-
-}  */
-
-
-/* .card-inner .icons{
-    font-size: x-large;
-} */
-
-/* .count{
-    font-size: 25px;
-} */
-/* .counters .small-text{
-    font-size: 12px; 
-    text-align: end;
-} */
-
-/* .big-cards{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:30px;
-    margin-top:50px; 
-}
-
-.mail-container {
-    margin:0 auto;  
-}
-
-
-
-.mail-container input, .mail-container textarea{
-    width:100%;
-    padding:6px 10px;
-    margin:10px 0;
-    box-sizing: border-box;
-    display: block;
-}
-
-.mail-container button{
-    background: rgb(27, 29, 65);
-    color: #85C232;
-    font-weight: bold;
-    border: 0;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.mail-container .attach input {
-   text-align: right;
-   display: block;
-} */
-
 
 @media only screen and (max-width: 855px) {
     .home-container{
@@ -298,6 +176,8 @@ body {
   #header #logo h1 span {
     color: #f82249;
   }
+
+
   
   #header #logo h1 a, #header #logo h1 a:hover {
     color: #fff;
@@ -388,10 +268,7 @@ body {
     padding: 6px 4px;
   }
   
-  .nava{
-    color:w ;
-
-  }
+  
   .navbar a i, .navbar a:focus i {
     font-size: 12px;
     line-height: 0;
@@ -646,6 +523,13 @@ body {
   #hero h1 span {
     color: #f82249;
   }
+
+  #speakers h3 span {
+    color: white;
+    font-size: 30px !important;
+  }
+
+
   
   @media (max-width: 991px) {
     #hero h1 {
@@ -868,12 +752,16 @@ body {
   }
   
   #speakers .speaker .details .social {
-    height: 40px;
+    height: 100px !important;
   }
   
   #speakers .speaker .details .social i {
     line-height: 0;
-    margin: 0 2px;
+    margin: 0 4px;
+    size: 4px;
+    color: white;
+    font-size: 2.5em;
+        
   }
   
   #speakers .speaker .details a {

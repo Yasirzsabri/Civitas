@@ -84,7 +84,7 @@ const UserForm = (props) => {
     return (props.trigger)? (
         <div className="createform">
             <div className="popup-in-signUp">
-                <h4>Add a New User</h4>
+                <h4>Sign Up</h4>
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 {props.children}
                 <div>
