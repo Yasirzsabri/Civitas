@@ -92,7 +92,7 @@ const Home = () => {
                            <div className="speaker" data-aos="fade-up" data-aos-delay="100"> 
                                 <img src = {yasir} alt="Speaker 1" className="img-fluid"></img>
                                 <div className="details">
-                                        <h3><a> <span>Yasir Sabri </span></a></h3>
+                                        <h3><a> <span>Yasir Z.Sabri </span></a></h3>
                                         <p></p>
                                         <div className="social">
                                         <a href="https://www.linkedin.com/in/yasir-sabri-5877079301/">
