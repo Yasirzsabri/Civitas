@@ -42,7 +42,7 @@ const Home = () => {
                         <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
                         <li><a className="nav-link scrollto" href="/calendar">Events Schedule</a></li>
                         <li><a className="nav-link scrollto" href="/Pay">Pay for Membership</a></li>
-                        <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
+                        {/* <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li> */}
                        
                         </ul>
                     </nav>
