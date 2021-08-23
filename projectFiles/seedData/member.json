@@ -3,19 +3,19 @@
     "$oid": "60f18fd7cb803555b45b38f1"
   },
   "firstName": "Yasir",
-  "lastName": "SmartGuy",
-  "address1": "Somewhere in Calgaru",
-  "address2": "I kill the bunny1",
+  "lastName": "Sabri",
+  "address1": "Calgary",
+  "address2": "AB",
   "city": "Calgary",
   "province": "Alberta",
-  "postalCode": "T3B 5W5",
+  "postalCode": "T0Z0E0",
   "contactNumber": [
     {
       "_id": {
         "$oid": "60f18fd7cb803555b45b38f2"
       },
-      "name": "home #",
-      "phoneNumber": "567"
+      "name": "home ",
+      "phoneNumber": "5870000000"
     }
   ],
   "emailAddress": "yasir.zsabri@gmail.com",
@@ -40,27 +40,6 @@
         "$date": "2021-08-10T17:22:26.611Z"
       },
       "active": true
-    },
-    {
-      "_id": {
-        "$oid": "60f63cd9058c1e5e242c978a"
-      },
-      "community": {
-        "$oid": "60f16f4047e80f0654df48dc"
-      },
-      "userLevel": {
-        "$oid": "609b044c3fedfb45458a5f7b"
-      },
-      "renewalDate": {
-        "$date": "2021-07-20T03:02:44.072Z"
-      },
-      "memberSince": {
-        "$date": "2021-07-20T03:02:44.072Z"
-      },
-      "membershipPaidDate": {
-        "$date": "2021-07-20T03:02:44.072Z"
-      },
-      "active": true
     }
   ],
   "username": {
@@ -71,7 +50,7 @@
     "$date": "2021-07-16T13:55:35.098Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-08-10T17:22:26.611Z"
+    "$date": "2021-08-23T17:09:04.592Z"
   },
   "__v": 0
 },{
@@ -81,7 +60,7 @@
   "firstName": "Parker",
   "lastName": "Sjogren",
   "address1": "214 Sierra Morena Close SW",
-  "address2": "qqq",
+  "address2": "AB",
   "city": "Calgary",
   "province": "Alberta",
   "postalCode": "T3H 3G3",
@@ -126,7 +105,7 @@
     "$date": "2021-07-30T20:08:39.318Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-07-30T20:08:39.318Z"
+    "$date": "2021-08-23T17:08:55.335Z"
   },
   "__v": 0
 }]

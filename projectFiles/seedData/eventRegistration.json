@@ -3,9 +3,9 @@
     "$oid": "610eefa91b829223b2100c9d"
   },
   "firstName": "Yasir",
-  "lastName": "SmartGuy",
-  "address1": "Somewhere in Calgary",
-  "address2": "I kill the bunny1",
+  "lastName": "Sabri",
+  "address1": " Calgary",
+  "address2": "N/A",
   "city": "Calgary",
   "province": "Alberta",
   "postalCode": "T3B 5W5",
@@ -14,8 +14,8 @@
       "_id": {
         "$oid": "610f120f4021fa3244875c9f"
       },
-      "name": "home #",
-      "phoneNumber": "567"
+      "name": "home ",
+      "phoneNumber": "567-888-8888"
     }
   ],
   "emailAddress": "yasir.zsabri@gmail.com",
@@ -32,154 +32,43 @@
     "$date": "2021-07-16T13:55:35.098Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-08-09T16:08:39.480Z"
+    "$date": "2021-08-23T17:20:11.024Z"
   }
 },{
   "_id": {
-    "$oid": "611046aee07ccd02c0b78b63"
+    "$oid": "6123d9400c4d8230fc1c28e9"
   },
-  "firstName": "Yasir",
-  "lastName": "Sabri",
-  "address1": "Bsmt 303 Whiteview Road NE",
-  "address2": "sss",
+  "firstName": "Parker ",
+  "lastName": "Sjogren",
+  "address1": "Calgary",
+  "address2": "N/A",
   "city": "Calgary",
-  "province": "Outside US",
-  "postalCode": "T1Y1P7",
+  "province": "AB",
+  "postalCode": "T0A0Z0",
   "contactNumber": [
     {
       "_id": {
-        "$oid": "611046aee07ccd02c0b78b64"
+        "$oid": "6123d9400c4d8230fc1c28ea"
       },
-      "name": "ss",
-      "phoneNumber": "15877079301"
+      "name": "Cell",
+      "phoneNumber": "4035558888"
     }
   ],
-  "emailAddress": "h",
+  "emailAddress": "parker@gmail.com",
   "username": {
-    "$oid": "6099cdc63fedfb45458a073c"
+    "$oid": "60e73016186f7d4530029dfc"
   },
   "event": {
-    "$oid": "6101dffefbfb682e75e1d927"
+    "$oid": "611a770c207571002ee7c7bf"
   },
-  "numberOfAttendees": 1,
+  "numberOfAttendees": 2,
   "feePaid": false,
   "active": true,
   "dateAdded": {
-    "$date": "2021-08-08T21:03:42.897Z"
+    "$date": "2021-08-23T17:22:08.597Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-08-08T21:03:42.897Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "611191ba2e8e8a1354ef602b"
-  },
-  "firstName": "Yasir",
-  "lastName": "aa",
-  "address1": "SE Calgary",
-  "address2": "aaa",
-  "city": "Calgary",
-  "province": "Alberta",
-  "postalCode": "T2E5Z9",
-  "contactNumber": [
-    {
-      "_id": {
-        "$oid": "611191ba2e8e8a1354ef602c"
-      },
-      "name": "a",
-      "phoneNumber": "a"
-    }
-  ],
-  "emailAddress": "",
-  "username": {
-    "$oid": "6099cdc63fedfb45458a073c"
-  },
-  "event": {
-    "$oid": "6101dfd4fbfb682e75e1d905"
-  },
-  "numberOfAttendees": 1,
-  "feePaid": false,
-  "active": true,
-  "dateAdded": {
-    "$date": "2021-08-09T20:36:10.151Z"
-  },
-  "lastUpdateDate": {
-    "$date": "2021-08-09T20:36:10.151Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61119391d892cf4c6828b21f"
-  },
-  "firstName": "Yasir",
-  "lastName": "aa",
-  "address1": "SE Calgary",
-  "address2": "aa",
-  "city": "Calgary",
-  "province": "Alberta",
-  "postalCode": "T2E5Z0",
-  "contactNumber": [
-    {
-      "_id": {
-        "$oid": "61119391d892cf4c6828b220"
-      },
-      "name": "aa",
-      "phoneNumber": "855444"
-    }
-  ],
-  "emailAddress": "",
-  "username": {
-    "$oid": "6099cdc63fedfb45458a073c"
-  },
-  "event": {
-    "$oid": "6101dfd4fbfb682e75e1d905"
-  },
-  "numberOfAttendees": 12,
-  "feePaid": false,
-  "active": true,
-  "dateAdded": {
-    "$date": "2021-08-09T20:44:01.221Z"
-  },
-  "lastUpdateDate": {
-    "$date": "2021-08-16T14:36:51.569Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61119446d892cf4c6828b235"
-  },
-  "firstName": "Yasir",
-  "lastName": "ccccc",
-  "address1": "SE Calgary",
-  "address2": "cc",
-  "city": "Calgary",
-  "province": "Alberta",
-  "postalCode": "T2E5Z9",
-  "contactNumber": [
-    {
-      "_id": {
-        "$oid": "61119446d892cf4c6828b236"
-      },
-      "name": "55",
-      "phoneNumber": "5555"
-    }
-  ],
-  "emailAddress": "",
-  "username": {
-    "$oid": "6099cdc63fedfb45458a073c"
-  },
-  "event": {
-    "$oid": "6101dfd4fbfb682e75e1d905"
-  },
-  "numberOfAttendees": 5,
-  "feePaid": false,
-  "active": true,
-  "dateAdded": {
-    "$date": "2021-08-09T20:47:02.403Z"
-  },
-  "lastUpdateDate": {
-    "$date": "2021-08-09T20:47:02.403Z"
+    "$date": "2021-08-23T17:22:08.597Z"
   },
   "__v": 0
 }]

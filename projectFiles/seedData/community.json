@@ -3,9 +3,9 @@
     "$oid": "60d91f40e7ca6434287d6907"
   },
   "name": "Cresmont Community Association",
-  "description": "The Crestmont Community Association was incorporated as a not-for-profit organization on December 21st. 2009 in Calgary, Alberta, Canada.",
-  "address1": "12400 Crestmont Blvd SW",
-  "address2": "",
+  "description": "The Crestmont Community Association was incorporated as a not-for-profit organization ",
+  "address1": "12400 Crestmont Blvd",
+  "address2": "SW",
   "city": "Calgary",
   "province": "Alberta",
   "postalCode": "T3B 5W5",
@@ -15,7 +15,7 @@
         "$oid": "60d91f40e7ca6434287d6908"
       },
       "name": "Cresmont General Info:",
-      "phoneNumber": "123 456-7890"
+      "phoneNumber": "587-000-0000"
     }
   ],
   "contactPerson": [
@@ -40,52 +40,52 @@
     "$date": "2021-06-28T01:00:48.399Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-06-28T01:04:15.698Z"
+    "$date": "2021-08-23T16:57:07.268Z"
   },
   "__v": 0
 },{
   "_id": {
-    "$oid": "60f16f4047e80f0654df48dc"
+    "$oid": "6123d4450c4d8230fc1c27ae"
   },
-  "name": "Heyho",
-  "description": "some goofy description??",
-  "address1": "somewhere",
-  "address2": "",
-  "city": "lost",
-  "province": "stupid",
-  "postalCode": "2ub bbb",
+  "name": "McKenzie Community Association",
+  "description": "McKenzie  Community Associatio",
+  "address1": "40 McKenzie Towne Blvd SE",
+  "address2": "AB T2Z 4X5",
+  "city": "Calgary",
+  "province": "AB",
+  "postalCode": "T2Z 4X5",
   "contactNumber": [
     {
       "_id": {
-        "$oid": "60f16f4047e80f0654df48dd"
+        "$oid": "6123d4450c4d8230fc1c27af"
       },
-      "name": "cell",
-      "phoneNumber": "567"
+      "name": "Phone ",
+      "phoneNumber": "4031231234"
     }
   ],
   "contactPerson": [
     {
       "_id": {
-        "$oid": "60f16f4047e80f0654df48de"
+        "$oid": "6123d4450c4d8230fc1c27b0"
       },
-      "firstName": "you",
-      "lastName": "you know"
+      "firstName": "Max",
+      "lastName": "4031231234"
     }
   ],
-  "emailAddress": "abc@def.net",
-  "membershipFee": 66,
-  "GST": 0.05,
+  "emailAddress": "McKenzie@gmail.com",
+  "membershipFee": 100,
+  "GST": 5,
   "PST": 0,
   "HST": 0,
   "membershipStartPeriod": {
-    "$date": "2021-07-16T11:35:00.658Z"
+    "$date": "2021-08-23T16:55:26.791Z"
   },
   "active": true,
   "dateAdded": {
-    "$date": "2021-07-16T11:36:31.801Z"
+    "$date": "2021-08-23T17:00:53.202Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-08-16T18:13:50.998Z"
+    "$date": "2021-08-23T17:01:11.250Z"
   },
   "__v": 0
 }]

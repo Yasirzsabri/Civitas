@@ -2,10 +2,10 @@
   "_id": {
     "$oid": "6101dfd4fbfb682e75e1d905"
   },
-  "name": "event one",
+  "name": "Family movie night",
   "description": "this is the description for event one",
-  "address1": "somewhere in calgary",
-  "address2": "",
+  "address1": "Crestmont west park",
+  "address2": "Playground ",
   "city": "Calgary",
   "province": "Alberta",
   "start": {
@@ -17,47 +17,14 @@
   "community": {
     "$oid": "60d91f40e7ca6434287d6907"
   },
-  "fee": 60,
-  "contactNumber": [
-    {
-      "name": "Cresmont General Info:",
-      "phoneNumber": "123 456-7890"
-    }
-  ],
-  "active": true,
-  "dateAdded": {
-    "$date": "2021-07-16T00:49:04.503Z"
-  },
-  "lastUpdateDate": {
-    "$date": "2021-07-16T00:49:04.503Z"
-  }
-},{
-  "_id": {
-    "$oid": "6101dffefbfb682e75e1d927"
-  },
-  "name": "event 22",
-  "description": "this is the description for event 22",
-  "address1": "somewhere in AB",
-  "address2": "",
-  "city": "Calgary",
-  "province": "Alberta",
-  "start": {
-    "$date": "2021-07-16T02:30:00.503Z"
-  },
-  "end": {
-    "$date": "2021-07-16T05:30:00.503Z"
-  },
-  "community": {
-    "$oid": "60d91f40e7ca6434287d6907"
-  },
-  "fee": 455,
+  "fee": 30,
   "contactNumber": [
     {
       "_id": {
-        "$oid": "6102da6c74715a28a0c760bf"
+        "$oid": "6123d73a0c4d8230fc1c287e"
       },
       "name": "Cresmont General Info:",
-      "phoneNumber": "123 456-7890"
+      "phoneNumber": "587-456-7890"
     }
   ],
   "active": true,
@@ -65,17 +32,17 @@
     "$date": "2021-07-16T00:49:04.503Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-07-29T19:31:42.821Z"
+    "$date": "2021-08-23T17:18:04.031Z"
   }
 },{
   "_id": {
     "$oid": "611a770c207571002ee7c7bf"
   },
-  "name": "Test Event",
-  "address1": "1509 18 Ave NW",
-  "address2": "basement",
+  "name": "Crestmont foodtruck",
+  "address1": "Crestmont hall parking lot",
+  "address2": "N/A",
   "city": "Calgary",
-  "province": "AB",
+  "province": "Alberta",
   "start": {
     "$date": "2021-08-17T08:31:00Z"
   },
@@ -85,7 +52,7 @@
   "community": {
     "$oid": "60d91f40e7ca6434287d6907"
   },
-  "fee": 120,
+  "fee": 25,
   "contactNumber": [
     {
       "_id": {
@@ -100,7 +67,7 @@
     "$date": "2021-08-16T14:32:43.499Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-08-16T14:32:43.499Z"
+    "$date": "2021-08-23T17:17:43.662Z"
   },
   "__v": 0
 }]
