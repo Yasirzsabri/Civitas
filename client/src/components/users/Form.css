@@ -41,8 +41,8 @@
     width:100%;
     padding: 6px 10px;
     margin:10px 0;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
+    border: 1px solid rgb(7, 2, 2) !important;
+    box-sizing: border-box !important;
     display:block;
 }
 

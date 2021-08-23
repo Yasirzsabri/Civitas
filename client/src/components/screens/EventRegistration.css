@@ -1,5 +1,6 @@
 .createform1{
     position:fixed;
+    
     top:25px; 
     left: 340px; 
     width: 70%;
@@ -16,46 +17,23 @@
  .popup-in1{
     position:fixed;
     padding:25px;
-    width:100%;
+    width:185vh;
     max-width: 1000px;
     background-color: rgb(136, 136, 139);
-    overflow-y:scroll !important;
-    
-} 
-.popup-in1{
     margin: auto;
-  background: rgb(136, 136, 139);
-  width: 100%;
-  /* padding: 25px; */
-  margin-bottom: auto;
-  align-self: center;
-  z-index: 9999;
-  overflow-y:scroll !important;
-  height: 85vh;
+    align-self: center;
+    z-index: 9999;
+    overflow-x:scroll ;
+    height: 87vh;
 
-  
-    /* position:fixed;
-    padding:25px;
-    width:100%;
-    max-width: 1000px;
-    background-color: #fff;
-    table-layout: auto;
-    width: 1200px;
-    table-layout: auto;
-    table-layout: fixed; */
 } 
-/* .createform label{
-    text-align:left;
-    display:block;
-}  */
+
 
 
 .popup-in1 closebtn{
-    /* position: absolute; */
-    /* top: 2px;
-    right: 7px; */
+   
     font-weight: bold;
-    background-color: white;
+    background-color: rgb(10, 9, 9) !important;
     font-size: larger;
     margin-bottom: auto;
    

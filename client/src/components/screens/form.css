@@ -28,7 +28,7 @@
   align-self: center;
   z-index: 9999;
   overflow-x: auto;
-  height: 85vh;
+  height: 68vh;
   
 } 
 .createform label{
@@ -63,8 +63,8 @@
     width:100%;
     padding: 6px 10px;
     margin:8px 0;
-    border: 1px solid rgb(12, 10, 10);
-    box-sizing: border-box;
+    border: 1px solid rgb(12, 10, 10) !important;
+    box-sizing: border-box !important;
     display:block;   
 }
 
@@ -116,7 +116,7 @@
 
 .createform .clear{
     font-weight: bold;
-    background-color: white;
+    background-color: rgb(51, 50, 50);
     font-size: larger;
 }
 
