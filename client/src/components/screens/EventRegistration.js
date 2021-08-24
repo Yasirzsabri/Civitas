@@ -38,15 +38,16 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
     useEffect( () => {
     //   setEventC(eventData[idx]._id); 
       setUsername(authContext.id)
-      console.log("line43 idx ",eventData[idx])
+    //   console.log("line43  authContext.id",authContext.id)
   
-      console.log("event Id line 45",eventId)
+    //   console.log("event Id line 45",eventId)
     //    console.log("line44 _id ",eventData[idx]._id)
     //   setEvent(eventData[idx]._id)
     }, []);
 
 
     async function onCreateClicked(e) {
+        // console.log("line 50  authContext.id",authContext.id)
         let currentDate = new Date()
         console.log("event Id line 53",eventId)
 
@@ -60,7 +61,7 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
             postalCode,
             contactNumber,
             emailAddress,
-            username,
+            username : authContext.id,
             event : eventId,
             numberOfAttendees, 
             feePaid,
