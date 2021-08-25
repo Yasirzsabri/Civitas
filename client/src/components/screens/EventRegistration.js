@@ -60,7 +60,7 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
             postalCode,
             contactNumber,
             emailAddress,
-            username,
+            username : authContext.id,
             event : eventId,
             numberOfAttendees, 
             feePaid,
@@ -227,7 +227,10 @@ const EventRegistration = ({onEventFormClick, trigger, setTrigger, eventData, id
                             <input id="postalCode" value={postalCode} className="form-control" onChange={(event) => onInputChange(event,setPostalCode)}/>
                         </div>
 
-                        
+                        <div className="col-sm-4">
+                            <label htmlFor="emailAddress">EmailAddress:</label>
+                            <input id="emailAddress" value={emailAddress} className="form-control" onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                        </div>
                             
 
                         <div className="col-sm-4">
